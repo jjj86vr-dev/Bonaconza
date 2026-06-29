@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tezza SRL – Attrezzature e Tecnologie per Allevamenti Zootecnici</title>
+  <meta name="description" content="Tezza SRL realizza attrezzature e tecnologie avanzate per allevamenti zootecnici: progettazione, installazione, assistenza specializzata e ricambi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #015434;
+      --green-light: #01703f;
+      --green-dark: #012e1d;
+      --white: #ffffff;
+      --gray-light: #f4f6f4;
+      --gray-mid: #e8ece8;
+      --text-dark: #1a1a1a;
+      --text-muted: rgba(10,10,10,0.58);
+      --transition: 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ───────── TOP BAR ───────── */
+    .topbar {
+      background: var(--green-dark);
+      color: var(--white);
+      font-size: 0.78rem;
+      padding: 6px 0;
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .topbar a { color: var(--white); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+    .topbar-info { display: flex; gap: 20px; align-items: center; }
+    .topbar-info span { display: flex; align-items: center; gap: 5px; }
+    .topbar-social { display: flex; gap: 14px; }
+    .topbar-social a { font-size: 0.9rem; opacity: 0.85; transition: opacity var(--transition); }
+    .topbar-social a:hover { opacity: 1; }
+
+    /* ───────── HEADER / NAV ───────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--green);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+      transition: background var(--transition);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo img { height: 70px; width: auto; display: block; }
+
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 2px; }
+    nav ul li { position: relative; }
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 10px 14px;
+      display: block;
+      border-radius: 6px;
+      transition: background var(--transition);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    nav ul li a:hover,
+    nav ul li a.active { background: rgba(255,255,255,0.15); }
+
+    /* dropdown */
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--white);
+      min-width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      z-index: 999;
+      animation: fadeDown 0.2s ease;
+    }
+    .dropdown-menu.mega {
+      display: none;
+      left: -20px;
+      min-width: 680px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .dropdown:hover .dropdown-simple { display: block; }
+    .dropdown:hover .dropdown-mega { display: grid; }
+
+    .dropdown-simple { display: none; }
+
+    .mega-col h6 {
+      color: var(--green);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--green);
+    }
+    .mega-col a {
+      color: var(--text-dark) !important;
+      font-size: 0.82rem !important;
+      padding: 6px 8px !important;
+      border-radius: 5px;
+      font-weight: 400 !important;
+      background: transparent !important;
+      white-space: normal !important;
+    }
+    .mega-col a:hover { background: var(--gray-light) !important; color: var(--green) !important; }
+
+    .dropdown-simple a {
+      color: var(--text-dark) !important;
+      font-size: 0.85rem !important;
+      padding: 9px 18px !important;
+      font-weight: 400 !important;
+      background: transparent !important;
+    }
+    .dropdown-simple a:hover { background: var(--gray-light) !important; color: var(--green) !important; }
+
+    .nav-caret { font-size: 0.65rem; margin-left: 3px; opacity: 0.8; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile nav */
+    .mobile-nav {
+      display: none;
+      background: var(--green-dark);
+      padding: 16px 0 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav ul { list-style: none; padding: 0 20px; }
+    .mobile-nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: block;
+      font-weight: 500;
+    }
+    .mobile-nav ul li:last-child a { border-bottom: none; }
+    .mobile-submenu { padding-left: 16px; }
+    .mobile-submenu li a { font-size: 0.82rem; opacity: 0.85; }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ───────── CONTAINER ───────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) { .container { padding: 0 20px; } }
+
+    /* ───────── HERO ───────── */
+    .hero {
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--green);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.tezza.it/wp-content/uploads/2022/05/DJI_0734-scaled-e1653683806792.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: var(--white);
+      max-width: 650px;
+      padding: 80px 0;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      opacity: 0.82;
+      margin-bottom: 36px;
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--green);
+      border-color: var(--white);
+    }
+    .btn-white:hover { background: transparent; color: var(--white); }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .btn-green {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+    .btn-green:hover { background: var(--green-light); border-color: var(--green-light); }
+
+    /* ───────── STATS STRIP ───────── */
+    .stats-strip {
+      background: var(--green);
+      padding: 36px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-item { color: var(--white); }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      opacity: 0.75;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ───────── SERVICES ICONS ───────── */
+    .services-icons {
+      background: var(--green);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding: 50px 0;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 36px 20px 30px;
+      color: var(--white);
+      transition: all var(--transition);
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .service-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      line-height: 1.6;
+    }
+
+    /* ───────── SECTION GENERIC ───────── */
+    section { padding: 90px 0; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .section-text {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      margin-top: 26px;
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 2px;
+      transition: gap var(--transition), opacity var(--transition);
+    }
+    .link-arrow:hover { gap: 12px; opacity: 0.8; }
+
+    /* split sections */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .split-text {
+      display: flex;
+      align-items: center;
+      padding: 80px 70px;
+      background: var(--white);
+    }
+    .split-image {
+      min-height: 460px;
+      background-size: cover;
+      background-position: center;
+    }
+    .split.reverse .split-text { order: 2; }
+    .split.reverse .split-image { order: 1; }
+
+    /* ───────── ABOUT GREEN BAND ───────── */
+    .about-band {
+      background: var(--green);
+      color: var(--white);
+      padding: 80px 0;
+    }
+    .about-band .section-label { color: rgba(255,255,255,0.6); }
+    .about-band .section-title { color: var(--white); }
+    .about-band .section-text { color: rgba(255,255,255,0.78); max-width: 100%; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ───────── PRODUCTS GRID ───────── */
+    .products-section { background: var(--gray-light); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: all var(--transition);
+      text-decoration: none;
+      color: var(--text-dark);
+      display: block;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+    .product-card-icon {
+      background: var(--green);
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .product-card-body { padding: 20px 18px 22px; }
+    .product-card h5 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+    .product-card p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .products-header { text-align: center; }
+    .products-header .section-text { margin: 0 auto; }
+
+    /* ───────── PARTNERS ───────── */
+    .partners-section {
+      background: var(--gray-mid);
+      padding: 60px 0;
+    }
+    .partners-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+    .partners-track-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .partners-track-wrap::before,
+    .partners-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 1;
+    }
+    .partners-track-wrap::before { left: 0; background: linear-gradient(to right, var(--gray-mid), transparent); }
+    .partners-track-wrap::after  { right: 0; background: linear-gradient(to left, var(--gray-mid), transparent); }
+    .partners-track {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      animation: scroll 30s linear infinite;
+      width: max-content;
+    }
+    .partners-track:hover { animation-play-state: paused; }
+    .partners-track img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(1) opacity(0.55);
+      transition: filter var(--transition);
+    }
+    .partners-track img:hover { filter: grayscale(0) opacity(1); }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ───────── CONTACT SECTION ───────── */
+    .contact-section { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info-block { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-icon {
+      width: 46px;
+      height: 46px;
+      background: var(--green);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-item h6 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .contact-item p, .contact-item a {
+      font-size: 0.93rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+    .contact-item a:hover { color: var(--green); }
+
+    /* contact form */
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 13px 16px;
+      border: 2px solid var(--gray-mid);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--text-dark);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--green); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-submit .btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.92rem;
+      padding: 14px;
+    }
+
+    /* ───────── MAP ───────── */
+    .map-section { height: 380px; }
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ───────── FOOTER ───────── */
+    footer {
+      background: var(--green);
+      color: var(--white);
+      padding: 70px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .footer-logo img { height: 80px; width: auto; margin-bottom: 18px; }
+    .footer-desc {
+      font-size: 0.83rem;
+      opacity: 0.7;
+      line-height: 1.7;
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .footer-social a:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.6); }
+
+    .footer-col h6 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color var(--transition), padding-left var(--transition);
+      display: block;
+    }
+    .footer-col ul li a:hover { color: var(--white); padding-left: 4px; }
+
+    .footer-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .footer-info-item i { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+    .footer-info-item a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .footer-info-item a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--white); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+
+    /* ───────── SCROLL TO TOP ───────── */
+    #to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 900;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    #to-top.visible { opacity: 1; pointer-events: all; }
+    #to-top:hover { transform: translateY(-3px); }
+
+    /* ───────── ANIMATIONS ───────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    /* ───────── RESPONSIVE ───────── */
+    @media (max-width: 1024px) {
+      .split { grid-template-columns: 1fr; }
+      .split.reverse .split-text { order: 1; }
+      .split.reverse .split-image { order: 2; }
+      .split-text { padding: 60px 40px; }
+      .split-image { min-height: 300px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+      .dropdown-menu.mega { display: none !important; }
+    }
+    @media (max-width: 640px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .topbar-info { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+      .hero-content { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-info">
+      <span><i class="fas fa-map-marker-alt"></i> Via E. Torricelli 13, 37135 Verona</span>
+      <span><i class="fas fa-phone"></i> <a href="tel:+39045503289">+39 045 503 289</a></span>
+      <span><i class="fas fa-envelope"></i> <a href="mailto:info@tezza.it">info@tezza.it</a></span>
+    </div>
+    <div class="topbar-social">
+      <a href="https://www.linkedin.com/company/tezza-srl-attrezzature-e-tecnologie-avanzate-per-allevamenti-zootecnici/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/39045503289" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/Logo_Tezza_1.png" alt="Tezza SRL">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#storia">Storia</a></li>
+          <li class="dropdown">
+            <a href="#prodotti">Prodotti <i class="fas fa-chevron-down nav-caret"></i></a>
+            <div class="dropdown-menu dropdown-mega dropdown-mega" style="display:none">
+              <div class="mega-col">
+                <h6>Alimentazione &amp; Acqua</h6>
+                <a href="https://www.tezza.it/sistemi-di-alimentazione/" target="_blank">Sistemi di Alimentazione</a>
+                <a href="https://www.tezza.it/sistemi-di-abbeveraggio/" target="_blank">Sistemi di Abbeveraggio</a>
+                <a href="https://www.tezza.it/trattamento-acque/" target="_blank">Trattamento Acque</a>
+              </div>
+              <div class="mega-col">
+                <h6>Aria &amp; Ventilazione</h6>
+                <a href="https://www.tezza.it/estrattori-daria/" target="_blank">Estrattori d'Aria</a>
+                <a href="https://www.tezza.it/circolatori-daria/" target="_blank">Circolatori d'Aria</a>
+                <a href="https://www.tezza.it/sistemi-di-ventilazione/" target="_blank">Sistemi di Ventilazione</a>
+                <a href="https://www.tezza.it/entrate-daria/" target="_blank">Entrate d'Aria</a>
+                <a href="https://www.tezza.it/camini/" target="_blank">Camini</a>
+              </div>
+              <div class="mega-col">
+                <h6>Clima &amp; Controllo</h6>
+                <a href="https://www.tezza.it/sistemi-di-rinfrescamento/" target="_blank">Sistemi di Rinfrescamento</a>
+                <a href="https://www.tezza.it/sistemi-di-riscaldamento/" target="_blank">Sistemi di Riscaldamento</a>
+                <a href="https://www.tezza.it/finestre/" target="_blank">Finestre</a>
+                <a href="https://www.tezza.it/sistemi-elettronici-di-controllo/" target="_blank">Sistemi Elettronici</a>
+              </div>
+              <div class="mega-col">
+                <h6>Accessori</h6>
+                <a href="https://www.tezza.it/archi-disinfezione/" target="_blank">Archi Disinfezione</a>
+                <a href="https://www.tezza.it/attrezzature-per-ovaiole/" target="_blank">Attrezzature Ovaiole</a>
+                <a href="https://www.tezza.it/accessori-d-allevamento/" target="_blank">Accessori d'Allevamento</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#installazioni">Installazioni</a></li>
+          <li><a href="https://www.tezza.it/catalogo/" target="_blank">Catalogo</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#storia">Storia</a></li>
+      <li><a href="#prodotti">Prodotti</a>
+        <ul class="mobile-submenu">
+          <li><a href="https://www.tezza.it/sistemi-di-alimentazione/" target="_blank">Sistemi di Alimentazione</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-abbeveraggio/" target="_blank">Sistemi di Abbeveraggio</a></li>
+          <li><a href="https://www.tezza.it/estrattori-daria/" target="_blank">Estrattori d'Aria</a></li>
+          <li><a href="https://www.tezza.it/circolatori-daria/" target="_blank">Circolatori d'Aria</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-ventilazione/" target="_blank">Sistemi di Ventilazione</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-rinfrescamento/" target="_blank">Sistemi di Rinfrescamento</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-riscaldamento/" target="_blank">Sistemi di Riscaldamento</a></li>
+          <li><a href="https://www.tezza.it/sistemi-elettronici-di-controllo/" target="_blank">Sistemi Elettronici di Controllo</a></li>
+          <li><a href="https://www.tezza.it/archi-disinfezione/" target="_blank">Archi Disinfezione</a></li>
+          <li><a href="https://www.tezza.it/attrezzature-per-ovaiole/" target="_blank">Attrezzature per Ovaiole</a></li>
+          <li><a href="https://www.tezza.it/accessori-d-allevamento/" target="_blank">Accessori d'Allevamento</a></li>
+        </ul>
+      </li>
+      <li><a href="#installazioni">Installazioni</a></li>
+      <li><a href="https://www.tezza.it/catalogo/" target="_blank">Catalogo</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Tezza SRL – dal 1969</p>
+      <h1>Attrezzature e Tecnologie Avanzate <em>per Allevamenti Zootecnici</em></h1>
+      <p class="hero-sub">Progettazione su misura, installazione professionale e assistenza continua per le principali zone d'Italia. Un unico interlocutore per ogni esigenza.</p>
+      <div class="hero-ctas">
+        <a href="#prodotti" class="btn btn-white"><i class="fas fa-th-large"></i> Scopri i Prodotti</a>
+        <a href="#contatti" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Contattaci</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-in">
+        <span class="stat-number">55+</span>
+        <span class="stat-label">Anni di Attività</span>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-1">
+        <span class="stat-number">7</span>
+        <span class="stat-label">Brand Partner</span>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-2">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Linee di Prodotto</span>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-3">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Assistenza Dedicata</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICES ICONS ── -->
+<div class="services-icons">
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-search"></i></div>
+        <h4>Analisi</h4>
+        <p>Studio approfondito delle esigenze tecniche del capannone e dell'allevamento.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h4>Progettazione</h4>
+        <p>Soluzioni personalizzate progettate da tecnici esperti del settore zootecnico.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon"><i class="fas fa-tools"></i></div>
+        <h4>Installazione</h4>
+        <p>Squadre specializzate che operano con precisione rispettando tempi e specifiche.</p>
+      </div>
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon"><i class="fas fa-clock"></i></div>
+        <h4>Controllo</h4>
+        <p>Monitoraggio e assistenza post-installazione per garantire il massimo rendimento.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STORIA / PRESENZA SUL TERRITORIO ── -->
+<div id="storia">
+  <div class="split fade-in">
+    <div class="split-text">
+      <div>
+        <p class="section-label">La nostra azienda</p>
+        <h2 class="section-title">Presenza capillare<br>su tutto il territorio</h2>
+        <p class="section-text">L'azienda Tezza SRL dispone di una forza vendite, tramandata in oltre 55 anni di attività, che la vede presente nelle principali zone d'Italia.<br><br>Una vicinanza quotidiana che consente ai suoi clienti di avere un rapporto stretto con l'azienda e la possibilità di avvalersi di know-how interdisciplinari e diversificati con un unico interlocutore per ogni esigenza.</p>
+        <a href="https://www.tezza.it/storia/" target="_blank" class="link-arrow">Leggi la nostra storia <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="split-image" style="background-image: url('https://www.tezza.it/wp-content/uploads/2022/05/Silos-in-lamiera_2-scaled.jpg');"></div>
+  </div>
+
+  <div class="split reverse fade-in">
+    <div class="split-image" style="background-image: url('https://www.tezza.it/wp-content/uploads/2021/11/7.jpg');"></div>
+    <div class="split-text">
+      <div>
+        <p class="section-label">Il nostro team</p>
+        <h2 class="section-title">Tecnici specializzati<br>al tuo servizio</h2>
+        <p class="section-text">Le nostre squadre di tecnici specializzati sono il punto di forza dell'azienda, prestando attenzione al cliente e alle sue specifiche esigenze.<br><br>L'installazione di ogni impianto viene studiata e realizzata in base alle necessità tecniche del capannone, garantendo la massima efficienza operativa.</p>
+        <a href="https://www.tezza.it/storia/" target="_blank" class="link-arrow">Conosci il team <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="split fade-in">
+    <div class="split-text">
+      <div>
+        <p class="section-label">Supporto &amp; Ricambi</p>
+        <h2 class="section-title">Assistenza clienti<br>e magazzino ricambi</h2>
+        <p class="section-text">La nostra assistenza clienti fornisce servizi prima, durante e dopo l'acquisto dei nostri prodotti. Garantiamo una disponibilità continua dei ricambi, grazie a un fornitissimo magazzino, che ci permette di ripristinare rapidamente le funzionalità degli impianti bloccati.<br><br>Assicuriamo una assistenza qualificata nell'intero ciclo di utilizzo del prodotto, differenziandoci dalla maggior parte dei competitor con un servizio permanente e capillare.</p>
+        <a href="https://www.tezza.it/storia/" target="_blank" class="link-arrow">Scopri il servizio <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="split-image" style="background-image: url('https://www.tezza.it/wp-content/uploads/2021/11/615.jpg');"></div>
+  </div>
+</div>
+
+<!-- ── PRODOTTI ── -->
+<section class="products-section" id="prodotti">
+  <div class="container">
+    <div class="products-header fade-in">
+      <p class="section-label" style="text-align:center">Le nostre soluzioni</p>
+      <h2 class="section-title" style="text-align:center">Gamma completa di prodotti<br>per ogni esigenza zootecnica</h2>
+      <p class="section-text">Soluzioni tecnologiche avanzate per alimentazione, ventilazione, climatizzazione e controllo degli allevamenti.</p>
+    </div>
+    <div class="products-grid">
+      <a href="https://www.tezza.it/sistemi-di-alimentazione/" target="_blank" class="product-card fade-in">
+        <div class="product-card-icon"><i class="fas fa-seedling"></i></div>
+        <div class="product-card-body">
+          <h5>Sistemi di Alimentazione</h5>
+          <p>Soluzioni automatizzate per la distribuzione efficiente del mangime.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/sistemi-di-abbeveraggio/" target="_blank" class="product-card fade-in fade-in-delay-1">
+        <div class="product-card-icon"><i class="fas fa-tint"></i></div>
+        <div class="product-card-body">
+          <h5>Sistemi di Abbeveraggio</h5>
+          <p>Impianti idrici per garantire la corretta idratazione degli animali.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/estrattori-daria/" target="_blank" class="product-card fade-in fade-in-delay-2">
+        <div class="product-card-icon"><i class="fas fa-wind"></i></div>
+        <div class="product-card-body">
+          <h5>Estrattori d'Aria</h5>
+          <p>Ventilatori industriali ad alta efficienza per il ricambio dell'aria.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/circolatori-daria/" target="_blank" class="product-card fade-in fade-in-delay-3">
+        <div class="product-card-icon"><i class="fas fa-fan"></i></div>
+        <div class="product-card-body">
+          <h5>Circolatori d'Aria</h5>
+          <p>Distribuzione omogenea dell'aria all'interno dei capannoni.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/sistemi-di-ventilazione/" target="_blank" class="product-card fade-in">
+        <div class="product-card-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+        <div class="product-card-body">
+          <h5>Sistemi di Ventilazione</h5>
+          <p>Controllo del flusso d'aria per il benessere degli animali.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/sistemi-di-rinfrescamento/" target="_blank" class="product-card fade-in fade-in-delay-1">
+        <div class="product-card-icon"><i class="fas fa-snowflake"></i></div>
+        <div class="product-card-body">
+          <h5>Sistemi di Rinfrescamento</h5>
+          <p>Tecnologie evaporative per abbassare la temperatura nei mesi estivi.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/sistemi-di-riscaldamento/" target="_blank" class="product-card fade-in fade-in-delay-2">
+        <div class="product-card-icon"><i class="fas fa-fire"></i></div>
+        <div class="product-card-body">
+          <h5>Sistemi di Riscaldamento</h5>
+          <p>Soluzioni termiche per mantenere le temperature ottimali.</p>
+        </div>
+      </a>
+      <a href="https://www.tezza.it/sistemi-elettronici-di-controllo/" target="_blank" class="product-card fade-in fade-in-delay-3">
+        <div class="product-card-icon"><i class="fas fa-microchip"></i></div>
+        <div class="product-card-body">
+          <h5>Sistemi Elettronici</h5>
+          <p>Centraline di controllo per la gestione automatizzata degli impianti.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERS ── -->
+<div class="partners-section">
+  <div class="container">
+    <p class="partners-label">I nostri partner tecnologici</p>
+    <div class="partners-track-wrap">
+      <div class="partners-track" id="partnersTrack">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_prinzen.png" alt="Prinzen">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_venco.png" alt="Venco">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_roxell.png" alt="Roxell">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_lubing.png" alt="Lubing">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_munters.png" alt="Munters">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_reventa.png" alt="Reventa">
+        <img src="https://www.tezza.it/wp-content/uploads/2026/06/Logo-Giordano.png" alt="Giordano">
+        <!-- duplicate for seamless loop -->
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_prinzen.png" alt="Prinzen">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_venco.png" alt="Venco">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_roxell.png" alt="Roxell">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_lubing.png" alt="Lubing">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_munters.png" alt="Munters">
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/logo_reventa.png" alt="Reventa">
+        <img src="https://www.tezza.it/wp-content/uploads/2026/06/Logo-Giordano.png" alt="Giordano">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── INSTALLAZIONI BAND ── -->
+<div class="about-band" id="installazioni">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div>
+        <p class="section-label">Installazioni</p>
+        <h2 class="section-title">Realizziamo impianti completi<br>in tutta Italia</h2>
+        <p class="section-text">Dalla pianificazione alla consegna chiavi in mano, le nostre squadre operano su tutto il territorio nazionale con professionalità e puntualità. Ogni installazione viene pianificata nei minimi dettagli per minimizzare le interruzioni operative.</p>
+        <a href="https://www.tezza.it/installazioni/" target="_blank" class="link-arrow" style="color:rgba(255,255,255,0.9); border-color:rgba(255,255,255,0.6);">Vedi le installazioni <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px;">
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:24px 20px;">
+            <i class="fas fa-check-circle" style="color:rgba(255,255,255,0.7); font-size:1.4rem; margin-bottom:12px; display:block;"></i>
+            <h5 style="font-size:0.88rem; margin-bottom:8px;">Installazione Chiavi in Mano</h5>
+            <p style="font-size:0.78rem; opacity:0.7; line-height:1.6;">Gestiamo l'intero processo dall'ordine alla messa in funzione.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:24px 20px;">
+            <i class="fas fa-headset" style="color:rgba(255,255,255,0.7); font-size:1.4rem; margin-bottom:12px; display:block;"></i>
+            <h5 style="font-size:0.88rem; margin-bottom:8px;">Supporto Post-Vendita</h5>
+            <p style="font-size:0.78rem; opacity:0.7; line-height:1.6;">Assistenza tecnica dedicata per ogni esigenza successiva all'installazione.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:24px 20px;">
+            <i class="fas fa-warehouse" style="color:rgba(255,255,255,0.7); font-size:1.4rem; margin-bottom:12px; display:block;"></i>
+            <h5 style="font-size:0.88rem; margin-bottom:8px;">Magazzino Ricambi</h5>
+            <p style="font-size:0.78rem; opacity:0.7; line-height:1.6;">Ricambi sempre disponibili per interventi rapidi e sicuri.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:24px 20px;">
+            <i class="fas fa-map-marked-alt" style="color:rgba(255,255,255,0.7); font-size:1.4rem; margin-bottom:12px; display:block;"></i>
+            <h5 style="font-size:0.88rem; margin-bottom:8px;">Copertura Nazionale</h5>
+            <p style="font-size:0.78rem; opacity:0.7; line-height:1.6;">Presenza nelle principali zone zootecniche d'Italia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTATTI ── -->
+<section class="contact-section" id="contatti">
+  <div class="container">
+    <div style="max-width:560px; margin-bottom:60px;">
+      <p class="section-label">Contatti</p>
+      <h2 class="section-title">Parlaci del tuo progetto</h2>
+      <p class="section-text">Compila il modulo oppure contattaci direttamente. Un nostro tecnico ti risponderà entro 24 ore.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block fade-in">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h6>Indirizzo</h6>
+            <p>Via E. Torricelli 13<br>37135 Verona, Italia</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h6>Telefono</h6>
+            <a href="tel:+39045503289">+39 045 503 289</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h6>Email</h6>
+            <a href="mailto:info@tezza.it">info@tezza.it</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <h6>WhatsApp</h6>
+            <a href="https://wa.me/39045503289" target="_blank">Scrivici su WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div>
+            <h6>LinkedIn</h6>
+            <a href="https://www.linkedin.com/company/tezza-srl-attrezzature-e-tecnologie-avanzate-per-allevamenti-zootecnici/" target="_blank">Seguici su LinkedIn</a>
+          </div>
+        </div>
+        <div style="padding:20px; background:var(--gray-light); border-radius:12px; border-left:4px solid var(--green);">
+          <p style="font-size:0.78rem; font-weight:700; color:var(--green); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Informazioni Aziendali</p>
+          <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.7;">C.F./P.IVA: 02526240235<br>R.E.A.: 244280<br>Verona, Italia</p>
+        </div>
+      </div>
+
+      <form class="contact-form fade-in fade-in-delay-1" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Nome *</label>
+            <input type="text" id="fname" name="nome" placeholder="Mario" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Cognome *</label>
+            <input type="text" id="lname" name="cognome" placeholder="Rossi" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="mario.rossi@azienda.it" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Telefono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+39 000 000 0000">
+        </div>
+        <div class="form-group">
+          <label for="oggetto">Oggetto</label>
+          <select id="oggetto" name="oggetto">
+            <option value="">Seleziona un argomento…</option>
+            <option>Richiesta Preventivo</option>
+            <option>Assistenza Tecnica</option>
+            <option>Ricambi</option>
+            <option>Informazioni Prodotti</option>
+            <option>Installazioni</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">Messaggio *</label>
+          <textarea id="messaggio" name="messaggio" rows="5" placeholder="Descrivi la tua esigenza…" required></textarea>
+        </div>
+        <p style="font-size:0.75rem; color:var(--text-muted); line-height:1.6;">Inviando questo modulo accetti la nostra <a href="https://www.iubenda.com/privacy-policy/60930869" target="_blank" style="color:var(--green);">Privacy Policy</a>.</p>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-green"><i class="fas fa-paper-plane"></i> Invia Messaggio</button>
+        </div>
+        <div id="form-success" style="display:none; background:#e8f5e9; border:1px solid var(--green); border-radius:8px; padding:14px 18px; font-size:0.88rem; color:var(--green); margin-top:8px;">
+          <i class="fas fa-check-circle"></i> Messaggio inviato con successo! Ti risponderemo presto.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAP ── -->
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.5345!2d10.9748!3d45.4132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f5f6b3f3d9e59%3A0x1!2sVia+E.+Torricelli+13%2C+37135+Verona!5e0!3m2!1sit!2sit!4v1650000000000"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Sede Tezza SRL – Via E. Torricelli 13, Verona">
+  </iframe>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="https://www.tezza.it/wp-content/uploads/2021/11/Logo_Tezza_1.png" alt="Tezza SRL" class="footer-logo" style="height:80px; width:auto; margin-bottom:18px; display:block;">
+        <p class="footer-desc">Tezza SRL realizza attrezzature e tecnologie avanzate per allevamenti zootecnici. Progettazione, installazione, assistenza specializzata e ricambi dal 1969.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/tezza-srl-attrezzature-e-tecnologie-avanzate-per-allevamenti-zootecnici/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://wa.me/39045503289" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="tel:+39045503289" title="Telefono"><i class="fas fa-phone"></i></a>
+          <a href="mailto:info@tezza.it" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h6>Navigazione</h6>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#storia">Storia</a></li>
+          <li><a href="#prodotti">Prodotti</a></li>
+          <li><a href="#installazioni">Installazioni</a></li>
+          <li><a href="https://www.tezza.it/catalogo/" target="_blank">Catalogo</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Prodotti</h6>
+        <ul>
+          <li><a href="https://www.tezza.it/sistemi-di-alimentazione/" target="_blank">Alimentazione</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-abbeveraggio/" target="_blank">Abbeveraggio</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-ventilazione/" target="_blank">Ventilazione</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-rinfrescamento/" target="_blank">Rinfrescamento</a></li>
+          <li><a href="https://www.tezza.it/sistemi-di-riscaldamento/" target="_blank">Riscaldamento</a></li>
+          <li><a href="https://www.tezza.it/sistemi-elettronici-di-controllo/" target="_blank">Controllo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Contatti</h6>
+        <div class="footer-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Via E. Torricelli 13<br>37135 Verona, Italia</span>
+        </div>
+        <div class="footer-info-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+39045503289">+39 045 503 289</a>
+        </div>
+        <div class="footer-info-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info@tezza.it">info@tezza.it</a>
+        </div>
+        <div class="footer-info-item">
+          <i class="fas fa-info-circle"></i>
+          <span>P.IVA 02526240235<br>R.E.A. 244280</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tezza SRL. Tutti i diritti riservati.</p>
+      <div class="footer-bottom-links">
+        <a href="https://www.iubenda.com/privacy-policy/60930869" target="_blank">Privacy Policy</a>
+        <a href="https://www.iubenda.com/privacy-policy/60930869/cookie-policy" target="_blank">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCROLL TO TOP ── -->
+<a href="#" id="to-top" title="Torna su"><i class="fas fa-chevron-up"></i></a>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+
+  // Dropdown mega hover (desktop)
+  document.querySelectorAll('.dropdown').forEach(el => {
+    const menu = el.querySelector('.dropdown-mega');
+    if (!menu) return;
+    el.addEventListener('mouseenter', () => menu.style.display = 'grid');
+    el.addEventListener('mouseleave', () => menu.style.display = 'none');
+  });
+
+  // Scroll-to-top
+  const toTop = document.getElementById('to-top');
+  window.addEventListener('scroll', () => {
+    toTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  toTop.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Fade-in observer
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Contact form mock submit
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+    setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
+  });
+</script>
+</body>
+</html>
