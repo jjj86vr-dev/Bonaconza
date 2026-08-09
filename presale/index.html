@@ -3,26 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Wall of Verona — Il tuo posto nella storia di Verona</title>
+<title>Le Mura di Verona — Il tuo posto nella storia di Verona</title>
 <meta name="description" content="Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100.">
 
-<!-- Anteprima social. L'URL di og:image DEVE essere assoluto e corrispondere
-     al dominio reale: se cambi dominio, cambia anche queste due righe. -->
+<!-- Anteprima social. Gli URL DEVONO essere assoluti e corrispondere al
+     dominio vero: se cambi dominio, cambia anche queste righe. -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<meta property="og:site_name" content="The Wall of Verona">
-<meta property="og:title" content="The Wall of Verona">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:site_name" content="Le Mura di Verona">
+<meta property="og:title" content="Le Mura di Verona">
 <meta property="og:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€, poi mai più a questo prezzo.">
-<meta property="og:url" content="https://thewallofverona.it/">
-<meta property="og:image" content="https://thewallofverona.it/og-cover.png">
+<meta property="og:url" content="https://lemuradiverona.it/">
+<meta property="og:image" content="https://lemuradiverona.it/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Wall of Verona — cento mattoni fondatori sul muro digitale della città">
+<meta property="og:image:alt" content="Le Mura di Verona — cento mattoni fondatori sul muro digitale della città">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Wall of Verona">
+<meta name="twitter:title" content="Le Mura di Verona">
 <meta name="twitter:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€.">
-<meta name="twitter:image" content="https://thewallofverona.it/og-cover.png">
-<link rel="canonical" href="https://thewallofverona.it/">
+<meta name="twitter:image" content="https://lemuradiverona.it/og-cover.png">
+<link rel="canonical" href="https://lemuradiverona.it/">
+<link rel="alternate" hreflang="it" href="https://lemuradiverona.it/">
+<link rel="alternate" hreflang="en" href="https://lemuradiverona.it/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://lemuradiverona.it/">
 
 <meta name="theme-color" content="#241f1c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23241f1c'/%3E%3Cpolygon points='10,50 10,22 20,22 32,34 44,22 54,22 54,50' fill='%237c3a2b'/%3E%3C/svg%3E">
@@ -52,53 +56,91 @@
   a{ color:inherit; }
   [hidden]{ display:none !important; }
 
-  .topbar{ display:flex; justify-content:center; padding:18px 20px 0; }
+  .topbar{ position:relative; z-index:3; display:flex; align-items:center;
+    justify-content:space-between; gap:12px; padding:16px 20px 0;
+    max-width:1100px; margin:0 auto; }
   .wordmark{ font-family:Optima,'Palatino Linotype',Palatino,Georgia,serif;
-    font-size:13px; letter-spacing:.5em; text-indent:.5em; text-transform:uppercase;
+    font-size:13px; letter-spacing:.42em; text-indent:.42em; text-transform:uppercase;
     color:var(--beige-dim); }
   .wordmark b{ color:var(--beige); font-weight:600; }
 
-  /* ---------- HERO ---------- */
-  .hero{ text-align:center; padding:40px 22px 34px; position:relative; overflow:hidden; }
-  .hero::before{ content:''; position:absolute; inset:0;
-    background:radial-gradient(90% 70% at 50% 0%, rgba(124,58,43,.25), transparent 62%);
-    pointer-events:none; }
-  .eyebrow{ position:relative; font-size:11px; letter-spacing:.4em; text-indent:.4em;
+  /* Selettore di lingua */
+  @media (max-width:520px){
+    .wordmark{ font-size:11px; letter-spacing:.26em; text-indent:.26em; }
+  }
+  .lang{ display:flex; gap:1px; flex:0 0 auto; }
+  .lang button{ background:rgba(20,16,13,.5); border:1px solid rgba(236,223,198,.22);
+    color:var(--beige-dim); font-family:inherit; font-size:10px; letter-spacing:.18em;
+    padding:6px 10px; cursor:pointer; text-transform:uppercase; }
+  .lang button[aria-pressed="true"]{ background:var(--rosso); color:var(--beige);
+    border-color:var(--rosso); }
+
+  /* ---------- MOSAICO: Verona da Castel San Pietro ---------- */
+  .hero{ position:relative; text-align:center; padding:0 0 34px; overflow:hidden; }
+  .mosaico{ position:absolute; inset:0; z-index:0; overflow:hidden;
+    background:#1a1512; pointer-events:none;
+    /* Il panorama campionato e' volutamente cupo: qui lo si riporta a
+       una luminosita' in cui Verona si riconosce sotto al velo. */
+    filter:brightness(1.5) saturate(1.2); }
+  /* La griglia si comporta come un background "cover": mantiene il
+     rapporto del panorama e viene ritagliata, invece di stirare i
+     tasselli in rettangoli irriconoscibili sui telefoni. */
+  .mosaico-grid{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    display:grid; gap:1px; width:100%; height:auto; aspect-ratio:36 / 15; }
+  @media (max-aspect-ratio: 36/15){
+    .mosaico-grid{ width:auto; height:100%; }
+  }
+  .mosaico span{ display:block; opacity:0; animation:tessera .5s ease forwards;
+    animation-delay:var(--d,0s); position:relative; overflow:hidden; }
+  .mosaico span.foto{ background-size:cover; background-position:center;
+    filter:sepia(.35) saturate(.85) brightness(.92); }
+  @keyframes tessera{ to{ opacity:1; } }
+  /* Velo: senza, il testo non si legge sopra il mosaico. */
+  .velo{ position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(66% 56% at 50% 40%, rgba(24,19,16,.66), rgba(24,19,16,.34) 58%, rgba(24,19,16,.16) 82%),
+      linear-gradient(180deg, rgba(24,19,16,.82) 0%, rgba(24,19,16,.1) 30%, rgba(24,19,16,.34) 66%, var(--ink) 97%); }
+  .hero-in{ position:relative; z-index:2; padding:34px 22px 0; }
+  .credits{ position:absolute; z-index:2; right:10px; bottom:6px;
+    font-size:9px; letter-spacing:.1em; color:rgba(236,223,198,.42); }
+  @media (prefers-reduced-motion: reduce){ .mosaico span{ animation:none; opacity:1; } }
+
+  .eyebrow{ font-size:11px; letter-spacing:.4em; text-indent:.4em;
     color:var(--beige-dim); text-transform:uppercase; }
   .eyebrow .k{ color:var(--rosso); padding:0 .3em; }
-  h1{ position:relative; margin:16px auto 14px; max-width:640px;
+  h1{ margin:16px auto 14px; max-width:660px;
     font-size:clamp(30px,7.4vw,54px); font-weight:600; line-height:1.14;
     letter-spacing:.06em; text-transform:uppercase; color:var(--beige);
-    text-shadow:0 2px 3px rgba(0,0,0,.5); }
+    text-shadow:0 2px 10px rgba(0,0,0,.75); }
   .hero .rule{ width:64px; height:1px; background:var(--beige-dim); opacity:.5; margin:0 auto 16px; }
-  .sub{ position:relative; max-width:480px; margin:0 auto; color:var(--beige-dim);
-    font-size:15.5px; line-height:1.6; }
-  .hero .cta-wrap{ position:relative; margin-top:22px; }
+  .sub{ max-width:480px; margin:0 auto; color:var(--beige-dim);
+    font-size:15.5px; line-height:1.6; text-shadow:0 1px 6px rgba(0,0,0,.6); }
+  .hero .cta-wrap{ margin-top:22px; }
 
   /* Avanzamento della muratura */
-  .prog-wrap{ position:relative; max-width:340px; margin:26px auto 0; }
+  .prog-wrap{ max-width:340px; margin:26px auto 0; }
   .prog-top{ display:flex; justify-content:space-between; align-items:baseline;
     font-size:10.5px; letter-spacing:.22em; text-indent:.22em; text-transform:uppercase;
     color:var(--beige-dim); margin-bottom:7px; }
   .prog-top b{ color:var(--oro); font-weight:600; }
-  .prog{ height:7px; border-radius:99px; background:rgba(0,0,0,.35);
-    box-shadow:inset 0 2px 4px rgba(0,0,0,.45); overflow:hidden; }
+  .prog{ height:7px; border-radius:99px; background:rgba(0,0,0,.5);
+    box-shadow:inset 0 2px 4px rgba(0,0,0,.55); overflow:hidden; }
   .prog i{ display:block; height:100%; background:linear-gradient(90deg,var(--rosso),var(--oro));
     width:0; transition:width 1.2s cubic-bezier(.22,1,.36,1); }
 
   .btn{ display:inline-block; background:var(--rosso); color:var(--beige);
     border:0; border-radius:3px; padding:15px 30px; font-size:12.5px;
     letter-spacing:.22em; text-indent:.22em; text-transform:uppercase;
-    text-decoration:none; cursor:pointer;
+    text-decoration:none; cursor:pointer; font-family:inherit;
     box-shadow:inset 0 2px 0 rgba(255,255,255,.14), inset 0 -3px 0 rgba(0,0,0,.35),
-      0 4px 14px rgba(0,0,0,.35); }
+      0 4px 14px rgba(0,0,0,.45); }
   .btn:active{ background:var(--rosso-cupo); }
   .btn-ghost{ background:transparent; color:var(--beige-dim);
     box-shadow:inset 0 0 0 1px rgba(236,223,198,.3); }
   .btn-ghost:active{ background:rgba(236,223,198,.08); }
 
   /* ---------- MERLI DI CASTELVECCHIO ---------- */
-  .merli{ height:32px;
+  .merli{ position:relative; z-index:2; height:32px;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='32'><polygon points='0,32 0,4 11,4 22,21 33,4 44,4 44,32' fill='%23623026'/><rect x='0' y='2' width='44' height='3' fill='%23744034' opacity='0.9'/></svg>");
     background-repeat:repeat-x; background-size:60px 32px; background-position:center bottom; }
 
@@ -306,159 +348,126 @@
 </head>
 <body>
 
-  <div class="topbar"><div class="wordmark">The <b>Wall</b> of Verona</div></div>
-
   <header class="hero">
-    <div class="eyebrow">MMXXVI <span class="k">&#9670;</span> Il muro digitale della città</div>
-    <h1 class="display">Il tuo posto nella storia di Verona</h1>
-    <div class="rule"></div>
-    <p class="sub">Cento mattoni fondatori, un muro che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana.</p>
+    <div class="mosaico" id="mosaico" aria-hidden="true"></div>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="credits" id="credits"></div>
 
-    <div class="prog-wrap">
-      <div class="prog-top">
-        <span>Mattoni murati</span>
-        <span><b class="js-murati">0</b> / <span class="js-totale">100</span></span>
+    <div class="hero-in">
+      <div class="topbar">
+        <div class="wordmark"><b data-t="marchio1">Le Mura</b> <span data-t="marchio2">di Verona</span></div>
+        <div class="lang" role="group" aria-label="Lingua / Language">
+          <button type="button" data-lang="it" aria-pressed="true">IT</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
       </div>
-      <div class="prog"><i class="js-prog"></i></div>
-    </div>
 
-    <div class="cta-wrap"><a class="btn js-buy" href="#fondatore">Prendi il tuo mattone &mdash; 99&euro;</a></div>
+      <div style="padding-top:26px">
+        <div class="eyebrow">MMXXVI <span class="k">&#9670;</span> <span data-t="occhiello">Il muro digitale della città</span></div>
+        <h1 class="display" data-t="titolo">Il tuo posto nella storia di Verona</h1>
+        <div class="rule"></div>
+        <p class="sub" data-t="sottotitolo">Cento mattoni fondatori, un muro che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana.</p>
+
+        <div class="prog-wrap">
+          <div class="prog-top">
+            <span data-t="murati">Mattoni murati</span>
+            <span><b class="js-murati">0</b> / <span class="js-totale">100</span></span>
+          </div>
+          <div class="prog"><i class="js-prog"></i></div>
+        </div>
+
+        <div class="cta-wrap"><a class="btn js-buy" href="#fondatore" data-t="ctaHero">Prendi il tuo mattone — 99€</a></div>
+      </div>
+    </div>
   </header>
 
   <div class="merli" aria-hidden="true"></div>
 
-  <section class="wall-viewport" aria-label="Il muro di Verona">
+  <section class="wall-viewport" data-tattr="ariaMuro|aria-label" aria-label="Il muro di Verona">
     <div class="wall" id="wall"></div>
   </section>
-  <p class="demo-note" id="demo-note" hidden>Muro dimostrativo: i mattoni con un nome sono esempi inventati, servono a mostrare come apparirà il tuo. I mattoni veri arrivano con i Fondatori.</p>
-  <div class="hint">&#10229; scorri il muro &#10230;</div>
+  <p class="demo-note" id="demo-note" data-t="notaEsempi" hidden>Muro dimostrativo: i mattoni con un nome sono esempi inventati, servono a mostrare come apparirà il tuo. I mattoni veri arrivano con i Fondatori.</p>
+  <div class="hint" data-t="scorri">&#10229; scorri il muro &#10230;</div>
 
   <section class="block" id="come-funziona">
-    <div class="sec-eyebrow">Come funziona</div>
-    <h2 class="sec display">Tre gesti, come si è sempre fatto</h2>
+    <div class="sec-eyebrow" data-t="comeOcchiello">Come funziona</div>
+    <h2 class="sec display" data-t="comeTitolo">Tre gesti, come si è sempre fatto</h2>
     <div class="steps">
       <div class="step">
         <div class="rn">I.</div>
-        <h3>Scegli il mattone</h3>
-        <p>Compra il tuo posto sul muro: 99&euro;, una volta sola. Al momento del pagamento indichi il quartiere dove vuoi stare.</p>
+        <h3 data-t="passo1t">Scegli il mattone</h3>
+        <p data-t="passo1p">Compra il tuo posto sul muro: 99€, una volta sola. Al momento del pagamento indichi il quartiere dove vuoi stare.</p>
       </div>
       <div class="step">
         <div class="rn">II.</div>
-        <h3>Raccontati</h3>
-        <p>Subito dopo il pagamento ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.</p>
+        <h3 data-t="passo2t">Raccontati</h3>
+        <p data-t="passo2p">Subito dopo il pagamento ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.</p>
       </div>
       <div class="step">
         <div class="rn">III.</div>
-        <h3>Resta</h3>
-        <p>Il tuo mattone è lì, col sigillo Fondatore, finché esiste il muro.</p>
+        <h3 data-t="passo3t">Resta</h3>
+        <p data-t="passo3p">Il tuo mattone è lì, col sigillo Fondatore, finché esistono le mura.</p>
       </div>
     </div>
   </section>
 
   <section class="block" id="perche">
-    <div class="sec-eyebrow">Perché un muro</div>
-    <h2 class="sec display">Verona è fatta di pietra che dura</h2>
-    <p class="manifesto">L'Arena, il Ponte, Castelvecchio: qui ciò che conta si costruisce mattone su mattone. Il lato digitale della città, invece, scompare in un feed. The Wall of Verona è il contrario di un post: un muro dove le attività della città mettono la firma. E la firma resta.</p>
+    <div class="sec-eyebrow" data-t="percheOcchiello">Perché delle mura</div>
+    <h2 class="sec display" data-t="percheTitolo">Verona è fatta di pietra che dura</h2>
+    <p class="manifesto" data-t="manifesto">L'Arena, il Ponte, Castelvecchio: qui ciò che conta si costruisce mattone su mattone. Il lato digitale della città, invece, scompare in un feed. Le Mura di Verona sono il contrario di un post: un muro dove le attività della città mettono la firma. E la firma resta.</p>
   </section>
 
   <section class="block" id="fondatore">
-    <div class="sec-eyebrow">Solo i primi 100</div>
-    <h2 class="sec display">Mattone Fondatore</h2>
-    <p class="sec-sub">Quando i 100 mattoni saranno murati, si entrerà solo in abbonamento. I Fondatori no: pagano una volta e restano.</p>
+    <div class="sec-eyebrow" data-t="soloCento">Solo i primi 100</div>
+    <h2 class="sec display" data-t="mattoneFondatore">Mattone Fondatore</h2>
+    <p class="sec-sub" data-t="fondatoreSub">Quando i 100 mattoni saranno murati, si entrerà solo in abbonamento. I Fondatori no: pagano una volta e restano.</p>
     <div class="founder">
       <div class="fh">
-        <div class="t">Una volta sola</div>
-        <div class="price display">99&euro; <small>&middot; ne restano <span class="js-left">100</span></small></div>
+        <div class="t" data-t="unaVolta">Una volta sola</div>
+        <div class="price display">99€ <small>· <span data-t="neRestano">ne restano</span> <span class="js-left">100</span></small></div>
       </div>
       <div class="fl">
-        <div><span class="dm">&#9670;</span><span><b>Mattone permanente</b> sul muro, nel quartiere che scegli</span></div>
-        <div><span class="dm">&#9670;</span><span><b>Profilo completo:</b> logo, descrizione e link alla tua pagina</span></div>
-        <div><span class="dm">&#9670;</span><span><b>Offerta della settimana</b> aggiornabile quando vuoi</span></div>
-        <div><span class="dm">&#9670;</span><span><b>Sigillo Fondatore</b> a vita sul tuo mattone</span></div>
-        <div><span class="dm">&#9670;</span><span><b>Prezzo bloccato per sempre:</b> dopo i 100, solo abbonamento da 9&euro;/mese</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="perk1"><b>Mattone permanente</b> sul muro, nel quartiere che scegli</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="perk2"><b>Profilo completo:</b> logo, descrizione e link alla tua pagina</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="perk3"><b>Offerta della settimana</b> aggiornabile quando vuoi</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="perk4"><b>Sigillo Fondatore</b> a vita sul tuo mattone</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="perk5"><b>Prezzo bloccato per sempre:</b> dopo i 100, solo abbonamento da 9€/mese</span></div>
       </div>
       <div class="fc">
-        <a class="btn js-buy" href="#fondatore">Divento Fondatore &mdash; 99&euro;</a>
+        <a class="btn js-buy" href="#fondatore" data-t="ctaFondatore">Divento Fondatore — 99€</a>
         <div class="trust">
-          Pagamento sicuro con Stripe &middot; ricevuta automatica<br>
-          Se il muro non è online entro il <b class="js-data">31 marzo 2026</b>, rimborso del 100%.
+          <span data-t="fiducia1">Pagamento sicuro con Stripe · ricevuta automatica</span><br>
+          <span data-t="fiducia2">Se il muro non è online entro il</span> <b class="js-data">31 marzo 2026</b><span data-t="fiducia3">, rimborso del 100%.</span>
         </div>
       </div>
     </div>
 
     <div class="spread">
-      <p>Conosci un'attività veronese che ci starebbe bene?<br>Il muro si riempie col passaparola, non con la pubblicità.</p>
-      <a class="btn btn-ghost" id="share-wa" href="#" target="_blank" rel="noopener">Manda su WhatsApp</a>
+      <p data-t="passaparola">Conosci un'attività veronese che ci starebbe bene?<br>Il muro si riempie col passaparola, non con la pubblicità.</p>
+      <a class="btn btn-ghost" id="share-wa" href="#" target="_blank" rel="noopener" data-t="ctaWhatsapp">Manda su WhatsApp</a>
     </div>
   </section>
 
   <section class="block" id="faq">
-    <div class="sec-eyebrow">Domande</div>
-    <h2 class="sec display">Prima di murare</h2>
-    <div class="faq">
-      <details>
-        <summary>È davvero per sempre?<span class="pm">+</span></summary>
-        <div class="a">Il mattone Fondatore resta sul muro finché il muro esiste, senza rinnovi e senza scadenze. Non diciamo "in eterno" perché nessuno può prometterlo: ci impegniamo a tenere il muro online per almeno dieci anni, e se un giorno dovesse chiudere pubblichiamo l'archivio completo e ti restituiamo i tuoi contenuti. Solo chi entrerà dopo i primi 100 pagherà un abbonamento.</div>
-      </details>
-      <details>
-        <summary>Posso cambiare logo, testo e offerta?<span class="pm">+</span></summary>
-        <div class="a">Quando vuoi e quante volte vuoi. Il mattone è tuo: lo aggiorni tu, senza costi aggiuntivi.</div>
-      </details>
-      <details>
-        <summary>Mi porterà clienti?<span class="pm">+</span></summary>
-        <div class="a">Non lo promettiamo, e diffida di chi lo fa. Quello che compri è presenza: un posto stabile, con il tuo nome, dentro una mappa della città che i veronesi hanno voglia di guardare. Il muro cresce col passaparola di chi ci sta dentro: per questo ogni Fondatore riceve un'immagine pronta da condividere. Se cercavi un canale pubblicitario a risposta diretta, 99&euro; sono spesi meglio altrove.</div>
-      </details>
-      <details>
-        <summary>Chi può comprare un mattone?<span class="pm">+</span></summary>
-        <div class="a">Attività, professionisti, associazioni e anche privati: un mattone può essere una dedica, un ricordo, una firma di famiglia.</div>
-      </details>
-      <details>
-        <summary>Quando apre il muro?<span class="pm">+</span></summary>
-        <div class="a">Il muro va online al completamento della campagna Fondatori e comunque non oltre il <b class="js-data">31 marzo 2026</b>, con data comunicata via email a tutti gli acquirenti. Se entro quella data non è online, rimborsiamo il 100% a tutti senza che tu debba chiedere nulla.</div>
-      </details>
-      <details>
-        <summary>Come vi mando logo e testi?<span class="pm">+</span></summary>
-        <div class="a">Subito dopo il pagamento vieni portato su un modulo dove carichi logo, descrizione, link e offerta. Se lo salti, ti arriva comunque per email: nessuno resta con un mattone vuoto.</div>
-      </details>
-      <details>
-        <summary>Ricevo fattura?<span class="pm">+</span></summary>
-        <div class="a">Sì: il pagamento passa da Stripe e ricevi ricevuta automatica via email; su richiesta emettiamo fattura con i tuoi dati.</div>
-      </details>
-    </div>
+    <div class="sec-eyebrow" data-t="domande">Domande</div>
+    <h2 class="sec display" data-t="primaDiMurare">Prima di murare</h2>
+    <div class="faq" id="faq-list"></div>
 
-    <div class="note">
-      <h3>Diritto di recesso</h3>
-      Hai quattordici giorni dall'acquisto per cambiare idea e ottenere il rimborso
-      integrale, senza dover motivare la richiesta: scrivi a
-      <a class="js-email" href="mailto:INSERISCI-EMAIL">INSERISCI-EMAIL</a>.
-      Oltre a questo, se il muro non è online entro il <b class="js-data">31 marzo 2026</b>
-      rimborsiamo tutti al 100%.
-
-      <h3>Dati personali</h3>
-      Raccogliamo email e dati di fatturazione solo per gestire l'acquisto e il tuo
-      mattone. I pagamenti sono gestiti da Stripe: non vediamo né conserviamo i dati
-      della tua carta. Non cediamo i dati a terzi e non usiamo cookie di profilazione.
-      Puoi chiedere in ogni momento accesso, correzione o cancellazione scrivendo
-      all'indirizzo qui sopra.
-
-      <h3>Indipendenza</h3>
-      The Wall of Verona è un progetto privato e indipendente, non affiliato né
-      approvato dal Comune di Verona o da altri enti pubblici.
-    </div>
+    <div class="note" id="note-legali"></div>
   </section>
 
   <footer>
-    <div class="fm">The Wall of Verona</div>
-    Un progetto indipendente di Giacomo Pallavicini &middot; Verona<br>
-    <a class="js-email" href="mailto:INSERISCI-EMAIL">INSERISCI-EMAIL</a> &middot; P.IVA <span class="js-piva">INSERISCI-PIVA</span><br>
-    &copy; 2026 &middot; fatto a Verona, in mattoni e codice
+    <div class="fm"><span data-t="marchio1">Le Mura</span> <span data-t="marchio2">di Verona</span></div>
+    <span data-t="progettoDi">Un progetto indipendente di Giacomo Pallavicini · Verona</span><br>
+    <a class="js-email" href="mailto:INSERISCI-EMAIL">INSERISCI-EMAIL</a> · <span data-t="piva">P.IVA</span> <span class="js-piva">INSERISCI-PIVA</span><br>
+    © 2026 · <span data-t="fattoA">fatto a Verona, in mattoni e codice</span>
   </footer>
 
   <div class="backdrop" id="backdrop"></div>
   <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-name" inert>
     <button class="close" id="sh-close" aria-label="Chiudi">&#10005;</button>
     <div class="head">
-      <div class="smg" id="sh-mono">W</div>
+      <div class="smg" id="sh-mono">M</div>
       <div>
         <h2 id="sh-name">Nome</h2>
         <div class="qz" id="sh-quart">Quartiere</div>
@@ -466,34 +475,34 @@
     </div>
     <p id="sh-desc"></p>
     <div class="offer" id="sh-offer">
-      <div class="ol">Offerta della settimana</div>
+      <div class="ol" id="sh-offer-label">Offerta della settimana</div>
       <div class="ot" id="sh-offer-text"></div>
     </div>
-    <a class="btn act js-buy" id="sh-act" href="#fondatore">Divento Fondatore &mdash; 99&euro;</a>
+    <a class="btn act js-buy" id="sh-act" href="#fondatore">Divento Fondatore — 99€</a>
     <a class="btn visit" id="sh-visit" href="#" target="_blank" rel="noopener nofollow" hidden>Visita</a>
   </aside>
 
   <div class="bar" id="bar">
     <div>
-      <div class="t1">Mattone Fondatore</div>
-      <div class="t2"><b>99&euro;</b> una tantum &middot; ne restano <b class="js-left">100</b></div>
+      <div class="t1" data-t="mattoneFondatore">Mattone Fondatore</div>
+      <div class="t2"><b>99€</b> <span data-t="unaTantum">una tantum</span> · <span data-t="neRestano">ne restano</span> <b class="js-left">100</b></div>
     </div>
-    <a class="btn js-buy" href="#fondatore">Prendi il tuo</a>
+    <a class="btn js-buy" href="#fondatore" data-t="ctaBarra">Prendi il tuo</a>
   </div>
 
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Product",
-  "name":"Mattone Fondatore — The Wall of Verona",
+  "name":"Mattone Fondatore — Le Mura di Verona",
   "description":"Uno dei 100 mattoni fondatori sul muro digitale della città di Verona: logo, descrizione, link e offerta della settimana, per sempre.",
-  "brand":{"@type":"Brand","name":"The Wall of Verona"},
+  "brand":{"@type":"Brand","name":"Le Mura di Verona"},
   "offers":{
     "@type":"Offer",
     "price":"99.00",
     "priceCurrency":"EUR",
     "availability":"https://schema.org/LimitedAvailability",
-    "url":"https://thewallofverona.it/"
+    "url":"https://lemuradiverona.it/"
   }
 }
 </script>
@@ -513,49 +522,294 @@ var CONFIG = {
   /* 2. I tuoi dati                                                     */
   EMAIL: 'INSERISCI-EMAIL',
   PIVA:  'INSERISCI-PIVA',
-  SITO:  'https://thewallofverona.it',
+  SITO:  'https://lemuradiverona.it',
 
   /* 3. Data limite oltre la quale rimborsi tutti. Serve per legge e
         soprattutto per la fiducia: senza data, "prevendita" fa paura.  */
-  DATA_APERTURA: '31 marzo 2026',
+  DATA_APERTURA: { it: '31 marzo 2026', en: '31 March 2026' },
 
   /* 4. Quanti mattoni fondatori esistono in tutto                       */
   TOTALE: 100,
 
   /* 5. Mostra i mattoni di esempio? Si spengono da soli appena hai
         almeno 8 Fondatori veri: da lì in poi il muro parla da solo.    */
-  MOSTRA_ESEMPI: null   // null = automatico. true/false per forzare.
+  MOSTRA_ESEMPI: null,  // null = automatico. true/false per forzare.
+
+  /* 6. Lingua di partenza se il browser non è né italiano né inglese   */
+  LINGUA_DEFAULT: 'it'
 };
 
 /* ==================================================================
    I FONDATORI VERI
    Aggiungi qui una riga per ogni mattone venduto. Il contatore, la
-   barra di avanzamento e il muro si aggiornano da soli: non c'è nessun
-   altro numero da tenere a mano.
+   barra di avanzamento e il muro si aggiornano da soli.
 
      n = nome        q = quartiere      d = descrizione
      o = offerta della settimana (facoltativa)
      u = link al sito (facoltativo)     img = URL del logo (facoltativo)
 
+   d e o accettano sia una stringa sia { it:'…', en:'…' }.
    Quartieri validi: Città Antica · Veronetta · Borgo Trento · San Zeno
    ================================================================== */
 var MURATI = [
-  // { n:'Nome Attività', q:'Veronetta', d:'Due righe di descrizione.',
-  //   o:'Offerta della settimana', u:'https://esempio.it', img:'' },
+  // { n:'Nome Attività', q:'Veronetta',
+  //   d:{ it:'Due righe di descrizione.', en:'A two-line description.' },
+  //   o:{ it:'Offerta della settimana', en:'Offer of the week' },
+  //   u:'https://esempio.it', img:'' },
+];
+
+/* ==================================================================
+   IL MOSAICO — Verona vista da Castel San Pietro
+   La stringa qui sotto è il panorama campionato in 36x15 tasselli
+   (vedi panorama.svg e tools/campiona-mosaico.mjs). Tinge il mosaico
+   anche quando non c'è nemmeno una foto: la pagina non è mai vuota.
+
+   Per mettere le foto vere dei quartieri, aggiungi righe a FOTO:
+     { src:'foto/castelvecchio.jpg', x:6, y:8, w:3, h:2,
+       credito:'Foto: Nome Cognome' }
+   x,y sono le coordinate del tassello in alto a sinistra (0-35, 0-14),
+   w,h quanti tasselli occupa. La foto viene virata sui toni del
+   panorama, così il mosaico resta leggibile come veduta d'insieme.
+
+   ATTENZIONE, e non è un dettaglio: usa solo foto tue o con licenza
+   che ne permetta l'uso commerciale, e cita sempre l'autore. Una foto
+   presa da internet costa molto più di quanto valga.
+   ================================================================== */
+var MOSAICO_COLS = 36, MOSAICO_ROWS = 15;
+var MOSAICO = '334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334334444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444445445445445445445445445445445445445445445445445445654445445445445445445445445445445445445445445445445445445545545545545545545545545545545545545545545545545755a75645545545545545545545545545545545545545545545545545545645645645645645645645655655645645645645645645645755964645645645645754645645645645645645645645645645645645645755755755755755755755754754755655655655655755755855964755755755755754755755755755755755755755755755755755755755755655655655655655654644545545545545545545545655964655655555555754655655755854655555555655655655655655555545545545545545445445644754544445445444444444444645965444444445445754545445644854545445445545545445445445445854854854854854854854854854854964854754964964854854854754854854754854854854854954854964854854854854854754754975975975975975975975975975754643864754643754854643643854643643854643743975975975975975975975a75a75a75a75a75964964865965964964965965965964854964864754854954754754864754854964854864865965964964965965965965965965865865954954433853954954954953954954954954953954954954954954954954954954954853954954954954954953954954643853954954843953332433853843843843843843853843843843843953843843843843953843843843843843953843843843843953443643743843743743332432643743743743743743743743743743743743743743743743743743743743743743743743743743743743432532533743322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322322';
+
+var FOTO = [
+  // { src:'foto/ponte-pietra.jpg', x:14, y:8, w:4, h:3, credito:'Foto: Nome Cognome' },
 ];
 /* ================================================================== */
 
+/* ==================================================================
+   TRADUZIONI
+   ================================================================== */
+var T = {
+  it: {
+    lingua:'it', htmlLang:'it',
+    titoloPagina:'Le Mura di Verona — Il tuo posto nella storia di Verona',
+    metaDesc:"Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100.",
+
+    marchio1:'Le Mura', marchio2:'di Verona',
+    occhiello:'Il muro digitale della città',
+    titolo:'Il tuo posto nella storia di Verona',
+    sottotitolo:"Cento mattoni fondatori, un muro che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana.",
+    murati:'Mattoni murati',
+    ctaHero:'Prendi il tuo mattone — 99€',
+    ariaMuro:'Le mura di Verona',
+    notaEsempi:'Muro dimostrativo: i mattoni con un nome sono esempi inventati, servono a mostrare come apparirà il tuo. I mattoni veri arrivano con i Fondatori.',
+    scorri:'⟵ scorri il muro ⟶',
+    creditiSfondo:'Sfondo: Verona da Castel San Pietro, illustrazione originale',
+
+    comeOcchiello:'Come funziona',
+    comeTitolo:'Tre gesti, come si è sempre fatto',
+    passo1t:'Scegli il mattone',
+    passo1p:'Compra il tuo posto sul muro: 99€, una volta sola. Al momento del pagamento indichi il quartiere dove vuoi stare.',
+    passo2t:'Raccontati',
+    passo2p:"Subito dopo il pagamento ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.",
+    passo3t:'Resta',
+    passo3p:'Il tuo mattone è lì, col sigillo Fondatore, finché esistono le mura.',
+
+    percheOcchiello:'Perché delle mura',
+    percheTitolo:'Verona è fatta di pietra che dura',
+    manifesto:"L'Arena, il Ponte, Castelvecchio: qui ciò che conta si costruisce mattone su mattone. Il lato digitale della città, invece, scompare in un feed. Le Mura di Verona sono il contrario di un post: un muro dove le attività della città mettono la firma. E la firma resta.",
+
+    soloCento:'Solo i primi 100',
+    mattoneFondatore:'Mattone Fondatore',
+    fondatoreSub:'Quando i 100 mattoni saranno murati, si entrerà solo in abbonamento. I Fondatori no: pagano una volta e restano.',
+    unaVolta:'Una volta sola',
+    neRestano:'ne restano',
+    unaTantum:'una tantum',
+    perk1:'<b>Mattone permanente</b> sul muro, nel quartiere che scegli',
+    perk2:'<b>Profilo completo:</b> logo, descrizione e link alla tua pagina',
+    perk3:'<b>Offerta della settimana</b> aggiornabile quando vuoi',
+    perk4:'<b>Sigillo Fondatore</b> a vita sul tuo mattone',
+    perk5:'<b>Prezzo bloccato per sempre:</b> dopo i 100, solo abbonamento da 9€/mese',
+    ctaFondatore:'Divento Fondatore — 99€',
+    ctaBarra:'Prendi il tuo',
+    fiducia1:'Pagamento sicuro con Stripe · ricevuta automatica',
+    fiducia2:'Se il muro non è online entro il',
+    fiducia3:', rimborso del 100%.',
+    passaparola:"Conosci un'attività veronese che ci starebbe bene?<br>Il muro si riempie col passaparola, non con la pubblicità.",
+    ctaWhatsapp:'Manda su WhatsApp',
+    testoWhatsapp:'Ho visto Le Mura di Verona: 100 mattoni fondatori sul muro digitale della città, 99€ una volta sola. Ci starebbe bene la tua attività. ',
+
+    domande:'Domande',
+    primaDiMurare:'Prima di murare',
+    faq:[
+      ['È davvero per sempre?',
+       'Il mattone Fondatore resta sul muro finché il muro esiste, senza rinnovi e senza scadenze. Non diciamo "in eterno" perché nessuno può prometterlo: ci impegniamo a tenere il muro online per almeno dieci anni, e se un giorno dovesse chiudere pubblichiamo l\'archivio completo e ti restituiamo i tuoi contenuti. Solo chi entrerà dopo i primi 100 pagherà un abbonamento.'],
+      ['Posso cambiare logo, testo e offerta?',
+       'Quando vuoi e quante volte vuoi. Il mattone è tuo: lo aggiorni tu, senza costi aggiuntivi.'],
+      ['Mi porterà clienti?',
+       'Non lo promettiamo, e diffida di chi lo fa. Quello che compri è presenza: un posto stabile, con il tuo nome, dentro una mappa della città che i veronesi hanno voglia di guardare. Il muro cresce col passaparola di chi ci sta dentro: per questo ogni Fondatore riceve un\'immagine pronta da condividere. Se cercavi un canale pubblicitario a risposta diretta, 99€ sono spesi meglio altrove.'],
+      ['Chi può comprare un mattone?',
+       'Attività, professionisti, associazioni e anche privati: un mattone può essere una dedica, un ricordo, una firma di famiglia.'],
+      ['Quando aprono le mura?',
+       'Il muro va online al completamento della campagna Fondatori e comunque non oltre la data indicata sopra, comunicata via email a tutti gli acquirenti. Se entro quella data non è online, rimborsiamo il 100% a tutti senza che tu debba chiedere nulla.'],
+      ['Come vi mando logo e testi?',
+       'Subito dopo il pagamento vieni portato su un modulo dove carichi logo, descrizione, link e offerta. Se lo salti, ti arriva comunque per email: nessuno resta con un mattone vuoto.'],
+      ['Ricevo fattura?',
+       'Sì: il pagamento passa da Stripe e ricevi ricevuta automatica via email; su richiesta emettiamo fattura con i tuoi dati.']
+    ],
+    note:[
+      ['Diritto di recesso',
+       'Hai quattordici giorni dall\'acquisto per cambiare idea e ottenere il rimborso integrale, senza dover motivare la richiesta: scrivi a {email}. Oltre a questo, se il muro non è online entro il {data} rimborsiamo tutti al 100%.'],
+      ['Dati personali',
+       'Raccogliamo email e dati di fatturazione solo per gestire l\'acquisto e il tuo mattone. I pagamenti sono gestiti da Stripe: non vediamo né conserviamo i dati della tua carta. Non cediamo i dati a terzi e non usiamo cookie di profilazione. Puoi chiedere in ogni momento accesso, correzione o cancellazione scrivendo all\'indirizzo qui sopra.'],
+      ['Indipendenza',
+       'Le Mura di Verona è un progetto privato e indipendente, non affiliato né approvato dal Comune di Verona o da altri enti pubblici. Il nome richiama le mura storiche della città a titolo puramente evocativo.']
+    ],
+
+    progettoDi:'Un progetto indipendente di Giacomo Pallavicini · Verona',
+    piva:'P.IVA',
+    fattoA:'fatto a Verona, in mattoni e codice',
+
+    chiudi:'Chiudi',
+    offertaSettimana:'Offerta della settimana',
+    esempio:'esempio',
+    fondatore:'Fondatore',
+    nonRivendicato:'Mattone non rivendicato',
+    nonRivendicatoTxt:'È la tua attività? Reclamalo da Fondatore: logo, profilo e offerta della settimana.',
+    libero:'Mattone libero',
+    liberoTxt:'Questo spazio aspetta una firma veronese. I primi 100 diventano Fondatori.',
+    ctaCosi:'Il mio mattone, così — 99€',
+    ctaAnche:'Anche il mio mattone — 99€',
+    ctaRivendico:'Rivendico da Fondatore — 99€',
+    lbRivendica:'Rivendica',
+    lbLibero:'Libero',
+    visita:'Visita',
+    ariaLibero:'Mattone libero in ',
+    ariaRivendica:'Mattone da rivendicare in '
+  },
+
+  en: {
+    lingua:'en', htmlLang:'en',
+    titoloPagina:'The Walls of Verona — Your place in the story of Verona',
+    metaDesc:'One hundred founder bricks, a wall that stays. Every brick is a Verona business: logo, story and offer of the week. Founder Brick €99, first 100 only.',
+
+    marchio1:'The Walls', marchio2:'of Verona',
+    occhiello:'The digital wall of the city',
+    titolo:'Your place in the story of Verona',
+    sottotitolo:'One hundred founder bricks, a wall that stays. Every brick is a Verona business: logo, story and offer of the week.',
+    murati:'Bricks laid',
+    ctaHero:'Claim your brick — €99',
+    ariaMuro:'The walls of Verona',
+    notaEsempi:'Demonstration wall: the named bricks are invented examples, there to show how yours will look. The real bricks arrive with the Founders.',
+    scorri:'⟵ scroll the wall ⟶',
+    creditiSfondo:'Background: Verona from Castel San Pietro, original illustration',
+
+    comeOcchiello:'How it works',
+    comeTitolo:"Three moves, the way it's always been done",
+    passo1t:'Choose your brick',
+    passo1p:'Buy your place on the wall: €99, once and for all. At checkout you tell us which district you want to be in.',
+    passo2t:'Tell your story',
+    passo2p:'Right after payment you get a form: logo, description, link and the offer of the week. Change them whenever you like, at no cost.',
+    passo3t:'Stay',
+    passo3p:'Your brick is there, with the Founder seal, for as long as the walls stand.',
+
+    percheOcchiello:'Why a wall',
+    percheTitolo:'Verona is built of stone that lasts',
+    manifesto:'The Arena, the Bridge, Castelvecchio: here, what matters is built brick by brick. The digital side of the city, meanwhile, vanishes into a feed. The Walls of Verona are the opposite of a post: a wall where the businesses of the city sign their name. And the signature stays.',
+
+    soloCento:'First 100 only',
+    mattoneFondatore:'Founder Brick',
+    fondatoreSub:'Once the 100 bricks are laid, the only way in is a subscription. Not for Founders: they pay once and they stay.',
+    unaVolta:'Once and for all',
+    neRestano:'left',
+    unaTantum:'one-off',
+    perk1:'<b>A permanent brick</b> on the wall, in the district you choose',
+    perk2:'<b>Full profile:</b> logo, description and a link to your page',
+    perk3:'<b>Offer of the week</b>, updatable whenever you like',
+    perk4:'<b>Founder seal</b> on your brick, for life',
+    perk5:'<b>Price locked forever:</b> after the first 100, subscription only, from €9/month',
+    ctaFondatore:'Become a Founder — €99',
+    ctaBarra:'Claim yours',
+    fiducia1:'Secure payment with Stripe · automatic receipt',
+    fiducia2:'If the wall is not online by',
+    fiducia3:', you get a 100% refund.',
+    passaparola:'Know a Verona business that would fit right in?<br>This wall fills up by word of mouth, not by advertising.',
+    ctaWhatsapp:'Send on WhatsApp',
+    testoWhatsapp:'I found The Walls of Verona: 100 founder bricks on the digital wall of the city, €99 once and for all. Your business would fit right in. ',
+
+    domande:'Questions',
+    primaDiMurare:'Before you lay it',
+    faq:[
+      ['Is it really forever?',
+       'A Founder brick stays on the wall for as long as the wall exists, with no renewals and no expiry. We do not say "eternally", because nobody can promise that: we commit to keeping the wall online for at least ten years, and if it ever closes we publish the full archive and hand your content back to you. Only those arriving after the first 100 will pay a subscription.'],
+      ['Can I change the logo, text and offer?',
+       'Whenever you like, as often as you like. The brick is yours: you update it yourself, at no extra cost.'],
+      ['Will it bring me customers?',
+       'We do not promise that, and be wary of anyone who does. What you are buying is presence: a fixed place, with your name on it, inside a map of the city that people in Verona actually want to look at. The wall grows through the word of mouth of those on it, which is why every Founder gets a ready-made image to share. If you were after direct-response advertising, €99 is better spent elsewhere.'],
+      ['Who can buy a brick?',
+       'Businesses, professionals, associations and private individuals too: a brick can be a dedication, a memory, a family signature.'],
+      ['When do the walls open?',
+       'The wall goes live once the Founder campaign is complete, and in any case no later than the date shown above, announced by email to every buyer. If it is not online by then, we refund everyone in full without you having to ask.'],
+      ['How do I send you the logo and text?',
+       'Right after payment you are taken to a form where you upload logo, description, link and offer. If you skip it, it reaches you by email anyway: nobody is left with an empty brick.'],
+      ['Do I get an invoice?',
+       'Yes: payment runs through Stripe and you receive an automatic receipt by email; on request we issue a full invoice with your details.']
+    ],
+    note:[
+      ['Right of withdrawal',
+       'You have fourteen days from purchase to change your mind and get a full refund, with no need to give a reason: write to {email}. On top of that, if the wall is not online by {data} we refund everyone in full.'],
+      ['Personal data',
+       'We collect email and billing details only to handle the purchase and your brick. Payments are handled by Stripe: we never see or store your card details. We do not share data with third parties and we use no tracking cookies. You can request access, correction or deletion at any time by writing to the address above.'],
+      ['Independence',
+       'The Walls of Verona is a private, independent project, not affiliated with or endorsed by the City of Verona or any public body. The name evokes the historic city walls purely as an image.']
+    ],
+
+    progettoDi:'An independent project by Giacomo Pallavicini · Verona',
+    piva:'VAT',
+    fattoA:'made in Verona, in bricks and code',
+
+    chiudi:'Close',
+    offertaSettimana:'Offer of the week',
+    esempio:'example',
+    fondatore:'Founder',
+    nonRivendicato:'Unclaimed brick',
+    nonRivendicatoTxt:'Is this your business? Claim it as a Founder: logo, profile and offer of the week.',
+    libero:'Free brick',
+    liberoTxt:'This space is waiting for a Verona signature. The first 100 become Founders.',
+    ctaCosi:'My brick, just like this — €99',
+    ctaAnche:'My brick too — €99',
+    ctaRivendico:'Claim it as a Founder — €99',
+    lbRivendica:'Claim',
+    lbLibero:'Free',
+    visita:'Visit',
+    ariaLibero:'Free brick in ',
+    ariaRivendica:'Brick to claim in '
+  }
+};
+
 (function(){
   'use strict';
+
+  /* ---------- Lingua ---------- */
+
+  function linguaIniziale(){
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q && T[q]) return q;
+    try { var s = localStorage.getItem('mura_lang'); if (s && T[s]) return s; } catch (e) {}
+    var nav = (navigator.language || '').slice(0, 2).toLowerCase();
+    if (T[nav]) return nav;
+    return CONFIG.LINGUA_DEFAULT;
+  }
+
+  var lang = linguaIniziale();
+  function t(k){ return T[lang][k]; }
+  function txt(v){
+    if (v === null || v === undefined) return '';
+    return typeof v === 'string' ? v : (v[lang] || v.it || v.en || '');
+  }
 
   var TOTALE  = CONFIG.TOTALE;
   var MURATO  = Math.min(MURATI.length, TOTALE);
   var RESTANO = Math.max(TOTALE - MURATO, 0);
   var ESEMPI  = CONFIG.MOSTRA_ESEMPI === null ? (MURATO < 8) : !!CONFIG.MOSTRA_ESEMPI;
 
-  /* --- Aggancio per le statistiche. Sostituisci il corpo con la
-         chiamata del tuo strumento (Plausible, Umami, GA) quando ne
-         avrai uno: i punti di misura sono già tutti al posto giusto. */
   function track(evento, dati){
     if (window.plausible) window.plausible(evento, { props: dati || {} });
   }
@@ -571,12 +825,127 @@ var MURATI = [
       .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   }
 
-  /* ---------- Contatori, barra, dati di contatto ---------- */
+  /* ---------- Il mosaico ---------- */
+
+  function costruisciMosaico(){
+    var box = document.getElementById('mosaico');
+    if (!box || !MOSAICO) return;
+    var host = document.createElement('div');
+    host.className = 'mosaico-grid';
+    box.appendChild(host);
+    host.style.gridTemplateColumns = 'repeat(' + MOSAICO_COLS + ', 1fr)';
+    host.style.gridTemplateRows    = 'repeat(' + MOSAICO_ROWS + ', 1fr)';
+
+    var frag = document.createDocumentFragment();
+    var totale = MOSAICO_COLS * MOSAICO_ROWS;
+    for (var i = 0; i < totale; i++){
+      var s = document.createElement('span');
+      var h = MOSAICO.substr(i * 3, 3);
+      s.style.background = '#' + (h.length === 3 ? h : '332');
+      // Ritardo a onda dal centro: il mosaico si compone, non appare.
+      var x = i % MOSAICO_COLS, y = Math.floor(i / MOSAICO_COLS);
+      var d = Math.abs(x - MOSAICO_COLS / 2) / MOSAICO_COLS + Math.abs(y - MOSAICO_ROWS / 2) / MOSAICO_ROWS;
+      s.style.setProperty('--d', (0.06 + d * 0.7).toFixed(2) + 's');
+      frag.appendChild(s);
+    }
+    host.appendChild(frag);
+
+    // Le foto vere, quando ci saranno, coprono i tasselli sottostanti.
+    var crediti = [];
+    FOTO.forEach(function(f){
+      var s = document.createElement('span');
+      s.className = 'foto';
+      s.style.gridColumn = (f.x + 1) + ' / span ' + (f.w || 1);
+      s.style.gridRow    = (f.y + 1) + ' / span ' + (f.h || 1);
+      s.style.backgroundImage = 'url("' + f.src + '")';
+      s.style.setProperty('--d', '0.5s');
+      host.appendChild(s);
+      if (f.credito) crediti.push(f.credito);
+    });
+
+    document.getElementById('credits').textContent =
+      crediti.length ? crediti.join(' · ') : t('creditiSfondo');
+  }
+
+  /* ---------- Applicazione della lingua ---------- */
+
+  function applicaLingua(){
+    document.documentElement.lang = t('htmlLang');
+    document.title = t('titoloPagina');
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute('content', t('metaDesc'));
+
+    each('[data-t]', function(n){
+      var v = t(n.dataset.t);
+      if (v === undefined) return;
+      if (/<[a-z]/i.test(v)) n.innerHTML = v; else n.textContent = v;
+    });
+
+    each('[data-tattr]', function(n){
+      var parts = n.dataset.tattr.split('|');
+      var v = t(parts[0]);
+      if (v !== undefined) n.setAttribute(parts[1], v);
+    });
+
+    each('.lang button', function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+
+    each('.js-data', function(n){ n.textContent = txt(CONFIG.DATA_APERTURA); });
+    document.getElementById('sh-close').setAttribute('aria-label', t('chiudi'));
+    document.getElementById('sh-offer-label').textContent = t('offertaSettimana');
+    document.getElementById('sh-visit').textContent = t('visita');
+
+    // FAQ e note legali si ricostruiscono: sono le parti piu' lunghe.
+    var faq = document.getElementById('faq-list');
+    faq.innerHTML = '';
+    t('faq').forEach(function(q){
+      var d = document.createElement('details');
+      var s = document.createElement('summary');
+      s.appendChild(document.createTextNode(q[0]));
+      var pm = document.createElement('span');
+      pm.className = 'pm'; pm.textContent = '+';
+      s.appendChild(pm);
+      var a = document.createElement('div');
+      a.className = 'a'; a.textContent = q[1];
+      d.appendChild(s); d.appendChild(a);
+      faq.appendChild(d);
+    });
+
+    var note = document.getElementById('note-legali');
+    note.innerHTML = '';
+    t('note').forEach(function(sez){
+      var h = document.createElement('h3');
+      h.textContent = sez[0];
+      var p = document.createElement('div');
+      p.textContent = sez[1]
+        .replace('{email}', CONFIG.EMAIL)
+        .replace('{data}', txt(CONFIG.DATA_APERTURA));
+      note.appendChild(h); note.appendChild(p);
+    });
+
+    var wa = document.getElementById('share-wa');
+    if (wa) wa.setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(t('testoWhatsapp') + CONFIG.SITO));
+
+    var cr = document.getElementById('credits');
+    if (cr && !FOTO.length) cr.textContent = t('creditiSfondo');
+  }
+
+  each('.lang button', function(b){
+    b.addEventListener('click', function(){
+      lang = b.dataset.lang;
+      try { localStorage.setItem('mura_lang', lang); } catch (e) {}
+      applicaLingua();
+      ridisegnaMuro();
+      track('lingua', { scelta: lang });
+    });
+  });
+
+  /* ---------- Contatori e dati di contatto ---------- */
 
   each('.js-left',   function(n){ n.textContent = RESTANO; });
   each('.js-murati', function(n){ n.textContent = MURATO; });
   each('.js-totale', function(n){ n.textContent = TOTALE; });
-  each('.js-data',   function(n){ n.textContent = CONFIG.DATA_APERTURA; });
   each('.js-piva',   function(n){ n.textContent = CONFIG.PIVA; });
   each('.js-email',  function(n){
     n.textContent = CONFIG.EMAIL;
@@ -586,19 +955,15 @@ var MURATI = [
   var progWrap = document.querySelector('.prog');
   if (progWrap){
     progWrap.setAttribute('role', 'img');
-    progWrap.setAttribute('aria-label', MURATO + ' mattoni murati su ' + TOTALE);
+    progWrap.setAttribute('aria-label', MURATO + ' / ' + TOTALE);
   }
-  // Un fotogramma di ritardo: la barra deve vedersi crescere.
   setTimeout(function(){
     each('.js-prog', function(n){
       n.style.width = Math.max((MURATO / TOTALE) * 100, MURATO ? 2 : 0) + '%';
     });
   }, 220);
 
-  /* ---------- Pulsanti di acquisto ----------
-     Se il Payment Link è configurato, i pulsanti ci puntano. Il
-     quartiere del mattone cliccato viaggia come client_reference_id,
-     così lo ritrovi in Stripe accanto al pagamento.                 */
+  /* ---------- Pulsanti di acquisto ---------- */
 
   var configured = CONFIG.STRIPE_LINK.indexOf('http') === 0;
 
@@ -619,7 +984,7 @@ var MURATI = [
     if (!nodo.dataset.armed){
       nodo.dataset.armed = '1';
       nodo.addEventListener('click', function(){
-        track('checkout', { origine: nodo.dataset.origine || origine || 'pagina' });
+        track('checkout', { origine: nodo.dataset.origine || 'pagina', lingua: lang });
       });
     }
     if (origine) nodo.dataset.origine = origine;
@@ -628,22 +993,13 @@ var MURATI = [
   each('.js-buy', function(n, i){ armaAcquisto(n, null, i === 0 ? 'hero' : 'pagina'); });
 
   if (!configured){
-    console.warn('The Wall of Verona: STRIPE_LINK non configurato, i pulsanti puntano alla sezione Fondatore.');
+    console.warn('Le Mura di Verona: STRIPE_LINK non configurato, i pulsanti puntano alla sezione Fondatore.');
   }
-
-  /* ---------- Passaparola su WhatsApp ---------- */
 
   var wa = document.getElementById('share-wa');
-  if (wa){
-    var testo = 'Ho visto The Wall of Verona: 100 mattoni fondatori sul muro digitale ' +
-                'della città, 99€ una volta sola. Ci starebbe bene la tua attività. ' +
-                CONFIG.SITO;
-    wa.setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(testo));
-    wa.addEventListener('click', function(){ track('condivisione', { canale: 'whatsapp' }); });
-  }
+  if (wa) wa.addEventListener('click', function(){ track('condivisione', { canale:'whatsapp', lingua: lang }); });
 
-  /* ---------- La barra fissa si ritira sulla card Fondatore ----------
-     Sopra la card sarebbe solo un doppione che copre il contenuto.  */
+  /* ---------- La barra fissa si ritira sulla card Fondatore ---------- */
 
   var bar = document.getElementById('bar');
   var card = document.querySelector('.founder');
@@ -657,18 +1013,17 @@ var MURATI = [
      IL MURO
      ================================================================ */
 
-  // Tonalità Castelvecchio: rossi bruni, mattoni bruciati, variazione per pezzo
   var TONES = ['#6e3126','#7c3a2b','#5f2a20','#8a4632','#67352a','#75392f','#4f231b'];
   var seed = 1354; // anno di fondazione di Castelvecchio
   function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
   function tone(){ return TONES[Math.floor(rnd() * TONES.length)]; }
 
   function initials(name){
-    var stop = { 'al':1,'alla':1,'del':1,'della':1,'di':1,'la':1,'il':1,'e':1 };
+    var stop = { 'al':1,'alla':1,'del':1,'della':1,'di':1,'la':1,'il':1,'e':1,'the':1,'of':1 };
     var parts = String(name).split(/\s+/).filter(function(w){
       return w && !stop[w.toLowerCase().replace(/[’']/g,'')];
     });
-    var a = parts[0] ? parts[0][0] : 'W';
+    var a = parts[0] ? parts[0][0] : 'M';
     var b = parts.length > 1 ? parts[parts.length-1][0] : '';
     return (a + b).toUpperCase();
   }
@@ -679,108 +1034,81 @@ var MURATI = [
      invece di un articolo sul giornale. */
   var QUARTIERI = ['Città Antica', 'Veronetta', 'Borgo Trento', 'San Zeno'];
 
-  // b = esempio · p = esempio grande · c = da rivendicare · f = libero · h = mezzo
   var groups = [
     { q:'Città Antica', rows:[
       { off:false, cells:[
-        { t:'b', n:'Osteria del Grifone', d:'Cucina veronese di casa, tavoli sotto il portico.', o:'Menù pranzo 12€ dal lunedì al venerdì' },
+        { t:'b', n:'Osteria del Grifone', d:{it:'Cucina veronese di casa, tavoli sotto il portico.',en:'Home-style Verona cooking, tables under the portico.'}, o:{it:'Menù pranzo 12€ dal lunedì al venerdì',en:'Lunch menu €12, Monday to Friday'} },
         { t:'c' },
-        { t:'b', n:'Gelateria Bianca', d:'Gelato artigianale, gusti di stagione.', o:'Cono medio + panna 2,50€' },
-        { t:'b', n:'Caffè del Lume', d:'Colazioni lente e aperitivi al banco.', o:'Spritz + tagliere 8€ dalle 18' },
+        { t:'b', n:'Gelateria Bianca', d:{it:'Gelato artigianale, gusti di stagione.',en:'Artisan gelato, seasonal flavours.'}, o:{it:'Cono medio + panna 2,50€',en:'Medium cone with cream €2.50'} },
+        { t:'b', n:'Caffè del Lume', d:{it:'Colazioni lente e aperitivi al banco.',en:'Slow breakfasts and aperitivo at the bar.'}, o:{it:'Spritz + tagliere 8€ dalle 18',en:'Spritz + sharing board €8 from 6pm'} },
         { t:'f' },
-        { t:'b', n:'Libreria Fenice', d:'Libri nuovi e usati, scaffale dedicato al Veneto.', o:'-20% sull\'usato fino a domenica' },
+        { t:'b', n:'Libreria Fenice', d:{it:'Libri nuovi e usati, scaffale dedicato al Veneto.',en:'New and second-hand books, a shelf devoted to the Veneto.'}, o:{it:'-20% sull\'usato fino a domenica',en:'20% off second-hand until Sunday'} },
         { t:'c' },
-        { t:'b', n:'Fioreria Cardo', d:'Fiori freschi ogni mattina, composizioni su misura.', o:'Mazzo del sabato 10€' },
+        { t:'b', n:'Fioreria Cardo', d:{it:'Fiori freschi ogni mattina, composizioni su misura.',en:'Fresh flowers every morning, bespoke arrangements.'}, o:{it:'Mazzo del sabato 10€',en:'Saturday bunch €10'} },
         { t:'f' } ] },
       { off:true, cells:[
-        { t:'p', n:'Trattoria Melograno', d:'La trattoria di famiglia: bigoli, pastissada e vini della Valpolicella.', o:'Gnocchi del venerdì + calice 11€' },
+        { t:'p', n:'Trattoria Melograno', d:{it:'La trattoria di famiglia: bigoli, pastissada e vini della Valpolicella.',en:'The family trattoria: bigoli, pastissada and Valpolicella wines.'}, o:{it:'Gnocchi del venerdì + calice 11€',en:'Friday gnocchi + a glass €11'} },
         { t:'c' },
-        { t:'b', n:'Studio Dentistico Aurora', d:'Igiene e ortodonzia, appuntamenti anche il sabato.', o:'Prima visita e preventivo gratuiti' },
+        { t:'b', n:'Studio Dentistico Aurora', d:{it:'Igiene e ortodonzia, appuntamenti anche il sabato.',en:'Hygiene and orthodontics, Saturday appointments too.'}, o:{it:'Prima visita e preventivo gratuiti',en:'First visit and quote free of charge'} },
         { t:'f' },
-        { t:'b', n:'Gioielleria Sole', d:'Orafi in bottega, riparazioni in giornata.', o:'Lucidatura anelli omaggio' },
+        { t:'b', n:'Gioielleria Sole', d:{it:'Orafi in bottega, riparazioni in giornata.',en:'Goldsmiths on site, same-day repairs.'}, o:{it:'Lucidatura anelli omaggio',en:'Free ring polishing'} },
         { t:'c' },
-        { t:'b', n:'Locanda Verde', d:'Dodici camere nel cuore della città antica.', o:'Colazione inclusa ad agosto' } ] }
+        { t:'b', n:'Locanda Verde', d:{it:'Dodici camere nel cuore della città antica.',en:'Twelve rooms in the heart of the old town.'}, o:{it:'Colazione inclusa ad agosto',en:'Breakfast included in August'} } ] }
     ]},
     { q:'Veronetta', rows:[
       { off:false, cells:[
-        { t:'b', n:'Pizzeria Salamandra', d:'Impasto 48 ore, forno a legna, anche da asporto.', o:'Margherita + bibita 7€ lunedì e martedì' },
-        { t:'b', n:'Caffè Bussola', d:'Torrefazione in casa e dolci del giorno.', o:'Caffè + brioche 2,20€ fino alle 9' },
+        { t:'b', n:'Pizzeria Salamandra', d:{it:'Impasto 48 ore, forno a legna, anche da asporto.',en:'48-hour dough, wood-fired oven, takeaway too.'}, o:{it:'Margherita + bibita 7€ lunedì e martedì',en:'Margherita + drink €7 Mondays and Tuesdays'} },
+        { t:'b', n:'Caffè Bussola', d:{it:'Torrefazione in casa e dolci del giorno.',en:'Roasted in house, pastries made daily.'}, o:{it:'Caffè + brioche 2,20€ fino alle 9',en:'Coffee + pastry €2.20 until 9am'} },
         { t:'c' },
         { t:'f' },
-        { t:'b', n:'Ciclofficina Pedale', d:'Riparazioni bici e usato garantito.', o:'Controllo freni e cambio gratuito' },
+        { t:'b', n:'Ciclofficina Pedale', d:{it:'Riparazioni bici e usato garantito.',en:'Bike repairs and guaranteed second-hand.'}, o:{it:'Controllo freni e cambio gratuito',en:'Free brake and gear check'} },
         { t:'c' },
-        { t:'b', n:'Studio Yoga Sereno', d:'Corsi mattina e sera, tutti i livelli.', o:'Prima lezione gratuita' },
+        { t:'b', n:'Studio Yoga Sereno', d:{it:'Corsi mattina e sera, tutti i livelli.',en:'Morning and evening classes, all levels.'}, o:{it:'Prima lezione gratuita',en:'First class free'} },
         { t:'f' },
         { t:'c' } ] },
       { off:true, cells:[
         { t:'f' },
-        { t:'b', n:'Panificio Tre Archi', d:'Pane a lievito madre sfornato due volte al giorno.', o:'Filone della sera -30% dopo le 18' },
+        { t:'b', n:'Panificio Tre Archi', d:{it:'Pane a lievito madre sfornato due volte al giorno.',en:'Sourdough bread, baked twice a day.'}, o:{it:'Filone della sera -30% dopo le 18',en:'Evening loaf 30% off after 6pm'} },
         { t:'c' },
-        { t:'p', n:'Birrificio Ramo Secco', d:'Birra artigianale prodotta in quartiere, spine e bottiglie da asporto.', o:'Giovedì: pinta del birraio 4€' },
-        { t:'b', n:'Sartoria Filo', d:'Riparazioni e abiti su misura.', o:'Orlo pantaloni 8€ in 24 ore' },
+        { t:'p', n:'Birrificio Ramo Secco', d:{it:'Birra artigianale prodotta in quartiere, spine e bottiglie da asporto.',en:'Craft beer brewed in the district, on tap and in bottles to take away.'}, o:{it:'Giovedì: pinta del birraio 4€',en:"Thursdays: brewer's pint €4"} },
+        { t:'b', n:'Sartoria Filo', d:{it:'Riparazioni e abiti su misura.',en:'Alterations and made-to-measure clothing.'}, o:{it:'Orlo pantaloni 8€ in 24 ore',en:'Trouser hems €8 in 24 hours'} },
         { t:'f' },
         { t:'c' } ] }
     ]},
     { q:'Borgo Trento', rows:[
       { off:false, cells:[
-        { t:'b', n:'Farmacia Ulivo', d:'Autoanalisi, tessera fedeltà e consegna a domicilio.', o:'Misurazione pressione gratuita' },
+        { t:'b', n:'Farmacia Ulivo', d:{it:'Autoanalisi, tessera fedeltà e consegna a domicilio.',en:'Self-testing, loyalty card and home delivery.'}, o:{it:'Misurazione pressione gratuita',en:'Free blood pressure check'} },
         { t:'c' },
-        { t:'p', n:'Palestra Ferro', d:'Sala pesi, corsi e personal trainer con vista sull\'Adige.', o:'Agosto: iscrizione a 0€' },
+        { t:'p', n:'Palestra Ferro', d:{it:'Sala pesi, corsi e personal trainer con vista sull\'Adige.',en:'Weights room, classes and personal trainers overlooking the Adige.'}, o:{it:'Agosto: iscrizione a 0€',en:'August: €0 joining fee'} },
         { t:'f' },
-        { t:'b', n:'Macelleria Bosco', d:'Carni del territorio e pronti a cuocere.', o:'Spiedo del sabato su prenotazione' },
+        { t:'b', n:'Macelleria Bosco', d:{it:'Carni del territorio e pronti a cuocere.',en:'Local meat and ready-to-cook cuts.'}, o:{it:'Spiedo del sabato su prenotazione',en:'Saturday spit-roast, to order'} },
         { t:'c' },
-        { t:'b', n:'Ottica Vetro', d:'Controllo vista e montature indipendenti.', o:'Seconda lente omaggio' },
+        { t:'b', n:'Ottica Vetro', d:{it:'Controllo vista e montature indipendenti.',en:'Eye tests and independent frames.'}, o:{it:'Seconda lente omaggio',en:'Second lens free'} },
         { t:'f' } ] }
     ]},
     { q:'San Zeno', rows:[
       { off:true, cells:[
-        { t:'b', n:'Pasticceria Zucchero', d:'Dolci di bottega, lievitati il fine settimana.', o:'Colazione completa 3,50€ fino a domenica' },
+        { t:'b', n:'Pasticceria Zucchero', d:{it:'Dolci di bottega, lievitati il fine settimana.',en:'Small-batch cakes, laminated pastries at weekends.'}, o:{it:'Colazione completa 3,50€ fino a domenica',en:'Full breakfast €3.50 until Sunday'} },
         { t:'f' },
-        { t:'b', n:'Enoteca Quercia', d:'Valpolicella, Soave e degustazioni il giovedì.', o:'Calice del giorno 3€' },
+        { t:'b', n:'Enoteca Quercia', d:{it:'Valpolicella, Soave e degustazioni il giovedì.',en:'Valpolicella, Soave and tastings on Thursdays.'}, o:{it:'Calice del giorno 3€',en:'Glass of the day €3'} },
         { t:'c' },
-        { t:'b', n:'Bottega del Rame', d:'Artigianato in rame battuto a mano.', o:'Incisione nome inclusa' },
+        { t:'b', n:'Bottega del Rame', d:{it:'Artigianato in rame battuto a mano.',en:'Hand-beaten copperware.'}, o:{it:'Incisione nome inclusa',en:'Name engraving included'} },
         { t:'c' },
         { t:'f' },
-        { t:'b', n:'Trattoria del Traghetto', d:'Cucina di lago e di fiume sul lungadige.', o:'Fritto misto del venerdì 14€' } ] }
+        { t:'b', n:'Trattoria del Traghetto', d:{it:'Cucina di lago e di fiume sul lungadige.',en:'Lake and river cooking on the riverside.'}, o:{it:'Fritto misto del venerdì 14€',en:'Friday mixed fry €14'} } ] }
     ]}
   ];
-
-  /* I Fondatori veri prendono il posto dei mattoni di esempio, quartiere
-     per quartiere. Quando gli esempi sono spenti, tutto ciò che non è
-     un Fondatore diventa "libero" o "da rivendicare". */
-  var codaFondatori = {};
-  QUARTIERI.forEach(function(q){ codaFondatori[q] = []; });
-  MURATI.slice(0, TOTALE).forEach(function(f){
-    var q = codaFondatori[f.q] ? f.q : QUARTIERI[0];
-    codaFondatori[q].push(f);
-  });
-
-  var alterna = 0;
-  function risolvi(cell, quartiere){
-    var coda = codaFondatori[quartiere];
-    // Un Fondatore vero occupa il primo posto utile del suo quartiere.
-    if (coda && coda.length && (cell.t === 'b' || cell.t === 'p' || cell.t === 'f' || cell.t === 'c')){
-      var f = coda.shift();
-      return { t: cell.t === 'p' ? 'p' : 'b', vero:true, n:f.n, d:f.d || '', o:f.o || '', u:f.u || '', img:f.img || '' };
-    }
-    if (cell.t === 'h') return cell;
-    if (!ESEMPI && (cell.t === 'b' || cell.t === 'p')){
-      // Niente esempi: metà pietra da rivendicare, metà mattoni liberi.
-      return { t: (alterna++ % 2) ? 'c' : 'f' };
-    }
-    return cell;
-  }
 
   var wall = document.getElementById('wall');
   var sheet = document.getElementById('sheet');
   var backdrop = document.getElementById('backdrop');
-  var delay = 0;
   var ultimoFocus = null;
+  var delay = 0;
 
-  function el(tag, cls, txt){
+  function el(tag, cls, txtv){
     var e = document.createElement(tag);
     if (cls) e.className = cls;
-    if (txt !== undefined) e.textContent = txt;
+    if (txtv !== undefined) e.textContent = txtv;
     return e;
   }
 
@@ -809,38 +1137,34 @@ var MURATI = [
       }
       mono.style.background = toneColor;
       name.textContent = data.n;
-      qz.textContent = quart + (data.vero ? ' · Fondatore' : ' · esempio');
-      desc.textContent = data.d;
-      if (data.o){
-        offer.hidden = false;
-        offerText.textContent = data.o;
-      } else {
-        offer.hidden = true;
-      }
+      qz.textContent = quart + ' · ' + (data.vero ? t('fondatore') : t('esempio'));
+      desc.textContent = txt(data.d);
+      var off = txt(data.o);
+      offer.hidden = !off;
+      offerText.textContent = off;
       if (data.vero && data.u){
         visit.hidden = false;
         visit.setAttribute('href', data.u);
       }
-      act.textContent = data.vero ? 'Anche il mio mattone — 99€' : 'Il mio mattone, così — 99€';
+      act.textContent = data.vero ? t('ctaAnche') : t('ctaCosi');
     } else if (data.t === 'c'){
       mono.textContent = '?';
       mono.style.background = '#a1927b';
-      name.textContent = 'Mattone non rivendicato';
+      name.textContent = t('nonRivendicato');
       qz.textContent = quart;
-      desc.textContent = 'È la tua attività? Reclamalo da Fondatore: logo, profilo e offerta della settimana.';
+      desc.textContent = t('nonRivendicatoTxt');
       offer.hidden = true;
-      act.textContent = 'Rivendico da Fondatore — 99€';
+      act.textContent = t('ctaRivendico');
     } else {
       mono.textContent = '+';
       mono.style.background = '#a7967b';
-      name.textContent = 'Mattone libero';
+      name.textContent = t('libero');
       qz.textContent = quart;
-      desc.textContent = 'Questo spazio aspetta una firma veronese. I primi 100 diventano Fondatori.';
+      desc.textContent = t('liberoTxt');
       offer.hidden = true;
-      act.textContent = 'Divento Fondatore — 99€';
+      act.textContent = t('ctaFondatore');
     }
 
-    // Il quartiere del mattone viaggia fino a Stripe.
     armaAcquisto(act, quart, 'mattone');
 
     ultimoFocus = document.activeElement;
@@ -848,7 +1172,7 @@ var MURATI = [
     sheet.classList.add('on');
     backdrop.classList.add('on');
     document.getElementById('sh-close').focus();
-    track('scheda_mattone', { tipo: data.t, quartiere: quart });
+    track('scheda_mattone', { tipo: data.t, quartiere: quart, lingua: lang });
   }
 
   function closeSheet(){
@@ -865,7 +1189,6 @@ var MURATI = [
 
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape'){ closeSheet(); return; }
-    // Il tabulatore resta dentro la scheda finché è aperta.
     if (e.key === 'Tab' && sheet.classList.contains('on')){
       var f = [];
       sheet.querySelectorAll('button, a[href]').forEach(function(n){
@@ -891,24 +1214,24 @@ var MURATI = [
       var tc = tone();
       b.style.background = tc;
       b.appendChild(el('span', 'mg', initials(cell.n)));
-      b.setAttribute('aria-label', cell.n + (cell.vero ? ', Fondatore' : ', esempio'));
+      b.setAttribute('aria-label', cell.n + ', ' + (cell.vero ? t('fondatore') : t('esempio')));
       b.addEventListener('click', function(){ openSheet(cell, tc, quart); });
     } else if (cell.t === 'p'){
       b = el('button', 'brick prem' + (cell.vero ? ' fond' : ''));
-      b.appendChild(el('span', 'st', cell.vero ? '★ Fondatore' : '★ Esempio'));
+      b.appendChild(el('span', 'st', '★ ' + (cell.vero ? t('fondatore') : t('esempio'))));
       b.appendChild(el('span', 'nm', cell.n));
-      b.setAttribute('aria-label', cell.n + (cell.vero ? ', Fondatore' : ', esempio'));
+      b.setAttribute('aria-label', cell.n + ', ' + (cell.vero ? t('fondatore') : t('esempio')));
       b.addEventListener('click', function(){ openSheet(cell, '#54241b', quart); });
     } else if (cell.t === 'c'){
       b = el('button', 'brick claim');
       b.appendChild(el('span', 'q', '?'));
-      b.appendChild(el('span', 'lb', 'Rivendica'));
-      b.setAttribute('aria-label', 'Mattone da rivendicare in ' + quart);
+      b.appendChild(el('span', 'lb', t('lbRivendica')));
+      b.setAttribute('aria-label', t('ariaRivendica') + quart);
       b.addEventListener('click', function(){ openSheet(cell, '#a1927b', quart); });
     } else {
       b = el('button', 'brick free');
-      b.appendChild(el('span', 'lb', 'Libero'));
-      b.setAttribute('aria-label', 'Mattone libero in ' + quart);
+      b.appendChild(el('span', 'lb', t('lbLibero')));
+      b.setAttribute('aria-label', t('ariaLibero') + quart);
       b.addEventListener('click', function(){ openSheet(cell, '#a7967b', quart); });
     }
     b.style.setProperty('--d', (delay * 0.012) + 's');
@@ -916,41 +1239,71 @@ var MURATI = [
     return b;
   }
 
-  groups.forEach(function(g){
-    var head = el('div', 'quartiere');
-    head.appendChild(el('span', 'ln'));
-    head.appendChild(el('span', 'dm', '◆'));
-    head.appendChild(el('span', 'nm', g.q));
-    head.appendChild(el('span', 'dm', '◆'));
-    head.appendChild(el('span', 'ln'));
-    wall.appendChild(head);
+  function ridisegnaMuro(){
+    wall.innerHTML = '';
+    seed = 1354;   // stesse tonalità a ogni ricostruzione
+    delay = 0;
 
-    g.rows.forEach(function(row){
-      var r = el('div', 'row');
-      if (row.off) r.appendChild(makeBrick({ t:'h' }, g.q));
-      row.cells.forEach(function(c){ r.appendChild(makeBrick(risolvi(c, g.q), g.q)); });
-      if (row.off) r.appendChild(makeBrick({ t:'h' }, g.q));
-      wall.appendChild(r);
+    var coda = {};
+    QUARTIERI.forEach(function(q){ coda[q] = []; });
+    MURATI.slice(0, TOTALE).forEach(function(f){
+      coda[coda[f.q] ? f.q : QUARTIERI[0]].push(f);
     });
 
-    // Il quartiere ha più Fondatori dei posti previsti: si alzano altre file.
-    // Il muro cresce con le vendite invece di troncarle in silenzio.
-    var resto = codaFondatori[g.q];
-    var sfalsa = g.rows.length;
-    while (resto && resto.length){
-      var extra = el('div', 'row');
-      var off = (sfalsa++ % 2) === 1;
-      if (off) extra.appendChild(makeBrick({ t:'h' }, g.q));
-      for (var k = 0; k < (off ? 7 : 9) && resto.length; k++){
-        extra.appendChild(makeBrick(risolvi({ t:'b' }, g.q), g.q));
+    var alterna = 0;
+    function risolvi(cell, quartiere){
+      var c = coda[quartiere];
+      if (c && c.length && (cell.t === 'b' || cell.t === 'p' || cell.t === 'f' || cell.t === 'c')){
+        var f = c.shift();
+        return { t: cell.t === 'p' ? 'p' : 'b', vero:true, n:f.n, d:f.d, o:f.o, u:f.u || '', img:f.img || '' };
       }
-      if (off) extra.appendChild(makeBrick({ t:'h' }, g.q));
-      wall.appendChild(extra);
+      if (cell.t === 'h') return cell;
+      if (!ESEMPI && (cell.t === 'b' || cell.t === 'p')){
+        return { t: (alterna++ % 2) ? 'c' : 'f' };
+      }
+      return cell;
     }
-  });
 
-  // La nota sugli esempi compare solo se gli esempi ci sono davvero.
-  document.getElementById('demo-note').hidden = !ESEMPI;
+    groups.forEach(function(g){
+      var head = el('div', 'quartiere');
+      head.appendChild(el('span', 'ln'));
+      head.appendChild(el('span', 'dm', '◆'));
+      head.appendChild(el('span', 'nm', g.q));
+      head.appendChild(el('span', 'dm', '◆'));
+      head.appendChild(el('span', 'ln'));
+      wall.appendChild(head);
+
+      g.rows.forEach(function(row){
+        var r = el('div', 'row');
+        if (row.off) r.appendChild(makeBrick({ t:'h' }, g.q));
+        row.cells.forEach(function(c){ r.appendChild(makeBrick(risolvi(c, g.q), g.q)); });
+        if (row.off) r.appendChild(makeBrick({ t:'h' }, g.q));
+        wall.appendChild(r);
+      });
+
+      // Piu' Fondatori dei posti previsti: il muro alza altre file.
+      var resto = coda[g.q];
+      var sfalsa = g.rows.length;
+      while (resto && resto.length){
+        var extra = el('div', 'row');
+        var off = (sfalsa++ % 2) === 1;
+        if (off) extra.appendChild(makeBrick({ t:'h' }, g.q));
+        for (var k = 0; k < (off ? 7 : 9) && resto.length; k++){
+          extra.appendChild(makeBrick(risolvi({ t:'b' }, g.q), g.q));
+        }
+        if (off) extra.appendChild(makeBrick({ t:'h' }, g.q));
+        wall.appendChild(extra);
+      }
+    });
+
+    document.getElementById('demo-note').hidden = !ESEMPI;
+  }
+
+  /* ---------- Avvio ---------- */
+
+  costruisciMosaico();
+  applicaLingua();
+  ridisegnaMuro();
 })();
 </script>
 </body>
