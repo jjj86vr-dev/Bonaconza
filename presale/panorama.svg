@@ -1,5 +1,8 @@
 <!--
-  Verona da Castel San Pietro — illustrazione originale stilizzata.
+  Verona da Castel San Pietro — illustrazione originale stilizzata,
+  versione in colori diurni reali: cielo azzurro, Torricelle verdi,
+  tetti in cotto, l'Adige verde-acqua, Ponte Pietra in pietra chiara.
+
   Disegnata a mano in SVG per questo progetto: non deriva da alcuna
   fotografia, quindi e' libera da vincoli di licenza.
 
@@ -12,48 +15,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
   <defs>
     <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0"    stop-color="#2b3448"/>
-      <stop offset="0.34" stop-color="#6e4f52"/>
-      <stop offset="0.60" stop-color="#b8764f"/>
-      <stop offset="0.80" stop-color="#e2a463"/>
-      <stop offset="1"    stop-color="#f2cf94"/>
+      <stop offset="0"    stop-color="#4f93cc"/>
+      <stop offset="0.45" stop-color="#7fb4dd"/>
+      <stop offset="0.8"  stop-color="#c2ddec"/>
+      <stop offset="1"    stop-color="#e6f1f4"/>
     </linearGradient>
-    <radialGradient id="sole" cx="0.72" cy="0.92" r="0.5">
-      <stop offset="0"   stop-color="#ffe4ac" stop-opacity="0.95"/>
-      <stop offset="0.45" stop-color="#f0a860" stop-opacity="0.45"/>
-      <stop offset="1"   stop-color="#f0a860" stop-opacity="0"/>
-    </radialGradient>
     <linearGradient id="fiume" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0"   stop-color="#8a6a55"/>
-      <stop offset="0.4" stop-color="#a4795a"/>
-      <stop offset="1"   stop-color="#5c4436"/>
+      <stop offset="0"   stop-color="#7fb0a8"/>
+      <stop offset="0.4" stop-color="#5f978f"/>
+      <stop offset="1"   stop-color="#3f6f6a"/>
     </linearGradient>
     <linearGradient id="tetti" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#a85a42"/>
-      <stop offset="1" stop-color="#6d3629"/>
+      <stop offset="0" stop-color="#c46a42"/>
+      <stop offset="1" stop-color="#8f4630"/>
     </linearGradient>
     <linearGradient id="tettiFar" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#94614c"/>
-      <stop offset="1" stop-color="#7a4a3a"/>
+      <stop offset="0" stop-color="#cd7a4e"/>
+      <stop offset="1" stop-color="#a45a3c"/>
     </linearGradient>
   </defs>
 
-  <!-- cielo e sole -->
+  <!-- cielo -->
   <rect width="1200" height="500" fill="url(#cielo)"/>
-  <rect width="1200" height="500" fill="url(#sole)"/>
 
-  <!-- colline delle Torricelle, lontane -->
+  <!-- nuvole leggere -->
+  <g fill="#ffffff" opacity="0.75">
+    <ellipse cx="180"  cy="80"  rx="90" ry="18"/>
+    <ellipse cx="245"  cy="68"  rx="60" ry="14"/>
+    <ellipse cx="860"  cy="60"  rx="110" ry="20"/>
+    <ellipse cx="950"  cy="74"  rx="70" ry="14"/>
+    <ellipse cx="1105" cy="120" rx="80" ry="15"/>
+  </g>
+
+  <!-- colline delle Torricelle, verdi -->
   <path d="M0,232 C90,206 150,222 220,214 C300,205 340,186 430,192
            C520,198 570,214 660,208 C760,201 820,214 900,208
            C990,201 1060,216 1200,206 L1200,268 L0,268 Z"
-        fill="#4a4657" opacity="0.85"/>
+        fill="#7da35e"/>
   <path d="M0,252 C120,236 200,248 300,242 C420,235 470,222 580,230
            C700,239 780,250 900,244 C1020,238 1100,248 1200,240
            L1200,290 L0,290 Z"
-        fill="#3f3b4b" opacity="0.9"/>
+        fill="#5d8449"/>
 
-  <!-- profilo di citta' lontano -->
-  <g fill="#5d4a48" opacity="0.9">
+  <!-- profilo di citta' lontano, pietra chiara -->
+  <g fill="#d9c9a8" opacity="0.95">
     <rect x="60"  y="258" width="70"  height="34"/>
     <rect x="150" y="264" width="52"  height="28"/>
     <rect x="980" y="256" width="86"  height="36"/>
@@ -61,44 +66,44 @@
   </g>
 
   <!-- campanile del Duomo -->
-  <g fill="#7d5240">
+  <g fill="#d8c49c">
     <rect x="252" y="176" width="34" height="118"/>
     <rect x="248" y="170" width="42" height="10"/>
-    <polygon points="252,176 269,146 286,176" fill="#8d5c46"/>
-    <rect x="262" y="196" width="6" height="18" fill="#3f2a22"/>
-    <rect x="272" y="196" width="6" height="18" fill="#3f2a22"/>
+    <polygon points="252,176 269,146 286,176" fill="#a85a3c"/>
+    <rect x="262" y="196" width="6" height="18" fill="#5c4632"/>
+    <rect x="272" y="196" width="6" height="18" fill="#5c4632"/>
   </g>
 
   <!-- Torre dei Lamberti: il segno piu' riconoscibile della veduta -->
   <g>
-    <rect x="556" y="118" width="44" height="176" fill="#a06a4e"/>
-    <rect x="556" y="118" width="44" height="52"  fill="#b8825d"/>
-    <rect x="550" y="112" width="56" height="12"  fill="#c08a63"/>
-    <polygon points="556,112 578,74 600,112" fill="#8d5c46"/>
+    <rect x="556" y="118" width="44" height="176" fill="#c9986a"/>
+    <rect x="556" y="118" width="44" height="52"  fill="#e2d3b2"/>
+    <rect x="550" y="112" width="56" height="12"  fill="#e9dcc0"/>
+    <polygon points="556,112 578,74 600,112" fill="#a85a3c"/>
     <rect x="574" y="66" width="5" height="12" fill="#d9a24e"/>
-    <rect x="566" y="140" width="8" height="24" fill="#4a3128"/>
-    <rect x="582" y="140" width="8" height="24" fill="#4a3128"/>
-    <rect x="566" y="188" width="8" height="22" fill="#4a3128"/>
-    <rect x="582" y="188" width="8" height="22" fill="#4a3128"/>
+    <rect x="566" y="140" width="8" height="24" fill="#6b5138"/>
+    <rect x="582" y="140" width="8" height="24" fill="#6b5138"/>
+    <rect x="566" y="188" width="8" height="22" fill="#6b5138"/>
+    <rect x="582" y="188" width="8" height="22" fill="#6b5138"/>
   </g>
 
   <!-- campanile di Sant'Anastasia -->
-  <g fill="#8a5a44">
+  <g fill="#b5744c">
     <rect x="740" y="164" width="30" height="130"/>
-    <polygon points="740,164 755,132 770,164" fill="#7a4d3a"/>
-    <rect x="748" y="184" width="6" height="20" fill="#3f2a22"/>
-    <rect x="757" y="184" width="6" height="20" fill="#3f2a22"/>
+    <polygon points="740,164 755,132 770,164" fill="#9c5636"/>
+    <rect x="748" y="184" width="6" height="20" fill="#5c4632"/>
+    <rect x="757" y="184" width="6" height="20" fill="#5c4632"/>
   </g>
 
   <!-- torre merlata, richiamo a Castelvecchio -->
-  <g fill="#8f5a43">
+  <g fill="#a8613e">
     <rect x="852" y="206" width="52" height="88"/>
-    <g fill="#a16a4d">
+    <g fill="#b8714a">
       <rect x="852" y="198" width="12" height="12"/>
       <rect x="872" y="198" width="12" height="12"/>
       <rect x="892" y="198" width="12" height="12"/>
     </g>
-    <rect x="870" y="228" width="10" height="24" fill="#3f2a22"/>
+    <rect x="870" y="228" width="10" height="24" fill="#5c4632"/>
   </g>
 
   <!-- tessuto urbano: tetti dietro il fiume -->
@@ -110,12 +115,12 @@
            L1130,280 L1200,280 L1200,292 Z"
         fill="url(#tettiFar)"/>
 
-  <!-- Adige -->
+  <!-- Adige, verde-acqua -->
   <path d="M0,300 C160,290 300,318 470,318 C640,318 760,296 920,300
            C1040,303 1120,314 1200,308 L1200,372 C1100,378 1000,366 880,368
            C700,371 600,392 420,388 C260,384 140,368 0,374 Z"
         fill="url(#fiume)"/>
-  <g opacity="0.28" fill="#f2cf94">
+  <g opacity="0.5" fill="#eaf4f0">
     <rect x="300" y="330" width="120" height="3" rx="1.5"/>
     <rect x="520" y="344" width="180" height="3" rx="1.5"/>
     <rect x="760" y="326" width="140" height="3" rx="1.5"/>
@@ -123,20 +128,20 @@
     <rect x="940" y="348" width="110" height="3" rx="1.5"/>
   </g>
 
-  <!-- Ponte Pietra: cinque arcate, due in pietra chiara e tre in mattone -->
+  <!-- Ponte Pietra: due arcate in pietra bianca, tre in mattone -->
   <g>
-    <path d="M300,306 L300,296 L800,296 L800,306 Z" fill="#b08560"/>
-    <g fill="#9a6a4b">
+    <path d="M300,306 L300,296 L800,296 L800,306 Z" fill="#e8dcc2"/>
+    <g fill="#ddcfae">
       <path d="M300,306 L300,340 L392,340 L392,306 A46,34 0 0,0 300,306 Z"/>
       <path d="M400,306 L400,344 L500,344 L500,306 A50,36 0 0,0 400,306 Z"/>
     </g>
-    <g fill="#8c4f3a">
+    <g fill="#ad5b3c">
       <path d="M508,306 L508,346 L608,346 L608,306 A50,38 0 0,0 508,306 Z"/>
       <path d="M616,306 L616,344 L708,344 L708,306 A46,36 0 0,0 616,306 Z"/>
       <path d="M716,306 L716,338 L800,338 L800,306 A42,32 0 0,0 716,306 Z"/>
     </g>
     <!-- luci sotto le arcate -->
-    <g fill="#5c4436">
+    <g fill="#38625d">
       <ellipse cx="346" cy="322" rx="34" ry="22"/>
       <ellipse cx="450" cy="326" rx="38" ry="24"/>
       <ellipse cx="558" cy="328" rx="38" ry="25"/>
@@ -144,9 +149,9 @@
       <ellipse cx="758" cy="322" rx="30" ry="20"/>
     </g>
     <!-- torre di guardia sulla riva -->
-    <g fill="#7a4a37">
+    <g fill="#c9986a">
       <rect x="286" y="256" width="30" height="50"/>
-      <g fill="#8f5a43">
+      <g fill="#d8ab7c">
         <rect x="286" y="250" width="8" height="9"/>
         <rect x="297" y="250" width="8" height="9"/>
         <rect x="308" y="250" width="8" height="9"/>
@@ -154,7 +159,7 @@
     </g>
   </g>
 
-  <!-- riva e tetti in primo piano -->
+  <!-- riva e tetti in primo piano, cotto veronese -->
   <path d="M0,370 L0,352 L70,352 L70,364 L140,364 L140,346 L210,346 L210,360
            L300,360 L300,350 L380,350 L380,366 L470,366 L470,352 L560,352
            L560,368 L660,368 L660,356 L750,356 L750,370 L850,370 L850,354
@@ -162,8 +167,8 @@
            L1200,370 L1200,500 L0,500 Z"
         fill="url(#tetti)"/>
 
-  <!-- comignoli e finestre -->
-  <g fill="#4d2a20" opacity="0.6">
+  <!-- comignoli e finestre in ombra -->
+  <g fill="#6b3822" opacity="0.7">
     <rect x="96"  y="384" width="10" height="16"/>
     <rect x="238" y="374" width="10" height="16"/>
     <rect x="412" y="390" width="10" height="16"/>
@@ -171,7 +176,7 @@
     <rect x="792" y="382" width="10" height="16"/>
     <rect x="978" y="392" width="10" height="16"/>
   </g>
-  <g fill="#f2cf94" opacity="0.55">
+  <g fill="#5c3424" opacity="0.8">
     <rect x="60"  y="412" width="9" height="12"/>
     <rect x="152" y="420" width="9" height="12"/>
     <rect x="330" y="410" width="9" height="12"/>
@@ -182,7 +187,7 @@
   </g>
 
   <!-- cipressi, primissimo piano -->
-  <g fill="#243026">
+  <g fill="#2f4a2c">
     <ellipse cx="88"   cy="418" rx="17" ry="58"/>
     <ellipse cx="126"  cy="440" rx="13" ry="44"/>
     <ellipse cx="1094" cy="424" rx="16" ry="54"/>
@@ -190,8 +195,8 @@
   </g>
 
   <!-- terrazza di Castel San Pietro: la balaustra da cui si guarda -->
-  <rect x="0" y="470" width="1200" height="30" fill="#2f241d"/>
-  <g fill="#3c2e24">
+  <rect x="0" y="470" width="1200" height="30" fill="#7a6f5c"/>
+  <g fill="#8a7e6a">
     <rect x="0" y="462" width="1200" height="10"/>
   </g>
 </svg>

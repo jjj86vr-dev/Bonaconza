@@ -49,9 +49,11 @@ da sola nel selettore se aggiungi il pulsante corrispondente.
 ## Il mosaico
 
 Lo sfondo dell'intestazione è **Verona vista da Castel San Pietro**, scomposta
-in 540 tessere (36 × 15). Non serve nessuna foto perché funzioni: i colori
-sono campionati da `panorama.svg`, un'illustrazione disegnata apposta per
-questo progetto e quindi **libera da vincoli di licenza**.
+in 960 tessere (48 × 20). Non serve nessuna foto perché funzioni: i colori
+sono campionati da `panorama.svg`, un'illustrazione in colori diurni reali —
+cielo azzurro, Torricelle verdi, tetti in cotto, l'Adige verde-acqua, Ponte
+Pietra in pietra chiara — disegnata apposta per questo progetto e quindi
+**libera da vincoli di licenza**.
 
 Le tessere si compongono a onda dal centro, e la griglia si comporta come uno
 sfondo `cover`: mantiene le proporzioni del panorama e viene ritagliata,
@@ -66,7 +68,7 @@ var FOTO = [
 ];
 ```
 
-`x,y` è la tessera in alto a sinistra (0-35 e 0-14), `w,h` quante ne occupa.
+`x,y` è la tessera in alto a sinistra (0-47 e 0-19), `w,h` quante ne occupa.
 Le foto vengono virate sui toni del panorama, così il mosaico resta leggibile
 come veduta d'insieme anche quando sarà mezzo fotografico. I crediti compaiono
 da soli in basso a destra.
@@ -176,7 +178,7 @@ nessuno di essi.
 
 | Scenario | Esito |
 |---|---|
-| Italiano, 0 Fondatori | 540 tessere, 33 colori distinti, muro e contatori coerenti |
+| Italiano, 0 Fondatori | 960 tessere, 120 colori distinti, muro e contatori coerenti |
 | Passaggio a inglese | `<html lang>`, titolo, meta description, FAQ, note legali, etichette dei mattoni, testo WhatsApp: tutto tradotto |
 | `?lang=en` diretto | lingua inglese applicata all'apertura |
 | Scheda mattone in inglese | testi, offerta e pulsante tradotti; focus sul pulsante di chiusura |

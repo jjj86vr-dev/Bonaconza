@@ -13,8 +13,8 @@ import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
-const COLS = 36
-const ROWS = 15
+const COLS = 48
+const ROWS = 20
 const here = dirname(fileURLToPath(import.meta.url))
 const svg = await readFile(join(here, '..', 'panorama.svg'), 'utf8')
 
