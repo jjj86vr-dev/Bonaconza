@@ -2,7 +2,19 @@
 
 Campagna Fondatori. Pagina singola, autosufficiente, senza backend:
 HTML, CSS e JS in un file, più il panorama e l'immagine di anteprima.
-Si pubblica trascinandola su Netlify e collegando uno Stripe Payment Link.
+Si pubblica trascinandola su Netlify e collegando un modulo di prenotazione.
+
+**Modello: prenoti oggi senza carta, paghi solo se il muro apre.**
+La prenotazione è gratuita; al completamento della campagna (o entro la
+data limite) parte via email il link di pagamento Stripe da 99 €, con 14
+giorni di recesso dal pagamento come da Codice del Consumo. Se il muro
+non apre, le prenotazioni decadono e nessuno paga nulla.
+
+> Perché non "blocchiamo" la carta subito: le autorizzazioni carta
+> scadono dopo circa 7 giorni, una campagna dura settimane. Il modo
+> onesto e senza backend è prenotazione ora + incasso a obiettivo
+> raggiunto. Se un giorno servisse la carta salvata subito, si fa con
+> Stripe Checkout in modalità setup, ma richiede un backend.
 
 **Serve a rispondere all'unica domanda che conta prima di costruire qualsiasi
 cosa: i veronesi pagano?** 100 mattoni × 99 € = 9.900 € di tetto. Non è il
@@ -98,23 +110,26 @@ Tutto quello che va cambiato sta in un unico blocco `CONFIG`:
 
 ```js
 var CONFIG = {
-  STRIPE_LINK:   'INCOLLA_QUI_IL_TUO_PAYMENT_LINK',
-  EMAIL:         'INSERISCI-EMAIL',
-  PIVA:          'INSERISCI-PIVA',
-  SITO:          'https://lemuradiverona.it',
-  DATA_APERTURA: { it:'31 marzo 2026', en:'31 March 2026' },
-  TOTALE:        100,
-  MOSTRA_ESEMPI: null,        // null = automatico
-  LINGUA_DEFAULT:'it'
+  LINK_PRENOTAZIONE: 'INCOLLA_QUI_IL_LINK_DEL_MODULO',   // Tally o Google Form
+  EMAIL:             'INSERISCI-EMAIL',
+  PIVA:              'INSERISCI-PIVA',
+  SITO:              'https://lemuradiverona.it',
+  DATA_APERTURA:     { it:'31 marzo 2026', en:'31 March 2026' },
+  TOTALE:            100,
+  MOSTRA_ESEMPI:     false,   // sul muro solo attività vere
+  LINGUA_DEFAULT:    'it'
 };
 ```
 
 Email, partita IVA e data compaiono da sole in tutti i punti della pagina dove
 servono, in entrambe le lingue.
 
-### Registrare una vendita
+### Registrare una prenotazione
 
-Non si aggiorna nessun contatore. Si aggiunge una riga a `MURATI`:
+Non si aggiorna nessun contatore. Si aggiunge una riga a `MURATI`.
+I primi due Fondatori sono già murati: **Bonaconza Carni** (via G.C.
+Abba 15/A) e **Baraldi / BaccoVerona** (via IV Novembre 24D), entrambi
+in Borgo Trento.
 
 ```js
 { n:'Nome Attività', q:'Veronetta',
@@ -129,28 +144,34 @@ nuovo Fondatore nel suo quartiere con il sigillo dorato. Quartieri validi:
 
 Se un quartiere riceve più Fondatori dei posti previsti, **il muro alza altre
 file** invece di troncare in silenzio: verificato fino a 60 Fondatori.
-Ai primi 8 Fondatori veri **i mattoni di esempio si spengono da soli.**
+I nomi di fantasia non esistono più: i posti non prenotati appaiono come
+"da rivendicare" o "liberi".
 
-### Stripe Payment Link
+### Il modulo di prenotazione
 
-1. **Campi personalizzati:** "Nome attività" e "Quartiere"
-2. **Pagina di conferma → reindirizzamento** verso un modulo (Tally, Google
-   Form) per logo, descrizione, link e offerta
+Un Tally o Google Form con: nome attività, quartiere, email, logo,
+descrizione, link, offerta. Il quartiere del mattone cliccato arriva
+precompilato nel modulo come parametro `?quartiere=` (Tally e Google
+Form leggono la querystring).
 
-Il quartiere del mattone cliccato viaggia fino a Stripe come
-`client_reference_id`: clicchi un mattone di San Zeno e in dashboard il
-pagamento arriva con `san-zeno` accanto.
+Quando la campagna riesce: crei **un** Payment Link Stripe da 99 € e lo
+mandi via email a tutti i prenotati. Da lì valgono i 14 giorni di
+recesso.
 
 ---
 
 ## Prima di pubblicare
 
-- [ ] Sostituire i valori in `CONFIG`
+- [ ] Sostituire i valori in `CONFIG` (modulo, email, P.IVA)
 - [ ] Se cambi dominio, aggiornare `og:image`, `og:url`, `canonical` e i
       `hreflang` nel `<head>`: devono essere URL assoluti e reali
-- [ ] Configurare il Payment Link (campi personalizzati + redirect)
-- [ ] **Non lanciare con 0 mattoni murati.** Vendine 15-20 offline agli amici,
-      aggiungili a `MURATI` e parti da "ne restano 82"
+- [ ] Creare il modulo di prenotazione (Tally/Google Form) con il campo
+      `quartiere` precompilabile da querystring
+- [ ] **Conferma di Baraldi.** Bonaconza Carni è tua; Baraldi compare
+      pubblicamente come Fondatore: assicurati che l'accordo sia chiuso
+      prima di mettere la pagina online
+- [ ] Raccogliere altre 10-15 prenotazioni a voce prima del lancio, così
+      il contatore non parte da 2
 - [ ] Far leggere le note legali a un commercialista
 
 ## Una nota sul nome
@@ -178,12 +199,12 @@ nessuno di essi.
 
 | Scenario | Esito |
 |---|---|
-| Italiano, 0 Fondatori | 960 tessere, 120 colori distinti, muro e contatori coerenti |
-| Passaggio a inglese | `<html lang>`, titolo, meta description, FAQ, note legali, etichette dei mattoni, testo WhatsApp: tutto tradotto |
-| `?lang=en` diretto | lingua inglese applicata all'apertura |
-| Scheda mattone in inglese | testi, offerta e pulsante tradotti; focus sul pulsante di chiusura |
-| 4 Fondatori + 1 foto nel mosaico | contatori a 4/96, sigilli dorati, foto e crediti al posto giusto |
-| Cambio lingua a muro costruito | Fondatori, foto e contatori restano intatti |
+| Apertura | 2 prenotati / 98 restanti, Bonaconza Carni e Baraldi con sigillo, nessun nome di fantasia in pagina |
+| Scheda Baraldi | descrizione, pulsante "Visita" verso baccoverona.com |
+| Passaggio a inglese | "Bricks reserved", FAQ "When and how do I pay?", note "Reservation and payment" |
+| Modulo configurato | i pulsanti puntano al modulo; dal mattone arriva `?quartiere=citta-antica` |
+| Mosaico | 960 tessere in colori reali, su desktop e mobile |
+| Cambio lingua a muro costruito | Fondatori e contatori restano intatti |
 
 Accessibilità: pannello `inert` e invisibile da chiuso, focus restituito al
 mattone alla chiusura, tabulatore intrappolato nella scheda, `Esc` funzionante,

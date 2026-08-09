@@ -369,13 +369,13 @@
 
         <div class="prog-wrap">
           <div class="prog-top">
-            <span data-t="murati">Mattoni murati</span>
+            <span data-t="murati">Mattoni prenotati</span>
             <span><b class="js-murati">0</b> / <span class="js-totale">100</span></span>
           </div>
           <div class="prog"><i class="js-prog"></i></div>
         </div>
 
-        <div class="cta-wrap"><a class="btn js-buy" href="#fondatore" data-t="ctaHero">Prendi il tuo mattone — 99€</a></div>
+        <div class="cta-wrap"><a class="btn js-buy" href="#fondatore" data-t="ctaHero">Prenota il tuo mattone — 99€</a></div>
       </div>
     </div>
   </header>
@@ -394,13 +394,13 @@
     <div class="steps">
       <div class="step">
         <div class="rn">I.</div>
-        <h3 data-t="passo1t">Scegli il mattone</h3>
-        <p data-t="passo1p">Compra il tuo posto sul muro: 99€, una volta sola. Al momento del pagamento indichi il quartiere dove vuoi stare.</p>
+        <h3 data-t="passo1t">Prenota il mattone</h3>
+        <p data-t="passo1p">Prenoti il tuo posto senza pagare nulla oggi: 99€, una volta sola, e solo se il muro apre. Nella prenotazione indichi il quartiere dove vuoi stare.</p>
       </div>
       <div class="step">
         <div class="rn">II.</div>
         <h3 data-t="passo2t">Raccontati</h3>
-        <p data-t="passo2p">Subito dopo il pagamento ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.</p>
+        <p data-t="passo2p">Subito dopo la prenotazione ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.</p>
       </div>
       <div class="step">
         <div class="rn">III.</div>
@@ -433,10 +433,10 @@
         <div><span class="dm">&#9670;</span><span data-t="perk5"><b>Prezzo bloccato per sempre:</b> dopo i 100, solo abbonamento da 9€/mese</span></div>
       </div>
       <div class="fc">
-        <a class="btn js-buy" href="#fondatore" data-t="ctaFondatore">Divento Fondatore — 99€</a>
+        <a class="btn js-buy" href="#fondatore" data-t="ctaFondatore">Prenoto da Fondatore — 99€</a>
         <div class="trust">
-          <span data-t="fiducia1">Pagamento sicuro con Stripe · ricevuta automatica</span><br>
-          <span data-t="fiducia2">Se il muro non è online entro il</span> <b class="js-data">31 marzo 2026</b><span data-t="fiducia3">, rimborso del 100%.</span>
+          <span data-t="fiducia1">Oggi non paghi nulla: è una prenotazione, senza carta</span><br>
+          <span data-t="fiducia2">Il pagamento (99€, con Stripe) parte solo se il muro apre entro il</span> <b class="js-data">31 marzo 2026</b><span data-t="fiducia3">. Altrimenti la prenotazione decade, senza costi.</span>
         </div>
       </div>
     </div>
@@ -477,7 +477,7 @@
       <div class="ol" id="sh-offer-label">Offerta della settimana</div>
       <div class="ot" id="sh-offer-text"></div>
     </div>
-    <a class="btn act js-buy" id="sh-act" href="#fondatore">Divento Fondatore — 99€</a>
+    <a class="btn act js-buy" id="sh-act" href="#fondatore">Prenoto da Fondatore — 99€</a>
     <a class="btn visit" id="sh-visit" href="#" target="_blank" rel="noopener nofollow" hidden>Visita</a>
   </aside>
 
@@ -486,7 +486,7 @@
       <div class="t1" data-t="mattoneFondatore">Mattone Fondatore</div>
       <div class="t2"><b>99€</b> <span data-t="unaTantum">una tantum</span> · <span data-t="neRestano">ne restano</span> <b class="js-left">100</b></div>
     </div>
-    <a class="btn js-buy" href="#fondatore" data-t="ctaBarra">Prendi il tuo</a>
+    <a class="btn js-buy" href="#fondatore" data-t="ctaBarra">Prenota il tuo</a>
   </div>
 
 <script type="application/ld+json">
@@ -512,11 +512,11 @@
    ================================================================== */
 var CONFIG = {
 
-  /* 1. Stripe Payment Link del prodotto da 99 €.
-        Nel Payment Link ricordati di attivare:
-        - Campi personalizzati: "Nome attività" e "Quartiere"
-        - Pagina di conferma: reindirizza al modulo per logo e testi     */
-  STRIPE_LINK: 'INCOLLA_QUI_IL_TUO_PAYMENT_LINK',
+  /* 1. Link del modulo di PRENOTAZIONE (Tally o Google Form).
+        Oggi nessuno paga: il modulo raccoglie nome attività, quartiere,
+        email, logo e testi. Il link di pagamento Stripe da 99 € parte
+        via email SOLO se la campagna va a buon fine.                    */
+  LINK_PRENOTAZIONE: 'INCOLLA_QUI_IL_LINK_DEL_MODULO',
 
   /* 2. I tuoi dati                                                     */
   EMAIL: 'INSERISCI-EMAIL',
@@ -530,9 +530,8 @@ var CONFIG = {
   /* 4. Quanti mattoni fondatori esistono in tutto                       */
   TOTALE: 100,
 
-  /* 5. Mostra i mattoni di esempio? Si spengono da soli appena hai
-        almeno 8 Fondatori veri: da lì in poi il muro parla da solo.    */
-  MOSTRA_ESEMPI: null,  // null = automatico. true/false per forzare.
+  /* 5. Niente nomi di fantasia: sul muro solo attività vere.        */
+  MOSTRA_ESEMPI: false,
 
   /* 6. Lingua di partenza se il browser non è né italiano né inglese   */
   LINGUA_DEFAULT: 'it'
@@ -551,6 +550,13 @@ var CONFIG = {
    Quartieri validi: Città Antica · Veronetta · Borgo Trento · San Zeno
    ================================================================== */
 var MURATI = [
+  { n:'Bonaconza Carni', q:'Borgo Trento',
+    d:{ it:'Macelleria in via G.C. Abba 15/A.',
+        en:'Butcher shop, Via G.C. Abba 15/A.' } },
+  { n:'Baraldi', q:'Borgo Trento',
+    d:{ it:'Enoteca BaccoVerona, via IV Novembre 24D.',
+        en:'BaccoVerona wine shop, Via IV Novembre 24D.' },
+    u:'http://www.baccoverona.com/' },
   // { n:'Nome Attività', q:'Veronetta',
   //   d:{ it:'Due righe di descrizione.', en:'A two-line description.' },
   //   o:{ it:'Offerta della settimana', en:'Offer of the week' },
@@ -595,8 +601,8 @@ var T = {
     occhiello:'Il muro digitale della città',
     titolo:'Il tuo posto nella storia di Verona',
     sottotitolo:"Cento mattoni fondatori, un muro che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana.",
-    murati:'Mattoni murati',
-    ctaHero:'Prendi il tuo mattone — 99€',
+    murati:'Mattoni prenotati',
+    ctaHero:'Prenota il tuo mattone — 99€',
     ariaMuro:'Le mura di Verona',
     notaEsempi:'Muro dimostrativo: i mattoni con un nome sono esempi inventati, servono a mostrare come apparirà il tuo. I mattoni veri arrivano con i Fondatori.',
     scorri:'⟵ scorri il muro ⟶',
@@ -604,10 +610,10 @@ var T = {
 
     comeOcchiello:'Come funziona',
     comeTitolo:'Tre gesti, come si è sempre fatto',
-    passo1t:'Scegli il mattone',
-    passo1p:'Compra il tuo posto sul muro: 99€, una volta sola. Al momento del pagamento indichi il quartiere dove vuoi stare.',
+    passo1t:'Prenota il mattone',
+    passo1p:'Prenoti il tuo posto senza pagare nulla oggi: 99€, una volta sola, e solo se il muro apre. Nella prenotazione indichi il quartiere dove vuoi stare.',
     passo2t:'Raccontati',
-    passo2p:"Subito dopo il pagamento ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.",
+    passo2p:"Subito dopo la prenotazione ti arriva un modulo: logo, descrizione, link e l'offerta della settimana. Li aggiorni quando vuoi, senza costi.",
     passo3t:'Resta',
     passo3p:'Il tuo mattone è lì, col sigillo Fondatore, finché esistono le mura.',
 
@@ -626,38 +632,42 @@ var T = {
     perk3:'<b>Offerta della settimana</b> aggiornabile quando vuoi',
     perk4:'<b>Sigillo Fondatore</b> a vita sul tuo mattone',
     perk5:'<b>Prezzo bloccato per sempre:</b> dopo i 100, solo abbonamento da 9€/mese',
-    ctaFondatore:'Divento Fondatore — 99€',
-    ctaBarra:'Prendi il tuo',
-    fiducia1:'Pagamento sicuro con Stripe · ricevuta automatica',
-    fiducia2:'Se il muro non è online entro il',
-    fiducia3:', rimborso del 100%.',
+    ctaFondatore:'Prenoto da Fondatore — 99€',
+    ctaBarra:'Prenota il tuo',
+    fiducia1:'Oggi non paghi nulla: è una prenotazione, senza carta',
+    fiducia2:'Il pagamento (99€, con Stripe) parte solo se il muro apre entro il',
+    fiducia3:'. Altrimenti la prenotazione decade, senza costi.',
     passaparola:"Conosci un'attività veronese che ci starebbe bene?<br>Il muro si riempie col passaparola, non con la pubblicità.",
     ctaWhatsapp:'Manda su WhatsApp',
-    testoWhatsapp:'Ho visto Le Mura di Verona: 100 mattoni fondatori sul muro digitale della città, 99€ una volta sola. Ci starebbe bene la tua attività. ',
+    testoWhatsapp:'Ho visto Le Mura di Verona: 100 mattoni fondatori sul muro digitale della città. Si prenota gratis, si pagano 99€ solo se il muro apre. Ci starebbe bene la tua attività. ',
 
     domande:'Domande',
     primaDiMurare:'Prima di murare',
     faq:[
       ['È davvero per sempre?',
        'Il mattone Fondatore resta sul muro finché il muro esiste, senza rinnovi e senza scadenze. Non diciamo "in eterno" perché nessuno può prometterlo: ci impegniamo a tenere il muro online per almeno dieci anni, e se un giorno dovesse chiudere pubblichiamo l\'archivio completo e ti restituiamo i tuoi contenuti. Solo chi entrerà dopo i primi 100 pagherà un abbonamento.'],
+      ['Quando e come pago?',
+       'Oggi non paghi nulla e non inserisci nessuna carta: è una prenotazione. Quando i 100 mattoni sono tutti prenotati — e comunque entro la data indicata sopra — ricevi via email il link di pagamento sicuro Stripe da 99€. Dal pagamento hai quattordici giorni di diritto di recesso con rimborso integrale, come prevede la legge. Se il muro non apre, la prenotazione decade e non devi nulla.'],
       ['Posso cambiare logo, testo e offerta?',
        'Quando vuoi e quante volte vuoi. Il mattone è tuo: lo aggiorni tu, senza costi aggiuntivi.'],
       ['Mi porterà clienti?',
        'Non lo promettiamo, e diffida di chi lo fa. Quello che compri è presenza: un posto stabile, con il tuo nome, dentro una mappa della città che i veronesi hanno voglia di guardare. Il muro cresce col passaparola di chi ci sta dentro: per questo ogni Fondatore riceve un\'immagine pronta da condividere. Se cercavi un canale pubblicitario a risposta diretta, 99€ sono spesi meglio altrove.'],
-      ['Chi può comprare un mattone?',
+      ['Chi può prenotare un mattone?',
        'Attività, professionisti, associazioni e anche privati: un mattone può essere una dedica, un ricordo, una firma di famiglia.'],
       ['Quando aprono le mura?',
-       'Il muro va online al completamento della campagna Fondatori e comunque non oltre la data indicata sopra, comunicata via email a tutti gli acquirenti. Se entro quella data non è online, rimborsiamo il 100% a tutti senza che tu debba chiedere nulla.'],
+       'Il muro va online al completamento della campagna Fondatori e comunque non oltre la data indicata sopra, comunicata via email a tutti. Se entro quella data non è online, le prenotazioni decadono e nessuno paga nulla.'],
       ['Come vi mando logo e testi?',
-       'Subito dopo il pagamento vieni portato su un modulo dove carichi logo, descrizione, link e offerta. Se lo salti, ti arriva comunque per email: nessuno resta con un mattone vuoto.'],
+       'Subito dopo la prenotazione vieni portato su un modulo dove carichi logo, descrizione, link e offerta. Se lo salti, ti arriva comunque per email: nessuno resta con un mattone vuoto.'],
       ['Ricevo fattura?',
-       'Sì: il pagamento passa da Stripe e ricevi ricevuta automatica via email; su richiesta emettiamo fattura con i tuoi dati.']
+       'Sì: quando il pagamento parte, passa da Stripe e ricevi ricevuta automatica via email; su richiesta emettiamo fattura con i tuoi dati.']
     ],
     note:[
+      ['Prenotazione e pagamento',
+       'La prenotazione è gratuita e non richiede la carta. Il pagamento di 99€ viene richiesto via email, tramite Stripe, solo se la campagna va a buon fine e comunque non oltre il {data}: in caso contrario la prenotazione decade automaticamente e non è dovuto nulla.'],
       ['Diritto di recesso',
-       'Hai quattordici giorni dall\'acquisto per cambiare idea e ottenere il rimborso integrale, senza dover motivare la richiesta: scrivi a {email}. Oltre a questo, se il muro non è online entro il {data} rimborsiamo tutti al 100%.'],
+       'Dal momento del pagamento hai quattordici giorni per cambiare idea e ottenere il rimborso integrale, senza dover motivare la richiesta, come previsto dal Codice del Consumo — è legge nazionale, e vale naturalmente anche a Verona. Scrivi a {email}.'],
       ['Dati personali',
-       'Raccogliamo email e dati di fatturazione solo per gestire l\'acquisto e il tuo mattone. I pagamenti sono gestiti da Stripe: non vediamo né conserviamo i dati della tua carta. Non cediamo i dati a terzi e non usiamo cookie di profilazione. Puoi chiedere in ogni momento accesso, correzione o cancellazione scrivendo all\'indirizzo qui sopra.'],
+       'Raccogliamo email e dati della prenotazione solo per gestire la campagna e il tuo mattone. Quando arriverà il momento del pagamento sarà gestito da Stripe: non vedremo né conserveremo i dati della tua carta. Non cediamo i dati a terzi e non usiamo cookie di profilazione. Puoi chiedere in ogni momento accesso, correzione o cancellazione scrivendo all\'indirizzo qui sopra.'],
       ['Indipendenza',
        'Le Mura di Verona è un progetto privato e indipendente, non affiliato né approvato dal Comune di Verona o da altri enti pubblici. Il nome richiama le mura storiche della città a titolo puramente evocativo.']
     ],
@@ -674,9 +684,9 @@ var T = {
     nonRivendicatoTxt:'È la tua attività? Reclamalo da Fondatore: logo, profilo e offerta della settimana.',
     libero:'Mattone libero',
     liberoTxt:'Questo spazio aspetta una firma veronese. I primi 100 diventano Fondatori.',
-    ctaCosi:'Il mio mattone, così — 99€',
-    ctaAnche:'Anche il mio mattone — 99€',
-    ctaRivendico:'Rivendico da Fondatore — 99€',
+    ctaCosi:'Prenoto il mio, così — 99€',
+    ctaAnche:'Prenoto anche il mio — 99€',
+    ctaRivendico:'Lo prenoto da Fondatore — 99€',
     lbRivendica:'Rivendica',
     lbLibero:'Libero',
     visita:'Visita',
@@ -693,8 +703,8 @@ var T = {
     occhiello:'The digital wall of the city',
     titolo:'Your place in the story of Verona',
     sottotitolo:'One hundred founder bricks, a wall that stays. Every brick is a Verona business: logo, story and offer of the week.',
-    murati:'Bricks laid',
-    ctaHero:'Claim your brick — €99',
+    murati:'Bricks reserved',
+    ctaHero:'Reserve your brick — €99',
     ariaMuro:'The walls of Verona',
     notaEsempi:'Demonstration wall: the named bricks are invented examples, there to show how yours will look. The real bricks arrive with the Founders.',
     scorri:'⟵ scroll the wall ⟶',
@@ -702,10 +712,10 @@ var T = {
 
     comeOcchiello:'How it works',
     comeTitolo:"Three moves, the way it's always been done",
-    passo1t:'Choose your brick',
-    passo1p:'Buy your place on the wall: €99, once and for all. At checkout you tell us which district you want to be in.',
+    passo1t:'Reserve your brick',
+    passo1p:'Reserve your place with nothing to pay today: €99, once and for all, and only if the wall opens. In the reservation you tell us which district you want to be in.',
     passo2t:'Tell your story',
-    passo2p:'Right after payment you get a form: logo, description, link and the offer of the week. Change them whenever you like, at no cost.',
+    passo2p:'Right after your reservation you get a form: logo, description, link and the offer of the week. Change them whenever you like, at no cost.',
     passo3t:'Stay',
     passo3p:'Your brick is there, with the Founder seal, for as long as the walls stand.',
 
@@ -724,38 +734,42 @@ var T = {
     perk3:'<b>Offer of the week</b>, updatable whenever you like',
     perk4:'<b>Founder seal</b> on your brick, for life',
     perk5:'<b>Price locked forever:</b> after the first 100, subscription only, from €9/month',
-    ctaFondatore:'Become a Founder — €99',
-    ctaBarra:'Claim yours',
-    fiducia1:'Secure payment with Stripe · automatic receipt',
-    fiducia2:'If the wall is not online by',
-    fiducia3:', you get a 100% refund.',
+    ctaFondatore:'Reserve as a Founder — €99',
+    ctaBarra:'Reserve yours',
+    fiducia1:'Nothing to pay today: a reservation, no card required',
+    fiducia2:'Payment (€99, via Stripe) is only taken if the wall opens by',
+    fiducia3:'. Otherwise your reservation simply lapses, at no cost.',
     passaparola:'Know a Verona business that would fit right in?<br>This wall fills up by word of mouth, not by advertising.',
     ctaWhatsapp:'Send on WhatsApp',
-    testoWhatsapp:'I found The Walls of Verona: 100 founder bricks on the digital wall of the city, €99 once and for all. Your business would fit right in. ',
+    testoWhatsapp:'I found The Walls of Verona: 100 founder bricks on the digital wall of the city. Reserving is free, you pay €99 only if the wall opens. Your business would fit right in. ',
 
     domande:'Questions',
     primaDiMurare:'Before you lay it',
     faq:[
       ['Is it really forever?',
        'A Founder brick stays on the wall for as long as the wall exists, with no renewals and no expiry. We do not say "eternally", because nobody can promise that: we commit to keeping the wall online for at least ten years, and if it ever closes we publish the full archive and hand your content back to you. Only those arriving after the first 100 will pay a subscription.'],
+      ['When and how do I pay?',
+       'Nothing today, and no card required: this is a reservation. Once all 100 bricks are reserved — and in any case by the date shown above — you receive a secure Stripe payment link for €99 by email. From the moment you pay you have fourteen days to withdraw with a full refund, as the law provides. If the wall does not open, your reservation simply lapses and you owe nothing.'],
       ['Can I change the logo, text and offer?',
        'Whenever you like, as often as you like. The brick is yours: you update it yourself, at no extra cost.'],
       ['Will it bring me customers?',
        'We do not promise that, and be wary of anyone who does. What you are buying is presence: a fixed place, with your name on it, inside a map of the city that people in Verona actually want to look at. The wall grows through the word of mouth of those on it, which is why every Founder gets a ready-made image to share. If you were after direct-response advertising, €99 is better spent elsewhere.'],
-      ['Who can buy a brick?',
+      ['Who can reserve a brick?',
        'Businesses, professionals, associations and private individuals too: a brick can be a dedication, a memory, a family signature.'],
       ['When do the walls open?',
-       'The wall goes live once the Founder campaign is complete, and in any case no later than the date shown above, announced by email to every buyer. If it is not online by then, we refund everyone in full without you having to ask.'],
+       'The wall goes live once the Founder campaign is complete, and in any case no later than the date shown above, announced by email to everyone. If it is not online by then, all reservations lapse and nobody pays anything.'],
       ['How do I send you the logo and text?',
-       'Right after payment you are taken to a form where you upload logo, description, link and offer. If you skip it, it reaches you by email anyway: nobody is left with an empty brick.'],
+       'Right after your reservation you are taken to a form where you upload logo, description, link and offer. If you skip it, it reaches you by email anyway: nobody is left with an empty brick.'],
       ['Do I get an invoice?',
-       'Yes: payment runs through Stripe and you receive an automatic receipt by email; on request we issue a full invoice with your details.']
+       'Yes: when payment is taken it runs through Stripe and you receive an automatic receipt by email; on request we issue a full invoice with your details.']
     ],
     note:[
+      ['Reservation and payment',
+       'Reserving is free and requires no card. The €99 payment is requested by email, through Stripe, only if the campaign succeeds and in any case no later than {data}: otherwise your reservation lapses automatically and nothing is owed.'],
       ['Right of withdrawal',
-       'You have fourteen days from purchase to change your mind and get a full refund, with no need to give a reason: write to {email}. On top of that, if the wall is not online by {data} we refund everyone in full.'],
+       'From the moment you pay you have fourteen days to change your mind and receive a full refund, no reason required, as provided by the Italian Consumer Code — national law, which of course applies in Verona too. Write to {email}.'],
       ['Personal data',
-       'We collect email and billing details only to handle the purchase and your brick. Payments are handled by Stripe: we never see or store your card details. We do not share data with third parties and we use no tracking cookies. You can request access, correction or deletion at any time by writing to the address above.'],
+       'We collect email and reservation details only to run the campaign and your brick. When the time to pay comes it will be handled by Stripe: we will never see or store your card details. We do not share data with third parties and we use no tracking cookies. You can request access, correction or deletion at any time by writing to the address above.'],
       ['Independence',
        'The Walls of Verona is a private, independent project, not affiliated with or endorsed by the City of Verona or any public body. The name evokes the historic city walls purely as an image.']
     ],
@@ -772,9 +786,9 @@ var T = {
     nonRivendicatoTxt:'Is this your business? Claim it as a Founder: logo, profile and offer of the week.',
     libero:'Free brick',
     liberoTxt:'This space is waiting for a Verona signature. The first 100 become Founders.',
-    ctaCosi:'My brick, just like this — €99',
-    ctaAnche:'My brick too — €99',
-    ctaRivendico:'Claim it as a Founder — €99',
+    ctaCosi:'Reserve mine, just like this — €99',
+    ctaAnche:'Reserve mine too — €99',
+    ctaRivendico:'Reserve it as a Founder — €99',
     lbRivendica:'Claim',
     lbLibero:'Free',
     visita:'Visit',
@@ -964,14 +978,16 @@ var T = {
 
   /* ---------- Pulsanti di acquisto ---------- */
 
-  var configured = CONFIG.STRIPE_LINK.indexOf('http') === 0;
+  var configured = CONFIG.LINK_PRENOTAZIONE.indexOf('http') === 0;
 
   function linkAcquisto(quartiere){
     if (!configured) return '#fondatore';
-    if (!quartiere)  return CONFIG.STRIPE_LINK;
-    return CONFIG.STRIPE_LINK +
-      (CONFIG.STRIPE_LINK.indexOf('?') > -1 ? '&' : '?') +
-      'client_reference_id=' + encodeURIComponent(slug(quartiere));
+    if (!quartiere)  return CONFIG.LINK_PRENOTAZIONE;
+    // Il quartiere arriva precompilato nel modulo (Tally e Google
+    // Form leggono i parametri in querystring).
+    return CONFIG.LINK_PRENOTAZIONE +
+      (CONFIG.LINK_PRENOTAZIONE.indexOf('?') > -1 ? '&' : '?') +
+      'quartiere=' + encodeURIComponent(slug(quartiere));
   }
 
   function armaAcquisto(nodo, quartiere, origine){
@@ -992,7 +1008,7 @@ var T = {
   each('.js-buy', function(n, i){ armaAcquisto(n, null, i === 0 ? 'hero' : 'pagina'); });
 
   if (!configured){
-    console.warn('Le Mura di Verona: STRIPE_LINK non configurato, i pulsanti puntano alla sezione Fondatore.');
+    console.warn('Le Mura di Verona: LINK_PRENOTAZIONE non configurato, i pulsanti puntano alla sezione Fondatore.');
   }
 
   var wa = document.getElementById('share-wa');
@@ -1033,68 +1049,23 @@ var T = {
      invece di un articolo sul giornale. */
   var QUARTIERI = ['Città Antica', 'Veronetta', 'Borgo Trento', 'San Zeno'];
 
+  /* Solo la forma delle file: niente nomi inventati. I posti non
+     occupati da un Fondatore vero diventano "da rivendicare" o
+     "liberi", alternati. */
   var groups = [
     { q:'Città Antica', rows:[
-      { off:false, cells:[
-        { t:'b', n:'Osteria del Grifone', d:{it:'Cucina veronese di casa, tavoli sotto il portico.',en:'Home-style Verona cooking, tables under the portico.'}, o:{it:'Menù pranzo 12€ dal lunedì al venerdì',en:'Lunch menu €12, Monday to Friday'} },
-        { t:'c' },
-        { t:'b', n:'Gelateria Bianca', d:{it:'Gelato artigianale, gusti di stagione.',en:'Artisan gelato, seasonal flavours.'}, o:{it:'Cono medio + panna 2,50€',en:'Medium cone with cream €2.50'} },
-        { t:'b', n:'Caffè del Lume', d:{it:'Colazioni lente e aperitivi al banco.',en:'Slow breakfasts and aperitivo at the bar.'}, o:{it:'Spritz + tagliere 8€ dalle 18',en:'Spritz + sharing board €8 from 6pm'} },
-        { t:'f' },
-        { t:'b', n:'Libreria Fenice', d:{it:'Libri nuovi e usati, scaffale dedicato al Veneto.',en:'New and second-hand books, a shelf devoted to the Veneto.'}, o:{it:'-20% sull\'usato fino a domenica',en:'20% off second-hand until Sunday'} },
-        { t:'c' },
-        { t:'b', n:'Fioreria Cardo', d:{it:'Fiori freschi ogni mattina, composizioni su misura.',en:'Fresh flowers every morning, bespoke arrangements.'}, o:{it:'Mazzo del sabato 10€',en:'Saturday bunch €10'} },
-        { t:'f' } ] },
-      { off:true, cells:[
-        { t:'p', n:'Trattoria Melograno', d:{it:'La trattoria di famiglia: bigoli, pastissada e vini della Valpolicella.',en:'The family trattoria: bigoli, pastissada and Valpolicella wines.'}, o:{it:'Gnocchi del venerdì + calice 11€',en:'Friday gnocchi + a glass €11'} },
-        { t:'c' },
-        { t:'b', n:'Studio Dentistico Aurora', d:{it:'Igiene e ortodonzia, appuntamenti anche il sabato.',en:'Hygiene and orthodontics, Saturday appointments too.'}, o:{it:'Prima visita e preventivo gratuiti',en:'First visit and quote free of charge'} },
-        { t:'f' },
-        { t:'b', n:'Gioielleria Sole', d:{it:'Orafi in bottega, riparazioni in giornata.',en:'Goldsmiths on site, same-day repairs.'}, o:{it:'Lucidatura anelli omaggio',en:'Free ring polishing'} },
-        { t:'c' },
-        { t:'b', n:'Locanda Verde', d:{it:'Dodici camere nel cuore della città antica.',en:'Twelve rooms in the heart of the old town.'}, o:{it:'Colazione inclusa ad agosto',en:'Breakfast included in August'} } ] }
+      { off:false, cells:[{t:'b'},{t:'c'},{t:'b'},{t:'b'},{t:'f'},{t:'b'},{t:'c'},{t:'b'},{t:'f'}] },
+      { off:true,  cells:[{t:'p'},{t:'c'},{t:'b'},{t:'f'},{t:'b'},{t:'c'},{t:'b'}] }
     ]},
     { q:'Veronetta', rows:[
-      { off:false, cells:[
-        { t:'b', n:'Pizzeria Salamandra', d:{it:'Impasto 48 ore, forno a legna, anche da asporto.',en:'48-hour dough, wood-fired oven, takeaway too.'}, o:{it:'Margherita + bibita 7€ lunedì e martedì',en:'Margherita + drink €7 Mondays and Tuesdays'} },
-        { t:'b', n:'Caffè Bussola', d:{it:'Torrefazione in casa e dolci del giorno.',en:'Roasted in house, pastries made daily.'}, o:{it:'Caffè + brioche 2,20€ fino alle 9',en:'Coffee + pastry €2.20 until 9am'} },
-        { t:'c' },
-        { t:'f' },
-        { t:'b', n:'Ciclofficina Pedale', d:{it:'Riparazioni bici e usato garantito.',en:'Bike repairs and guaranteed second-hand.'}, o:{it:'Controllo freni e cambio gratuito',en:'Free brake and gear check'} },
-        { t:'c' },
-        { t:'b', n:'Studio Yoga Sereno', d:{it:'Corsi mattina e sera, tutti i livelli.',en:'Morning and evening classes, all levels.'}, o:{it:'Prima lezione gratuita',en:'First class free'} },
-        { t:'f' },
-        { t:'c' } ] },
-      { off:true, cells:[
-        { t:'f' },
-        { t:'b', n:'Panificio Tre Archi', d:{it:'Pane a lievito madre sfornato due volte al giorno.',en:'Sourdough bread, baked twice a day.'}, o:{it:'Filone della sera -30% dopo le 18',en:'Evening loaf 30% off after 6pm'} },
-        { t:'c' },
-        { t:'p', n:'Birrificio Ramo Secco', d:{it:'Birra artigianale prodotta in quartiere, spine e bottiglie da asporto.',en:'Craft beer brewed in the district, on tap and in bottles to take away.'}, o:{it:'Giovedì: pinta del birraio 4€',en:"Thursdays: brewer's pint €4"} },
-        { t:'b', n:'Sartoria Filo', d:{it:'Riparazioni e abiti su misura.',en:'Alterations and made-to-measure clothing.'}, o:{it:'Orlo pantaloni 8€ in 24 ore',en:'Trouser hems €8 in 24 hours'} },
-        { t:'f' },
-        { t:'c' } ] }
+      { off:false, cells:[{t:'b'},{t:'b'},{t:'c'},{t:'f'},{t:'b'},{t:'c'},{t:'b'},{t:'f'},{t:'c'}] },
+      { off:true,  cells:[{t:'f'},{t:'b'},{t:'c'},{t:'p'},{t:'b'},{t:'f'},{t:'c'}] }
     ]},
     { q:'Borgo Trento', rows:[
-      { off:false, cells:[
-        { t:'b', n:'Farmacia Ulivo', d:{it:'Autoanalisi, tessera fedeltà e consegna a domicilio.',en:'Self-testing, loyalty card and home delivery.'}, o:{it:'Misurazione pressione gratuita',en:'Free blood pressure check'} },
-        { t:'c' },
-        { t:'p', n:'Palestra Ferro', d:{it:'Sala pesi, corsi e personal trainer con vista sull\'Adige.',en:'Weights room, classes and personal trainers overlooking the Adige.'}, o:{it:'Agosto: iscrizione a 0€',en:'August: €0 joining fee'} },
-        { t:'f' },
-        { t:'b', n:'Macelleria Bosco', d:{it:'Carni del territorio e pronti a cuocere.',en:'Local meat and ready-to-cook cuts.'}, o:{it:'Spiedo del sabato su prenotazione',en:'Saturday spit-roast, to order'} },
-        { t:'c' },
-        { t:'b', n:'Ottica Vetro', d:{it:'Controllo vista e montature indipendenti.',en:'Eye tests and independent frames.'}, o:{it:'Seconda lente omaggio',en:'Second lens free'} },
-        { t:'f' } ] }
+      { off:false, cells:[{t:'b'},{t:'c'},{t:'p'},{t:'f'},{t:'b'},{t:'c'},{t:'b'},{t:'f'}] }
     ]},
     { q:'San Zeno', rows:[
-      { off:true, cells:[
-        { t:'b', n:'Pasticceria Zucchero', d:{it:'Dolci di bottega, lievitati il fine settimana.',en:'Small-batch cakes, laminated pastries at weekends.'}, o:{it:'Colazione completa 3,50€ fino a domenica',en:'Full breakfast €3.50 until Sunday'} },
-        { t:'f' },
-        { t:'b', n:'Enoteca Quercia', d:{it:'Valpolicella, Soave e degustazioni il giovedì.',en:'Valpolicella, Soave and tastings on Thursdays.'}, o:{it:'Calice del giorno 3€',en:'Glass of the day €3'} },
-        { t:'c' },
-        { t:'b', n:'Bottega del Rame', d:{it:'Artigianato in rame battuto a mano.',en:'Hand-beaten copperware.'}, o:{it:'Incisione nome inclusa',en:'Name engraving included'} },
-        { t:'c' },
-        { t:'f' },
-        { t:'b', n:'Trattoria del Traghetto', d:{it:'Cucina di lago e di fiume sul lungadige.',en:'Lake and river cooking on the riverside.'}, o:{it:'Fritto misto del venerdì 14€',en:'Friday mixed fry €14'} } ] }
+      { off:true,  cells:[{t:'b'},{t:'f'},{t:'b'},{t:'c'},{t:'b'},{t:'c'},{t:'f'},{t:'b'}] }
     ]}
   ];
 
