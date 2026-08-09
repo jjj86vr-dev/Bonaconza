@@ -11,6 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Le Mura di Verona">
 <meta property="og:title" content="Le Mura di Verona">
 <meta property="og:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€, poi mai più a questo prezzo.">
@@ -26,6 +27,7 @@
 <link rel="canonical" href="https://lemuradiverona.it/">
 <link rel="alternate" hreflang="it" href="https://lemuradiverona.it/">
 <link rel="alternate" hreflang="en" href="https://lemuradiverona.it/?lang=en">
+<link rel="alternate" hreflang="de" href="https://lemuradiverona.it/?lang=de">
 <link rel="alternate" hreflang="x-default" href="https://lemuradiverona.it/">
 
 <meta name="theme-color" content="#241f1c">
@@ -212,6 +214,27 @@
   .brick.free .lb{ font-size:8px; letter-spacing:.26em; text-indent:.26em;
     text-transform:uppercase; color:rgba(50,40,25,.6); }
 
+  /* ---------- LE FONDAMENTA: dieci pietre sotto il muro ---------- */
+  .brick.pietra{ width:171px; height:72px; cursor:pointer;
+    background:linear-gradient(180deg,#e4d7ba,#c7b791); color:var(--stone-ink);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.5), inset 0 -4px 0 rgba(0,0,0,.22),
+      0 1px 2px rgba(0,0,0,.25); }
+  .brick.pietra .rn{ font-family:Optima,'Palatino Linotype',Palatino,Georgia,serif;
+    font-size:15px; font-weight:600; letter-spacing:.24em; text-indent:.24em;
+    text-shadow:0 1px 0 rgba(255,255,255,.5); }
+  .brick.pietra .nm{ font-family:Optima,'Palatino Linotype',Palatino,Georgia,serif;
+    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    max-width:92%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    text-shadow:0 1px 0 rgba(255,255,255,.5); }
+  .brick.pietra .lb{ font-size:8px; letter-spacing:.24em; text-indent:.24em;
+    text-transform:uppercase; color:rgba(87,73,47,.75);
+    text-shadow:0 1px 0 rgba(255,255,255,.4); }
+  .brick.pietra.fond{ box-shadow:inset 0 0 0 1px rgba(217,162,78,.75),
+    inset 0 2px 0 rgba(255,255,255,.5), inset 0 -4px 0 rgba(0,0,0,.22),
+    0 1px 2px rgba(0,0,0,.25); }
+  .brick.pietra.lib::before{ content:''; position:absolute; inset:5px;
+    border:1px dashed rgba(87,73,47,.45); border-radius:2px; }
+
   .demo-note{ text-align:center; font-size:11px; letter-spacing:.14em;
     color:var(--beige-dim); padding:12px 20px 0; }
   .hint{ text-align:center; font-size:11px; letter-spacing:.22em; text-indent:.22em;
@@ -260,6 +283,11 @@
   .founder .fc .btn{ width:100%; }
   .founder .trust{ margin-top:12px; font-size:11.5px; color:var(--beige-dim);
     letter-spacing:.06em; line-height:1.6; }
+
+  /* Card delle Fondamenta: pietra chiara al posto dell'oro */
+  .founder.pietra-card{ border-color:rgba(221,207,174,.55); }
+  .pietra-card .fh{ background:linear-gradient(180deg, rgba(161,146,123,.32), rgba(161,146,123,0)); }
+  .pietra-card .fh .t{ color:#ddcfae; }
 
   /* Passaparola */
   .spread{ margin-top:26px; text-align:center; background:var(--ink-2);
@@ -358,6 +386,7 @@
         <div class="lang" role="group" aria-label="Lingua / Language">
           <button type="button" data-lang="it" aria-pressed="true">IT</button>
           <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="de" aria-pressed="false">DE</button>
         </div>
       </div>
 
@@ -447,6 +476,31 @@
     </div>
   </section>
 
+  <section class="block" id="fondamenta">
+    <div class="sec-eyebrow" data-t="fonOcchiello">Solo dieci in tutta la città</div>
+    <h2 class="sec display" data-t="fonTitolo">Le Fondamenta di Verona</h2>
+    <p class="sec-sub" data-t="fonSub">Sotto i cento mattoni, dieci pietre. Non mattoni più grandi: le pietre su cui tutto il muro poggia, numerate da I a X.</p>
+    <div class="founder pietra-card">
+      <div class="fh">
+        <div class="t" data-t="unaVolta">Una volta sola</div>
+        <div class="price display">999€ <small>· <span data-t="neRestano">ne restano</span> <span class="js-fon-left">9</span> <span data-t="fonSu">su 10</span></small></div>
+      </div>
+      <div class="fl">
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk1"><b>Pietra numerata</b> (I–X) alla base del muro, sotto tutti i mattoni</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk2"><b>Incisione</b> con il tuo nome e l'anno MMXXVI</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk3"><b>Targa fisica incisa</b> da esporre in negozio</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk4"><b>Certificato numerato</b> stampato e firmato</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk5"><b>Nome in ogni comunicato stampa</b> del progetto</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk6"><b>Prima scelta</b> della posizione quando apre il muro, e cena annuale delle Fondamenta</span></div>
+        <div><span class="dm">&#9670;</span><span data-t="fonPerk7"><b>Trasferibile:</b> si può cedere o lasciare in eredità</span></div>
+      </div>
+      <div class="fc">
+        <a class="btn js-fon-buy" href="#fondamenta" data-t="fonCta">Prenoto una pietra — 999€</a>
+        <div class="trust"><span data-t="fonFiducia">Stessa formula del mattone: oggi non paghi nulla, 999€ solo se il muro apre.</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="faq">
     <div class="sec-eyebrow" data-t="domande">Domande</div>
     <h2 class="sec display" data-t="primaDiMurare">Prima di murare</h2>
@@ -525,10 +579,13 @@ var CONFIG = {
 
   /* 3. Data limite oltre la quale rimborsi tutti. Serve per legge e
         soprattutto per la fiducia: senza data, "prevendita" fa paura.  */
-  DATA_APERTURA: { it: '31 marzo 2026', en: '31 March 2026' },
+  DATA_APERTURA: { it: '31 marzo 2026', en: '31 March 2026', de: '31. März 2026' },
 
   /* 4. Quanti mattoni fondatori esistono in tutto                       */
   TOTALE: 100,
+
+  /* 4b. Le pietre di fondazione: dieci, numerate da I a X               */
+  TOTALE_PIETRE: 10,
 
   /* 5. Niente nomi di fantasia: sul muro solo attività vere.        */
   MOSTRA_ESEMPI: false,
@@ -550,17 +607,27 @@ var CONFIG = {
    Quartieri validi: Città Antica · Veronetta · Borgo Trento · San Zeno
    ================================================================== */
 var MURATI = [
-  { n:'Bonaconza Carni', q:'Borgo Trento',
-    d:{ it:'Macelleria in via G.C. Abba 15/A.',
-        en:'Butcher shop, Via G.C. Abba 15/A.' } },
   { n:'Baraldi', q:'Borgo Trento',
     d:{ it:'Enoteca BaccoVerona, via IV Novembre 24D.',
-        en:'BaccoVerona wine shop, Via IV Novembre 24D.' },
+        en:'BaccoVerona wine shop, Via IV Novembre 24D.',
+        de:'Weinhandlung BaccoVerona, Via IV Novembre 24D.' },
     u:'http://www.baccoverona.com/' },
   // { n:'Nome Attività', q:'Veronetta',
   //   d:{ it:'Due righe di descrizione.', en:'A two-line description.' },
   //   o:{ it:'Offerta della settimana', en:'Offer of the week' },
   //   u:'https://esempio.it', img:'' },
+];
+
+/* ==================================================================
+   LE FONDAMENTA — dieci pietre numerate da I a X, 999 €.
+   Una riga per pietra venduta, nell'ordine: la prima riga e' la
+   Pietra I. Stessi campi dei mattoni (n, d, u, img).
+   ================================================================== */
+var FONDAMENTA = [
+  { n:'Bonaconza Carni',
+    d:{ it:'Macelleria in via G.C. Abba 15/A.',
+        en:'Butcher shop, Via G.C. Abba 15/A.',
+        de:'Metzgerei in der Via G.C. Abba 15/A.' } },
 ];
 
 /* ==================================================================
@@ -676,6 +743,28 @@ var T = {
     piva:'P.IVA',
     fattoA:'fatto a Verona, in mattoni e codice',
 
+    fonOcchiello:'Solo dieci in tutta la città',
+    fonTitolo:'Le Fondamenta di Verona',
+    fonSub:'Sotto i cento mattoni, dieci pietre. Non mattoni più grandi: le pietre su cui tutto il muro poggia, numerate da I a X.',
+    fonPerk1:'<b>Pietra numerata</b> (I–X) alla base del muro, sotto tutti i mattoni',
+    fonPerk2:'<b>Incisione</b> con il tuo nome e l\'anno MMXXVI',
+    fonPerk3:'<b>Targa fisica incisa</b> da esporre in negozio',
+    fonPerk4:'<b>Certificato numerato</b> stampato e firmato',
+    fonPerk5:'<b>Nome in ogni comunicato stampa</b> del progetto',
+    fonPerk6:'<b>Prima scelta</b> della posizione quando apre il muro, e cena annuale delle Fondamenta',
+    fonPerk7:'<b>Trasferibile:</b> si può cedere o lasciare in eredità',
+    fonCta:'Prenoto una pietra — 999€',
+    fonFiducia:'Stessa formula del mattone: oggi non paghi nulla, 999€ solo se il muro apre.',
+    fonSu:'su 10',
+    fonMuroTitolo:'Le Fondamenta',
+    fonLabel:'Fondamenta',
+    pietraNome:'Pietra',
+    fonDisponibile:'Disponibile',
+    fonLibTxt:'Una delle dieci pietre su cui poggia tutto il muro: incisione, targa fisica, certificato numerato, nome nei comunicati. Per sempre, e solo per dieci.',
+    fonCtaScheda:'La prenoto — 999€',
+    fonAnche:'Prenoto anche io una pietra — 999€',
+    ariaPietraLibera:'Pietra delle Fondamenta disponibile, ',
+
     chiudi:'Chiudi',
     offertaSettimana:'Offerta della settimana',
     esempio:'esempio',
@@ -778,6 +867,28 @@ var T = {
     piva:'VAT',
     fattoA:'made in Verona, in bricks and code',
 
+    fonOcchiello:'Only ten in the whole city',
+    fonTitolo:'The Foundations of Verona',
+    fonSub:'Beneath the hundred bricks, ten stones. Not bigger bricks: the stones the whole wall rests on, numbered I to X.',
+    fonPerk1:'<b>Numbered stone</b> (I–X) at the base of the wall, beneath every brick',
+    fonPerk2:'<b>Engraving</b> with your name and the year MMXXVI',
+    fonPerk3:'<b>A real engraved plaque</b> to display in your shop',
+    fonPerk4:'<b>Numbered certificate</b>, printed and signed',
+    fonPerk5:'<b>Your name in every press release</b> of the project',
+    fonPerk6:'<b>First pick</b> of position when the wall opens, and the annual Foundations dinner',
+    fonPerk7:'<b>Transferable:</b> it can be passed on or inherited',
+    fonCta:'Reserve a stone — €999',
+    fonFiducia:'Same formula as the brick: nothing today, €999 only if the wall opens.',
+    fonSu:'of 10',
+    fonMuroTitolo:'The Foundations',
+    fonLabel:'Foundations',
+    pietraNome:'Stone',
+    fonDisponibile:'Available',
+    fonLibTxt:'One of the ten stones the whole wall rests on: engraving, physical plaque, numbered certificate, name in the press releases. Forever, and for ten only.',
+    fonCtaScheda:'I\'ll reserve it — €999',
+    fonAnche:'I\'ll reserve a stone too — €999',
+    ariaPietraLibera:'Available Foundation stone, ',
+
     chiudi:'Close',
     offertaSettimana:'Offer of the week',
     esempio:'example',
@@ -794,6 +905,130 @@ var T = {
     visita:'Visit',
     ariaLibero:'Free brick in ',
     ariaRivendica:'Brick to claim in '
+  },
+
+  de: {
+    lingua:'de', htmlLang:'de',
+    titoloPagina:'Die Mauern von Verona — Dein Platz in der Geschichte Veronas',
+    metaDesc:'Hundert Gründerziegel, eine digitale Mauer, die bleibt. Jeder Ziegel ist ein Veroneser Betrieb: Logo, Geschichte und Angebot der Woche. Gründerziegel 99€, nur die ersten 100.',
+
+    marchio1:'Die Mauern', marchio2:'von Verona',
+    occhiello:'Die digitale Mauer der Stadt',
+    titolo:'Dein Platz in der Geschichte Veronas',
+    sottotitolo:'Hundert Gründerziegel, eine Mauer, die bleibt. Jeder Ziegel ist ein Veroneser Betrieb: Logo, Geschichte und Angebot der Woche.',
+    murati:'Reservierte Ziegel',
+    ctaHero:'Reserviere deinen Ziegel — 99€',
+    ariaMuro:'Die Mauern von Verona',
+    notaEsempi:'Demonstrationsmauer: Die benannten Ziegel sind erfundene Beispiele. Die echten Ziegel kommen mit den Gründern.',
+    scorri:'⟵ die Mauer entlangscrollen ⟶',
+    creditiSfondo:'Hintergrund: Verona vom Castel San Pietro, Originalillustration',
+
+    comeOcchiello:'So funktioniert es',
+    comeTitolo:'Drei Schritte, wie eh und je',
+    passo1t:'Reserviere den Ziegel',
+    passo1p:'Du reservierst deinen Platz, ohne heute etwas zu zahlen: 99€, einmalig, und nur wenn die Mauer öffnet. Bei der Reservierung gibst du das Viertel an, in dem du stehen willst.',
+    passo2t:'Erzähl von dir',
+    passo2p:'Gleich nach der Reservierung bekommst du ein Formular: Logo, Beschreibung, Link und das Angebot der Woche. Du änderst sie, wann immer du willst, kostenlos.',
+    passo3t:'Bleib',
+    passo3p:'Dein Ziegel ist da, mit dem Gründersiegel, solange die Mauern stehen.',
+
+    percheOcchiello:'Warum eine Mauer',
+    percheTitolo:'Verona ist aus Stein gebaut, der bleibt',
+    manifesto:'Die Arena, die Brücke, Castelvecchio: Hier wird, was zählt, Stein auf Stein gebaut. Die digitale Seite der Stadt dagegen verschwindet in einem Feed. Die Mauern von Verona sind das Gegenteil eines Posts: eine Mauer, auf der die Betriebe der Stadt ihre Unterschrift setzen. Und die Unterschrift bleibt.',
+
+    soloCento:'Nur die ersten 100',
+    mattoneFondatore:'Gründerziegel',
+    fondatoreSub:'Wenn die 100 Ziegel vermauert sind, geht es nur noch im Abo weiter: 100€ im Monat oder 1.020€ im Jahr mit 15% Rabatt. Die Gründer nicht: 99€ ein einziges Mal, und sie bleiben.',
+    unaVolta:'Ein einziges Mal',
+    neRestano:'noch',
+    unaTantum:'einmalig',
+    perk1:'<b>Dauerhafter Ziegel</b> auf der Mauer, im Viertel deiner Wahl',
+    perk2:'<b>Volles Profil:</b> Logo, Beschreibung und Link zu deiner Seite',
+    perk3:'<b>Angebot der Woche</b>, jederzeit aktualisierbar',
+    perk4:'<b>Gründersiegel</b> auf deinem Ziegel, auf Lebenszeit',
+    perk5:'<b>Preis für immer festgeschrieben:</b> nach den ersten 100 nur noch im Abo, 100€ im Monat',
+    ctaFondatore:'Ich reserviere als Gründer — 99€',
+    ctaBarra:'Reserviere deinen',
+    fiducia1:'Heute zahlst du nichts: eine Reservierung, ohne Karte',
+    fiducia2:'Die Zahlung (99€, über Stripe) erfolgt nur, wenn die Mauer öffnet, spätestens am',
+    fiducia3:'. Andernfalls verfällt die Reservierung einfach, ohne Kosten.',
+    passaparola:'Kennst du einen Veroneser Betrieb, der hierher gehört?<br>Diese Mauer füllt sich durch Mundpropaganda, nicht durch Werbung.',
+    ctaWhatsapp:'Per WhatsApp teilen',
+    testoWhatsapp:'Ich habe Die Mauern von Verona entdeckt: 100 Gründerziegel auf der digitalen Mauer der Stadt. Reservieren ist gratis, 99€ zahlst du nur, wenn die Mauer öffnet. Dein Betrieb würde gut hineinpassen. ',
+
+    domande:'Fragen',
+    primaDiMurare:'Bevor du mauerst',
+    faq:[
+      ['Ist es wirklich für immer?',
+       'Ein Gründerziegel bleibt auf der Mauer, solange die Mauer existiert, ohne Verlängerungen und ohne Ablauf. Wir sagen nicht "für die Ewigkeit", denn das kann niemand versprechen: Wir verpflichten uns, die Mauer mindestens zehn Jahre online zu halten, und sollte sie eines Tages schließen, veröffentlichen wir das vollständige Archiv und geben dir deine Inhalte zurück. Nur wer nach den ersten 100 kommt, zahlt ein Abo: 100€ im Monat oder 1.020€ im Jahr mit 15% Rabatt.'],
+      ['Wann und wie zahle ich?',
+       'Heute nichts, und keine Karte nötig: Das ist eine Reservierung. Sobald alle 100 Ziegel reserviert sind — spätestens zum oben genannten Datum — bekommst du per E-Mail einen sicheren Stripe-Zahlungslink über 99€. Ab der Zahlung hast du vierzehn Tage Widerrufsrecht mit voller Erstattung, wie es das Gesetz vorsieht. Öffnet die Mauer nicht, verfällt die Reservierung und du schuldest nichts.'],
+      ['Kann ich Logo, Text und Angebot ändern?',
+       'Wann du willst, so oft du willst. Der Ziegel gehört dir: Du aktualisierst ihn selbst, ohne Zusatzkosten.'],
+      ['Bringt mir das Kunden?',
+       'Das versprechen wir nicht — und trau niemandem, der es tut. Was du kaufst, ist Präsenz: ein fester Platz mit deinem Namen auf einer Karte der Stadt, die die Veroneser wirklich anschauen wollen. Die Mauer wächst durch die Mundpropaganda derer, die darauf stehen: Deshalb bekommt jeder Gründer ein fertiges Bild zum Teilen. Wenn du klassische Direktwerbung suchst, sind 99€ woanders besser angelegt.'],
+      ['Wer kann einen Ziegel reservieren?',
+       'Betriebe, Freiberufler, Vereine und auch Privatpersonen: Ein Ziegel kann eine Widmung sein, eine Erinnerung, eine Familienunterschrift.'],
+      ['Wann öffnen die Mauern?',
+       'Die Mauer geht online, sobald die Gründerkampagne abgeschlossen ist, spätestens zum oben genannten Datum, das allen per E-Mail mitgeteilt wird. Ist sie bis dahin nicht online, verfallen alle Reservierungen und niemand zahlt etwas.'],
+      ['Wie schicke ich euch Logo und Texte?',
+       'Gleich nach der Reservierung wirst du zu einem Formular geführt, in dem du Logo, Beschreibung, Link und Angebot hochlädst. Überspringst du es, bekommst du es trotzdem per E-Mail: Niemand bleibt mit einem leeren Ziegel zurück.'],
+      ['Bekomme ich eine Rechnung?',
+       'Ja: Wenn die Zahlung erfolgt, läuft sie über Stripe und du erhältst automatisch eine Quittung per E-Mail; auf Wunsch stellen wir eine Rechnung mit deinen Daten aus.']
+    ],
+    note:[
+      ['Reservierung und Zahlung',
+       'Die Reservierung ist kostenlos und erfordert keine Karte. Die Zahlung von 99€ wird per E-Mail über Stripe angefordert, nur wenn die Kampagne gelingt, spätestens am {data}: Andernfalls verfällt die Reservierung automatisch und nichts ist geschuldet.'],
+      ['Widerrufsrecht',
+       'Ab der Zahlung hast du vierzehn Tage Zeit, es dir anders zu überlegen und die volle Erstattung zu erhalten, ohne Angabe von Gründen, wie es das italienische Verbraucherschutzgesetz vorsieht. Schreib an {email}.'],
+      ['Persönliche Daten',
+       'Wir erheben E-Mail und Reservierungsdaten nur, um die Kampagne und deinen Ziegel zu verwalten. Die spätere Zahlung wird über Stripe abgewickelt: Wir sehen und speichern deine Kartendaten nie. Wir geben keine Daten an Dritte weiter und verwenden keine Tracking-Cookies. Zugriff, Berichtigung oder Löschung kannst du jederzeit unter der obigen Adresse anfordern.'],
+      ['Unabhängigkeit',
+       'Die Mauern von Verona ist ein privates, unabhängiges Projekt, weder verbunden mit noch unterstützt von der Stadt Verona oder anderen öffentlichen Stellen. Der Name greift die historische Stadtmauer rein bildlich auf.']
+    ],
+
+    fonOcchiello:'Nur zehn in der ganzen Stadt',
+    fonTitolo:'Die Fundamente von Verona',
+    fonSub:'Unter den hundert Ziegeln: zehn Steine. Keine größeren Ziegel — die Steine, auf denen die ganze Mauer ruht, nummeriert von I bis X.',
+    fonPerk1:'<b>Nummerierter Grundstein</b> (I–X) am Fuß der Mauer, unter allen Ziegeln',
+    fonPerk2:'<b>Gravur</b> mit deinem Namen und dem Jahr MMXXVI',
+    fonPerk3:'<b>Echte gravierte Tafel</b> für dein Geschäft',
+    fonPerk4:'<b>Nummeriertes Zertifikat</b>, gedruckt und signiert',
+    fonPerk5:'<b>Dein Name in jeder Pressemitteilung</b> des Projekts',
+    fonPerk6:'<b>Erste Wahl</b> der Position, wenn die Mauer öffnet, und das jährliche Essen der Fundamente',
+    fonPerk7:'<b>Übertragbar:</b> kann weitergegeben oder vererbt werden',
+    fonCta:'Ich reserviere einen Grundstein — 999€',
+    fonFiducia:'Gleiche Formel wie beim Ziegel: heute nichts, 999€ nur wenn die Mauer öffnet.',
+    fonSu:'von 10',
+    fonMuroTitolo:'Die Fundamente',
+    fonLabel:'Fundamente',
+    pietraNome:'Grundstein',
+    fonDisponibile:'Frei',
+    fonLibTxt:'Einer der zehn Steine, auf denen die ganze Mauer ruht: Gravur, echte Tafel, nummeriertes Zertifikat, Name in den Pressemitteilungen. Für immer, und nur für zehn.',
+    fonCtaScheda:'Ich reserviere ihn — 999€',
+    fonAnche:'Ich reserviere auch einen — 999€',
+    ariaPietraLibera:'Freier Grundstein, ',
+
+    progettoDi:'Ein unabhängiges Projekt von Giacomo Pallavicini · Verona',
+    piva:'USt-IdNr.',
+    fattoA:'gemacht in Verona, aus Ziegeln und Code',
+
+    chiudi:'Schließen',
+    offertaSettimana:'Angebot der Woche',
+    esempio:'Beispiel',
+    fondatore:'Gründer',
+    nonRivendicato:'Nicht beanspruchter Ziegel',
+    nonRivendicatoTxt:'Ist das dein Betrieb? Beanspruche ihn als Gründer: Logo, Profil und Angebot der Woche.',
+    libero:'Freier Ziegel',
+    liberoTxt:'Dieser Platz wartet auf eine Veroneser Unterschrift. Die ersten 100 werden Gründer.',
+    ctaCosi:'Ich reserviere meinen, genau so — 99€',
+    ctaAnche:'Ich reserviere meinen auch — 99€',
+    ctaRivendico:'Ich beanspruche ihn als Gründer — 99€',
+    lbRivendica:'Beanspruchen',
+    lbLibero:'Frei',
+    visita:'Besuchen',
+    ariaLibero:'Freier Ziegel in ',
+    ariaRivendica:'Zu beanspruchender Ziegel in '
   }
 };
 
@@ -1007,6 +1242,11 @@ var T = {
 
   each('.js-buy', function(n, i){ armaAcquisto(n, null, i === 0 ? 'hero' : 'pagina'); });
 
+  var FON_OCC = Math.min(FONDAMENTA.length, CONFIG.TOTALE_PIETRE);
+  var FON_RESTANO = Math.max(CONFIG.TOTALE_PIETRE - FON_OCC, 0);
+  each('.js-fon-left', function(n){ n.textContent = FON_RESTANO; });
+  each('.js-fon-buy', function(n){ armaAcquisto(n, 'fondamenta', 'card-fondamenta'); });
+
   if (!configured){
     console.warn('Le Mura di Verona: LINK_PRENOTAZIONE non configurato, i pulsanti puntano alla sezione Fondatore.');
   }
@@ -1096,8 +1336,34 @@ var T = {
 
     visit.hidden = true;
     mono.innerHTML = '';
+    mono.style.color = '';
 
-    if (data.t === 'b' || data.t === 'p'){
+    if (data.t === 'fo'){
+      if (data.img){
+        var fimg = document.createElement('img');
+        fimg.src = data.img; fimg.alt = '';
+        mono.appendChild(fimg);
+      } else {
+        mono.textContent = data.roman;
+      }
+      mono.style.background = '#c7b791';
+      mono.style.color = '#57492f';
+      name.textContent = data.n;
+      qz.textContent = t('fonLabel') + ' · ' + t('pietraNome') + ' ' + data.roman;
+      desc.textContent = txt(data.d);
+      offer.hidden = true;
+      if (data.u){ visit.hidden = false; visit.setAttribute('href', data.u); }
+      act.textContent = t('fonAnche');
+    } else if (data.t === 'fl'){
+      mono.textContent = data.roman;
+      mono.style.background = '#c7b791';
+      mono.style.color = '#57492f';
+      name.textContent = t('pietraNome') + ' ' + data.roman;
+      qz.textContent = t('fonLabel');
+      desc.textContent = t('fonLibTxt');
+      offer.hidden = true;
+      act.textContent = t('fonCtaScheda');
+    } else if (data.t === 'b' || data.t === 'p'){
       if (data.img){
         var img = document.createElement('img');
         img.src = data.img; img.alt = '';
@@ -1135,7 +1401,9 @@ var T = {
       act.textContent = t('ctaFondatore');
     }
 
-    armaAcquisto(act, quart, 'mattone');
+    armaAcquisto(act,
+      (data.t === 'fo' || data.t === 'fl') ? 'fondamenta-' + data.roman.toLowerCase() : quart,
+      (data.t === 'fo' || data.t === 'fl') ? 'pietra' : 'mattone');
 
     ultimoFocus = document.activeElement;
     sheet.removeAttribute('inert');
@@ -1265,6 +1533,49 @@ var T = {
         wall.appendChild(extra);
       }
     });
+
+    // ── Le Fondamenta: due corsi da cinque pietre, sotto tutto ──
+    var ROMANI = ['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+
+    function makePietra(i){
+      var f = FONDAMENTA[i];
+      var roman = ROMANI[i];
+      var b = el('button', 'brick pietra' + (f ? ' fond' : ' lib'));
+      if (f){
+        b.appendChild(el('span', 'rn', roman));
+        b.appendChild(el('span', 'nm', f.n));
+        b.setAttribute('aria-label', f.n + ', ' + t('fonLabel') + ' ' + roman);
+        b.addEventListener('click', function(){
+          openSheet({ t:'fo', roman:roman, n:f.n, d:f.d, u:f.u || '', img:f.img || '' }, '#c7b791', '');
+        });
+      } else {
+        b.appendChild(el('span', 'rn', roman));
+        b.appendChild(el('span', 'lb', t('fonDisponibile')));
+        b.setAttribute('aria-label', t('ariaPietraLibera') + roman);
+        b.addEventListener('click', function(){
+          openSheet({ t:'fl', roman:roman }, '#c7b791', '');
+        });
+      }
+      b.style.setProperty('--d', (delay * 0.012) + 's');
+      delay++;
+      return b;
+    }
+
+    var fhead = el('div', 'quartiere');
+    fhead.appendChild(el('span', 'ln'));
+    fhead.appendChild(el('span', 'dm', '◆'));
+    fhead.appendChild(el('span', 'nm', t('fonMuroTitolo')));
+    fhead.appendChild(el('span', 'dm', '◆'));
+    fhead.appendChild(el('span', 'ln'));
+    wall.appendChild(fhead);
+
+    for (var corso = 0; corso < 2; corso++){
+      var fr = el('div', 'row');
+      for (var pi = corso * 5; pi < corso * 5 + 5; pi++){
+        fr.appendChild(makePietra(pi));
+      }
+      wall.appendChild(fr);
+    }
 
     document.getElementById('demo-note').hidden = !ESEMPI;
   }

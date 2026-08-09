@@ -45,18 +45,22 @@ costruisce quando i 100 mattoni sono venduti, non prima.
 
 ---
 
-## Due lingue
+## Tre lingue
 
-Italiano e inglese, tutto dentro l'oggetto `T` in fondo al file. La lingua si
-sceglie in quest'ordine: `?lang=en` nell'URL → scelta salvata in precedenza →
-lingua del browser → `CONFIG.LINGUA_DEFAULT`.
+Italiano (lingua di partenza), inglese e tedesco, tutto dentro l'oggetto `T`
+in fondo al file. La lingua si sceglie in quest'ordine: `?lang=en` /
+`?lang=de` nell'URL → scelta salvata in precedenza → lingua del browser →
+`CONFIG.LINGUA_DEFAULT` (italiano).
+
+Il tedesco non è un vezzo: Verona vive di turismo di lingua tedesca (Garda,
+Baviera, Austria) e le attività che lavorano con quel pubblico lo apprezzano.
 
 Cambiando lingua si aggiornano anche `<html lang>`, il titolo della pagina, la
 meta description, le etichette dei mattoni, le schede e il testo di WhatsApp.
 Nel `<head>` ci sono i `hreflang` per italiano, inglese e x-default.
 
-Per aggiungere una lingua: duplica un blocco dentro `T`, traduci, e comparirà
-da sola nel selettore se aggiungi il pulsante corrispondente.
+Per aggiungere un'altra lingua: duplica un blocco dentro `T`, traduci, e
+aggiungi il pulsante corrispondente nel selettore.
 
 ## Il mosaico
 
@@ -124,12 +128,29 @@ var CONFIG = {
 Email, partita IVA e data compaiono da sole in tutti i punti della pagina dove
 servono, in entrambe le lingue.
 
-### Registrare una prenotazione
+## Le Fondamenta di Verona
+
+Sotto i cento mattoni, il livello alto: **dieci pietre di fondazione a
+999 €**, numerate da I a X, rese come due corsi di pietra chiara alla base
+del muro. Non mattoni più grandi: le pietre su cui il muro poggia.
+
+Cosa comprende (tutto mantenibile senza promettere clienti): pietra numerata,
+incisione col nome, targa fisica da esporre, certificato numerato, nome nei
+comunicati, prima scelta della posizione, cena annuale, trasferibilità.
+Stessa formula di prenotazione: nessun pagamento oggi, 999 € solo se il muro
+apre. **La Pietra I è Bonaconza Carni.**
+
+Le vendite si registrano nell'array `FONDAMENTA` (stessi campi dei mattoni,
+in ordine: la prima riga è la Pietra I). Il contatore "ne restano X su 10"
+si aggiorna da solo. Dal mattone/pietra cliccati il modulo riceve
+`?quartiere=fondamenta-ii` e simili.
+
+### Registrare una prenotazione (mattoni)
 
 Non si aggiorna nessun contatore. Si aggiunge una riga a `MURATI`.
-I primi due Fondatori sono già murati: **Bonaconza Carni** (via G.C.
-Abba 15/A) e **Baraldi / BaccoVerona** (via IV Novembre 24D), entrambi
-in Borgo Trento.
+Già murati: **Baraldi / BaccoVerona** (via IV Novembre 24D, Borgo Trento)
+come mattone Fondatore, e **Bonaconza Carni** (via G.C. Abba 15/A) come
+Pietra I delle Fondamenta.
 
 ```js
 { n:'Nome Attività', q:'Veronetta',
@@ -199,10 +220,11 @@ nessuno di essi.
 
 | Scenario | Esito |
 |---|---|
-| Apertura | 2 prenotati / 98 restanti, Bonaconza Carni e Baraldi con sigillo, nessun nome di fantasia in pagina |
+| Apertura | mattoni 1/100 (Baraldi), Fondamenta 1/10 (Bonaconza Carni, Pietra I), nessun nome di fantasia |
 | Scheda Baraldi | descrizione, pulsante "Visita" verso baccoverona.com |
 | Passaggio a inglese | "Bricks reserved", FAQ "When and how do I pay?", note "Reservation and payment" |
-| Modulo configurato | i pulsanti puntano al modulo; dal mattone arriva `?quartiere=citta-antica` |
+| Passaggio a tedesco | "Die Mauern von Verona", "Die Fundamente von Verona", data "31. März 2026", FAQ e note complete |
+| Modulo configurato | dai mattoni arriva `?quartiere=citta-antica`, dalle pietre `?quartiere=fondamenta-ii` |
 | Mosaico | 960 tessere in colori reali, su desktop e mobile |
 | Cambio lingua a muro costruito | Fondatori e contatori restano intatti |
 
