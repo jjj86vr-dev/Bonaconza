@@ -168,10 +168,29 @@ file** invece di troncare in silenzio: verificato fino a 60 Fondatori.
 I nomi di fantasia non esistono più: i posti non prenotati appaiono come
 "da rivendicare" o "liberi".
 
+## La regola del muro: qui mura solo Verona
+
+Sul muro vanno **solo mattoni veronesi**: attività con sede in città o in
+provincia, persone nate o residenti a Verona, o **dediche a un veronese**
+(così il figlio emigrato può murare il mattone per il padre: è il mercato
+delle dediche, non va chiuso). Il legame si dichiara nel modulo e si
+verifica prima della pubblicazione; se manca, la prenotazione viene
+annullata — e siccome nessuno ha pagato, non c'è nulla da rimborsare.
+
+La regola è volutamente sul **mattone**, non sull'acquirente: dentro l'UE
+il regolamento sul geo-blocking (2018/302) vieta di discriminare il
+compratore per residenza o nazionalità, mentre un criterio editoriale sul
+contenuto — "questa è una mappa di Verona, ci vanno solo voci veronesi" —
+è una normale scelta di curatela, come una guida locale che elenca solo
+attività locali. Stessa sostanza, forma inattaccabile. In pagina la regola
+compare nell'hero ("Qui mura solo Verona."), nella FAQ "Chi può prenotare
+un mattone?" e nelle note legali, nelle tre lingue.
+
 ### Il modulo di prenotazione
 
 Un Tally o Google Form con: nome attività, quartiere, email, logo,
-descrizione, link, offerta. Il quartiere del mattone cliccato arriva
+descrizione, link, offerta, e **il legame con Verona** (sede / nascita /
+residenza / dedica — un menu a tendina più un campo libero). Il quartiere del mattone cliccato arriva
 precompilato nel modulo come parametro `?quartiere=` (Tally e Google
 Form leggono la querystring).
 

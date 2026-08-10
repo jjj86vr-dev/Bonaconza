@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Le Mura di Verona — Il tuo posto nella storia di Verona</title>
-<meta name="description" content="Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100.">
+<meta name="description" content="Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100. Qui mura solo Verona.">
 
 <!-- Anteprima social. Gli URL DEVONO essere assoluti e corrispondere al
      dominio vero: se cambi dominio, cambia anche queste righe. -->
@@ -14,7 +14,7 @@
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Le Mura di Verona">
 <meta property="og:title" content="Le Mura di Verona">
-<meta property="og:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€, poi mai più a questo prezzo.">
+<meta property="og:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€, poi mai più a questo prezzo. Qui mura solo Verona.">
 <meta property="og:url" content="https://lemuradiverona.it/">
 <meta property="og:image" content="https://lemuradiverona.it/og-cover.png">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="Le Mura di Verona — cento mattoni fondatori sul muro digitale della città">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Le Mura di Verona">
-<meta name="twitter:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€.">
+<meta name="twitter:description" content="Il muro digitale della città. 100 mattoni fondatori a 99€. Qui mura solo Verona.">
 <meta name="twitter:image" content="https://lemuradiverona.it/og-cover.png">
 <link rel="canonical" href="https://lemuradiverona.it/">
 <link rel="alternate" hreflang="it" href="https://lemuradiverona.it/">
@@ -117,6 +117,8 @@
   .sub{ max-width:480px; margin:0 auto; color:var(--beige-dim);
     font-size:15.5px; line-height:1.6; text-shadow:0 1px 6px rgba(0,0,0,.6); }
   .hero .cta-wrap{ margin-top:22px; }
+  .hero-regola{ margin-top:16px; font-size:11px; letter-spacing:.3em; text-indent:.3em;
+    text-transform:uppercase; color:var(--oro); text-shadow:0 1px 6px rgba(0,0,0,.65); }
 
   /* Avanzamento della muratura */
   .prog-wrap{ max-width:340px; margin:26px auto 0; }
@@ -405,6 +407,7 @@
         </div>
 
         <div class="cta-wrap"><a class="btn js-buy" href="#fondatore" data-t="ctaHero">Prenota il tuo mattone — 99€</a></div>
+        <p class="hero-regola" data-t="soloVeronesi">Qui mura solo Verona.</p>
       </div>
     </div>
   </header>
@@ -662,8 +665,9 @@ var T = {
   it: {
     lingua:'it', htmlLang:'it',
     titoloPagina:'Le Mura di Verona — Il tuo posto nella storia di Verona',
-    metaDesc:"Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100.",
+    metaDesc:"Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100. Qui mura solo Verona.",
 
+    soloVeronesi:'Qui mura solo Verona.',
     marchio1:'Le Mura', marchio2:'di Verona',
     occhiello:'Il muro digitale della città',
     titolo:'Il tuo posto nella storia di Verona',
@@ -720,7 +724,7 @@ var T = {
       ['Mi porterà clienti?',
        'Non lo promettiamo, e diffida di chi lo fa. Quello che compri è presenza: un posto stabile, con il tuo nome, dentro una mappa della città che i veronesi hanno voglia di guardare. Il muro cresce col passaparola di chi ci sta dentro: per questo ogni Fondatore riceve un\'immagine pronta da condividere. Se cercavi un canale pubblicitario a risposta diretta, 99€ sono spesi meglio altrove.'],
       ['Chi può prenotare un mattone?',
-       'Attività, professionisti, associazioni e anche privati: un mattone può essere una dedica, un ricordo, una firma di famiglia.'],
+       'Solo Verona. Attività con sede in città o in provincia, persone nate o residenti qui, associazioni veronesi — e le dediche: un mattone per un veronese lo può prenotare anche chi vive lontano. Nel modulo dichiari il tuo legame con la città; se manca, annulliamo la prenotazione (non hai pagato nulla, quindi non c\'è nulla da rimborsare).'],
       ['Quando aprono le mura?',
        'Il muro va online al completamento della campagna Fondatori e comunque non oltre la data indicata sopra, comunicata via email a tutti. Se entro quella data non è online, le prenotazioni decadono e nessuno paga nulla.'],
       ['Come vi mando logo e testi?',
@@ -731,6 +735,8 @@ var T = {
     note:[
       ['Prenotazione e pagamento',
        'La prenotazione è gratuita e non richiede la carta. Il pagamento di 99€ viene richiesto via email, tramite Stripe, solo se la campagna va a buon fine e comunque non oltre il {data}: in caso contrario la prenotazione decade automaticamente e non è dovuto nulla.'],
+      ['La regola del muro',
+       'Sul muro vanno solo mattoni veronesi: attività con sede a Verona o in provincia, persone nate o residenti a Verona, o dediche a un veronese. Il legame si dichiara nella prenotazione e viene verificato prima della pubblicazione: le prenotazioni senza un legame reale con la città vengono annullate, senza alcun addebito.'],
       ['Diritto di recesso',
        'Dal momento del pagamento hai quattordici giorni per cambiare idea e ottenere il rimborso integrale, senza dover motivare la richiesta, come previsto dal Codice del Consumo — è legge nazionale, e vale naturalmente anche a Verona. Scrivi a {email}.'],
       ['Dati personali',
@@ -786,8 +792,9 @@ var T = {
   en: {
     lingua:'en', htmlLang:'en',
     titoloPagina:'The Walls of Verona — Your place in the story of Verona',
-    metaDesc:'One hundred founder bricks, a wall that stays. Every brick is a Verona business: logo, story and offer of the week. Founder Brick €99, first 100 only.',
+    metaDesc:'One hundred founder bricks, a wall that stays. Every brick is a Verona business: logo, story and offer of the week. Founder Brick €99, first 100 only. Only Verona lays bricks here.',
 
+    soloVeronesi:'Only Verona lays bricks here.',
     marchio1:'The Walls', marchio2:'of Verona',
     occhiello:'The digital wall of the city',
     titolo:'Your place in the story of Verona',
@@ -844,7 +851,7 @@ var T = {
       ['Will it bring me customers?',
        'We do not promise that, and be wary of anyone who does. What you are buying is presence: a fixed place, with your name on it, inside a map of the city that people in Verona actually want to look at. The wall grows through the word of mouth of those on it, which is why every Founder gets a ready-made image to share. If you were after direct-response advertising, €99 is better spent elsewhere.'],
       ['Who can reserve a brick?',
-       'Businesses, professionals, associations and private individuals too: a brick can be a dedication, a memory, a family signature.'],
+       'Verona only. Businesses based in the city or its province, people born or living here, Verona associations — and dedications: a brick for a Veronese can be reserved even from far away. In the form you state your bond with the city; if it is missing, we cancel the reservation (you have paid nothing, so there is nothing to refund).'],
       ['When do the walls open?',
        'The wall goes live once the Founder campaign is complete, and in any case no later than the date shown above, announced by email to everyone. If it is not online by then, all reservations lapse and nobody pays anything.'],
       ['How do I send you the logo and text?',
@@ -855,6 +862,8 @@ var T = {
     note:[
       ['Reservation and payment',
        'Reserving is free and requires no card. The €99 payment is requested by email, through Stripe, only if the campaign succeeds and in any case no later than {data}: otherwise your reservation lapses automatically and nothing is owed.'],
+      ['The rule of the wall',
+       'Only Veronese bricks go on the wall: businesses based in Verona or its province, people born or resident in Verona, or dedications to a Veronese. The bond is declared at reservation and checked before publication: reservations without a real bond to the city are cancelled, with nothing charged.'],
       ['Right of withdrawal',
        'From the moment you pay you have fourteen days to change your mind and receive a full refund, no reason required, as provided by the Italian Consumer Code — national law, which of course applies in Verona too. Write to {email}.'],
       ['Personal data',
@@ -910,8 +919,9 @@ var T = {
   de: {
     lingua:'de', htmlLang:'de',
     titoloPagina:'Die Mauern von Verona — Dein Platz in der Geschichte Veronas',
-    metaDesc:'Hundert Gründerziegel, eine digitale Mauer, die bleibt. Jeder Ziegel ist ein Veroneser Betrieb: Logo, Geschichte und Angebot der Woche. Gründerziegel 99€, nur die ersten 100.',
+    metaDesc:'Hundert Gründerziegel, eine digitale Mauer, die bleibt. Jeder Ziegel ist ein Veroneser Betrieb: Logo, Geschichte und Angebot der Woche. Gründerziegel 99€, nur die ersten 100. Hier mauert nur Verona.',
 
+    soloVeronesi:'Hier mauert nur Verona.',
     marchio1:'Die Mauern', marchio2:'von Verona',
     occhiello:'Die digitale Mauer der Stadt',
     titolo:'Dein Platz in der Geschichte Veronas',
@@ -968,7 +978,7 @@ var T = {
       ['Bringt mir das Kunden?',
        'Das versprechen wir nicht — und trau niemandem, der es tut. Was du kaufst, ist Präsenz: ein fester Platz mit deinem Namen auf einer Karte der Stadt, die die Veroneser wirklich anschauen wollen. Die Mauer wächst durch die Mundpropaganda derer, die darauf stehen: Deshalb bekommt jeder Gründer ein fertiges Bild zum Teilen. Wenn du klassische Direktwerbung suchst, sind 99€ woanders besser angelegt.'],
       ['Wer kann einen Ziegel reservieren?',
-       'Betriebe, Freiberufler, Vereine und auch Privatpersonen: Ein Ziegel kann eine Widmung sein, eine Erinnerung, eine Familienunterschrift.'],
+       'Nur Verona. Betriebe mit Sitz in der Stadt oder der Provinz, Menschen, die hier geboren sind oder leben, Veroneser Vereine — und Widmungen: Einen Ziegel für einen Veroneser kann auch reservieren, wer weit weg wohnt. Im Formular gibst du deine Verbindung zur Stadt an; fehlt sie, stornieren wir die Reservierung (du hast nichts gezahlt, also gibt es nichts zu erstatten).'],
       ['Wann öffnen die Mauern?',
        'Die Mauer geht online, sobald die Gründerkampagne abgeschlossen ist, spätestens zum oben genannten Datum, das allen per E-Mail mitgeteilt wird. Ist sie bis dahin nicht online, verfallen alle Reservierungen und niemand zahlt etwas.'],
       ['Wie schicke ich euch Logo und Texte?',
@@ -979,6 +989,8 @@ var T = {
     note:[
       ['Reservierung und Zahlung',
        'Die Reservierung ist kostenlos und erfordert keine Karte. Die Zahlung von 99€ wird per E-Mail über Stripe angefordert, nur wenn die Kampagne gelingt, spätestens am {data}: Andernfalls verfällt die Reservierung automatisch und nichts ist geschuldet.'],
+      ['Die Regel der Mauer',
+       'Auf die Mauer kommen nur Veroneser Ziegel: Betriebe mit Sitz in Verona oder der Provinz, Menschen, die in Verona geboren oder wohnhaft sind, oder Widmungen an einen Veroneser. Die Verbindung wird bei der Reservierung angegeben und vor der Veröffentlichung geprüft: Reservierungen ohne echte Verbindung zur Stadt werden storniert, ohne jede Belastung.'],
       ['Widerrufsrecht',
        'Ab der Zahlung hast du vierzehn Tage Zeit, es dir anders zu überlegen und die volle Erstattung zu erhalten, ohne Angabe von Gründen, wie es das italienische Verbraucherschutzgesetz vorsieht. Schreib an {email}.'],
       ['Persönliche Daten',
