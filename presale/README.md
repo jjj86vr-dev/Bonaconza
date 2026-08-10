@@ -214,6 +214,28 @@ recesso.
       il contatore non parte da 2
 - [ ] Far leggere le note legali a un commercialista
 
+## Verifica concorrenza (10 agosto 2026)
+
+Cercato: muri/pareti digitali per attività veronesi, cloni locali della
+Million Dollar Homepage, formule "adotta un mattone", progetti col nome
+"Le Mura di Verona", domini.
+
+- **Nessun progetto uguale o simile esiste a Verona**: niente muro digitale
+  per le attività, nessun clone cittadino della MDH attivo in Italia.
+- **Il nome è affollato, ma da istituzioni, non da concorrenti**: le Mura
+  sono patrimonio UNESCO con progetti attivi (Mura Festival col Comune,
+  rilievo digitale UNESCO, Trail delle Mura). Nessuno vende mattoni, ma su
+  Google "le mura di Verona" sarà sempre il monumento: il progetto non può
+  vivere di ricerca organica — e non ne ha bisogno, vive di passaparola.
+  La dichiarazione di indipendenza in pagina è essenziale anche per questo.
+- **Il meccanismo ha precedenti culturali che aiutano**: "adotta un mattone"
+  è una formula nota nelle raccolte per i restauri (es. Rotonda di San
+  Lorenzo a Mantova), e il "Mattone del Cuore" di Hellas/Setti era
+  beneficenza. Gli italiani capiscono al volo il mattone simbolico.
+- **Domini**: `lemuradiverona.it` e `veronawall.it` non risolvono —
+  quasi certamente liberi. **Da registrare subito**, prima di parlare del
+  progetto in giro.
+
 ## Una nota sul nome
 
 "Le Mura di Verona" è più forte di "The Wall of Verona": le mura magistrali
