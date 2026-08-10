@@ -168,6 +168,23 @@ file** invece di troncare in silenzio: verificato fino a 60 Fondatori.
 I nomi di fantasia non esistono più: i posti non prenotati appaiono come
 "da rivendicare" o "liberi".
 
+## Le Dediche
+
+Le dediche hanno **una parte di muro tutta loro**, tra i quartieri e le
+Fondamenta: sedici spazi (che crescono da soli se servono) con il simbolo ❦,
+prezzo del mattone normale, prenotabili anche da lontano — il figlio emigrato
+che mura il mattone per il padre. È l'eco digitale dei biglietti sul muro di
+Giulietta: a Verona il gesto lo conoscono già.
+
+Una dedica si registra come qualunque mattone, con quartiere `Le Dediche`:
+
+```js
+{ n:'Per Nonna Maria', q:'Le Dediche', d:'1931–2019. Sempre con noi.' }
+```
+
+Dal modulo arriva `?quartiere=le-dediche`. La sezione è tradotta nelle tre
+lingue (The Dedications / Die Widmungen).
+
 ## La regola del muro: qui mura solo Verona
 
 Sul muro vanno **solo mattoni veronesi**: attività con sede in città o in

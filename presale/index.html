@@ -215,6 +215,7 @@
     border:1px dashed rgba(50,40,25,.4); }
   .brick.free .lb{ font-size:8px; letter-spacing:.26em; text-indent:.26em;
     text-transform:uppercase; color:rgba(50,40,25,.6); }
+  .brick.free .dq{ font-size:15px; line-height:1; color:rgba(87,73,47,.55); }
 
   /* ---------- LE FONDAMENTA: dieci pietre sotto il muro ---------- */
   .brick.pietra{ width:171px; height:72px; cursor:pointer;
@@ -668,6 +669,11 @@ var T = {
     metaDesc:"Cento mattoni fondatori, un muro digitale che resta. Ogni mattone è un'attività veronese: logo, storia e offerta della settimana. Mattone Fondatore 99€, solo i primi 100. Qui mura solo Verona.",
 
     soloVeronesi:'Qui mura solo Verona.',
+    dedicheTitolo:'Le Dediche',
+    lbDedica:'Dedica',
+    dedicaNome:'Spazio per una dedica',
+    dedicaTxt:'Un nome, una data, due righe: per un veronese che c\'è o che non c\'è più, per una famiglia, per un amore. Si può prenotare anche da lontano: è il mattone di chi a Verona ha il cuore.',
+    ctaDedica:'Prenoto una dedica — 99€',
     marchio1:'Le Mura', marchio2:'di Verona',
     occhiello:'Il muro digitale della città',
     titolo:'Il tuo posto nella storia di Verona',
@@ -724,7 +730,7 @@ var T = {
       ['Mi porterà clienti?',
        'Non lo promettiamo, e diffida di chi lo fa. Quello che compri è presenza: un posto stabile, con il tuo nome, dentro una mappa della città che i veronesi hanno voglia di guardare. Il muro cresce col passaparola di chi ci sta dentro: per questo ogni Fondatore riceve un\'immagine pronta da condividere. Se cercavi un canale pubblicitario a risposta diretta, 99€ sono spesi meglio altrove.'],
       ['Chi può prenotare un mattone?',
-       'Solo Verona. Attività con sede in città o in provincia, persone nate o residenti qui, associazioni veronesi — e le dediche: un mattone per un veronese lo può prenotare anche chi vive lontano. Nel modulo dichiari il tuo legame con la città; se manca, annulliamo la prenotazione (non hai pagato nulla, quindi non c\'è nulla da rimborsare).'],
+       'Solo Verona. Attività con sede in città o in provincia, persone nate o residenti qui, associazioni veronesi — e le dediche: un mattone per un veronese lo può prenotare anche chi vive lontano, e le dediche hanno una parte di muro tutta loro. Nel modulo dichiari il tuo legame con la città; se manca, annulliamo la prenotazione (non hai pagato nulla, quindi non c\'è nulla da rimborsare).'],
       ['Quando aprono le mura?',
        'Il muro va online al completamento della campagna Fondatori e comunque non oltre la data indicata sopra, comunicata via email a tutti. Se entro quella data non è online, le prenotazioni decadono e nessuno paga nulla.'],
       ['Come vi mando logo e testi?',
@@ -795,6 +801,11 @@ var T = {
     metaDesc:'One hundred founder bricks, a wall that stays. Every brick is a Verona business: logo, story and offer of the week. Founder Brick €99, first 100 only. Only Verona lays bricks here.',
 
     soloVeronesi:'Only Verona lays bricks here.',
+    dedicheTitolo:'The Dedications',
+    lbDedica:'Dedicate',
+    dedicaNome:'Space for a dedication',
+    dedicaTxt:'A name, a date, two lines: for a Veronese here or gone, for a family, for a love. It can be reserved from far away too: this is the brick for those whose heart is in Verona.',
+    ctaDedica:'I\'ll reserve a dedication — €99',
     marchio1:'The Walls', marchio2:'of Verona',
     occhiello:'The digital wall of the city',
     titolo:'Your place in the story of Verona',
@@ -851,7 +862,7 @@ var T = {
       ['Will it bring me customers?',
        'We do not promise that, and be wary of anyone who does. What you are buying is presence: a fixed place, with your name on it, inside a map of the city that people in Verona actually want to look at. The wall grows through the word of mouth of those on it, which is why every Founder gets a ready-made image to share. If you were after direct-response advertising, €99 is better spent elsewhere.'],
       ['Who can reserve a brick?',
-       'Verona only. Businesses based in the city or its province, people born or living here, Verona associations — and dedications: a brick for a Veronese can be reserved even from far away. In the form you state your bond with the city; if it is missing, we cancel the reservation (you have paid nothing, so there is nothing to refund).'],
+       'Verona only. Businesses based in the city or its province, people born or living here, Verona associations — and dedications: a brick for a Veronese can be reserved even from far away, and dedications have a part of the wall all their own. In the form you state your bond with the city; if it is missing, we cancel the reservation (you have paid nothing, so there is nothing to refund).'],
       ['When do the walls open?',
        'The wall goes live once the Founder campaign is complete, and in any case no later than the date shown above, announced by email to everyone. If it is not online by then, all reservations lapse and nobody pays anything.'],
       ['How do I send you the logo and text?',
@@ -922,6 +933,11 @@ var T = {
     metaDesc:'Hundert Gründerziegel, eine digitale Mauer, die bleibt. Jeder Ziegel ist ein Veroneser Betrieb: Logo, Geschichte und Angebot der Woche. Gründerziegel 99€, nur die ersten 100. Hier mauert nur Verona.',
 
     soloVeronesi:'Hier mauert nur Verona.',
+    dedicheTitolo:'Die Widmungen',
+    lbDedica:'Widmung',
+    dedicaNome:'Platz für eine Widmung',
+    dedicaTxt:'Ein Name, ein Datum, zwei Zeilen: für einen Veroneser, der da ist oder nicht mehr, für eine Familie, für eine Liebe. Auch aus der Ferne reservierbar: der Ziegel für alle, deren Herz in Verona ist.',
+    ctaDedica:'Ich reserviere eine Widmung — 99€',
     marchio1:'Die Mauern', marchio2:'von Verona',
     occhiello:'Die digitale Mauer der Stadt',
     titolo:'Dein Platz in der Geschichte Veronas',
@@ -978,7 +994,7 @@ var T = {
       ['Bringt mir das Kunden?',
        'Das versprechen wir nicht — und trau niemandem, der es tut. Was du kaufst, ist Präsenz: ein fester Platz mit deinem Namen auf einer Karte der Stadt, die die Veroneser wirklich anschauen wollen. Die Mauer wächst durch die Mundpropaganda derer, die darauf stehen: Deshalb bekommt jeder Gründer ein fertiges Bild zum Teilen. Wenn du klassische Direktwerbung suchst, sind 99€ woanders besser angelegt.'],
       ['Wer kann einen Ziegel reservieren?',
-       'Nur Verona. Betriebe mit Sitz in der Stadt oder der Provinz, Menschen, die hier geboren sind oder leben, Veroneser Vereine — und Widmungen: Einen Ziegel für einen Veroneser kann auch reservieren, wer weit weg wohnt. Im Formular gibst du deine Verbindung zur Stadt an; fehlt sie, stornieren wir die Reservierung (du hast nichts gezahlt, also gibt es nichts zu erstatten).'],
+       'Nur Verona. Betriebe mit Sitz in der Stadt oder der Provinz, Menschen, die hier geboren sind oder leben, Veroneser Vereine — und Widmungen: Einen Ziegel für einen Veroneser kann auch reservieren, wer weit weg wohnt — und die Widmungen haben einen eigenen Teil der Mauer. Im Formular gibst du deine Verbindung zur Stadt an; fehlt sie, stornieren wir die Reservierung (du hast nichts gezahlt, also gibt es nichts zu erstatten).'],
       ['Wann öffnen die Mauern?',
        'Die Mauer geht online, sobald die Gründerkampagne abgeschlossen ist, spätestens zum oben genannten Datum, das allen per E-Mail mitgeteilt wird. Ist sie bis dahin nicht online, verfallen alle Reservierungen und niemand zahlt etwas.'],
       ['Wie schicke ich euch Logo und Texte?',
@@ -1299,7 +1315,7 @@ var T = {
      Non usare mai nomi di attività reali con offerte e prezzi che non
      hanno mai fissato: è il modo più veloce per prendersi una diffida
      invece di un articolo sul giornale. */
-  var QUARTIERI = ['Città Antica', 'Veronetta', 'Borgo Trento', 'San Zeno'];
+  var QUARTIERI = ['Città Antica', 'Veronetta', 'Borgo Trento', 'San Zeno', 'Le Dediche'];
 
   /* Solo la forma delle file: niente nomi inventati. I posti non
      occupati da un Fondatore vero diventano "da rivendicare" o
@@ -1318,6 +1334,12 @@ var T = {
     ]},
     { q:'San Zeno', rows:[
       { off:true,  cells:[{t:'b'},{t:'f'},{t:'b'},{t:'c'},{t:'b'},{t:'c'},{t:'f'},{t:'b'}] }
+    ]},
+    /* La parte del muro per le dediche: solo spazi liberi, niente
+       "rivendica". Sta sopra le Fondamenta, sotto i quartieri. */
+    { q:'Le Dediche', dediche:true, rows:[
+      { off:false, cells:[{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'}] },
+      { off:true,  cells:[{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'},{t:'f'}] }
     ]}
   ];
 
@@ -1403,6 +1425,14 @@ var T = {
       desc.textContent = t('nonRivendicatoTxt');
       offer.hidden = true;
       act.textContent = t('ctaRivendico');
+    } else if (data.dedica){
+      mono.textContent = '\u2766';
+      mono.style.background = '#a7967b';
+      name.textContent = t('dedicaNome');
+      qz.textContent = t('dedicheTitolo');
+      desc.textContent = t('dedicaTxt');
+      offer.hidden = true;
+      act.textContent = t('ctaDedica');
     } else {
       mono.textContent = '+';
       mono.style.background = '#a7967b';
@@ -1478,6 +1508,12 @@ var T = {
       b.appendChild(el('span', 'lb', t('lbRivendica')));
       b.setAttribute('aria-label', t('ariaRivendica') + quart);
       b.addEventListener('click', function(){ openSheet(cell, '#a1927b', quart); });
+    } else if (quart === 'Le Dediche'){
+      b = el('button', 'brick free');
+      b.appendChild(el('span', 'q dq', '\u2766'));
+      b.appendChild(el('span', 'lb', t('lbDedica')));
+      b.setAttribute('aria-label', t('dedicaNome'));
+      b.addEventListener('click', function(){ openSheet({ t:'f', dedica:true }, '#a7967b', quart); });
     } else {
       b = el('button', 'brick free');
       b.appendChild(el('span', 'lb', t('lbLibero')));
@@ -1518,7 +1554,7 @@ var T = {
       var head = el('div', 'quartiere');
       head.appendChild(el('span', 'ln'));
       head.appendChild(el('span', 'dm', '◆'));
-      head.appendChild(el('span', 'nm', g.q));
+      head.appendChild(el('span', 'nm', g.dediche ? t('dedicheTitolo') : g.q));
       head.appendChild(el('span', 'dm', '◆'));
       head.appendChild(el('span', 'ln'));
       wall.appendChild(head);
